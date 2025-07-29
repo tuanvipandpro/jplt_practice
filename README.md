@@ -28,7 +28,7 @@ Project được cấu hình để tự động deploy lên GitHub Pages thông 
 ### Cấu hình GitHub Pages:
 1. Vào repository Settings > Pages
 2. Chọn "GitHub Actions" làm source
-3. Push code lên branch `main` để trigger deployment
+3. Push code lên branch `master` để trigger deployment
 
 ### URL Deployment:
 `https://your-username.github.io/jplt_practice/`
