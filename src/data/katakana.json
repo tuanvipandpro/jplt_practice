@@ -1,0 +1,734 @@
+{
+  "name": "Katakana",
+  "description": "Bảng chữ cái ngoại lai tiếng Nhật",
+  "cards": [
+    {
+      "front": "ア",
+      "back": "a",
+      "example": "アメリカ (Amerika - Mỹ)",
+      "pronunciation": "a",
+      "meaning": "Chữ cái a (Katakana)"
+    },
+    {
+      "front": "イ",
+      "back": "i",
+      "example": "イギリス (Igirisu - Anh)",
+      "pronunciation": "i",
+      "meaning": "Chữ cái i (Katakana)"
+    },
+    {
+      "front": "ウ",
+      "back": "u",
+      "example": "ウイスキー (uisukii - whisky)",
+      "pronunciation": "u",
+      "meaning": "Chữ cái u (Katakana)"
+    },
+    {
+      "front": "エ",
+      "back": "e",
+      "example": "エレベーター (erebeetaa - thang máy)",
+      "pronunciation": "e",
+      "meaning": "Chữ cái e (Katakana)"
+    },
+    {
+      "front": "オ",
+      "back": "o",
+      "example": "オレンジ (orenji - cam)",
+      "pronunciation": "o",
+      "meaning": "Chữ cái o (Katakana)"
+    },
+    {
+      "front": "カ",
+      "back": "ka",
+      "example": "カメラ (kamera - máy ảnh)",
+      "pronunciation": "ka",
+      "meaning": "Chữ cái ka (Katakana)"
+    },
+    {
+      "front": "キ",
+      "back": "ki",
+      "example": "キッチン (kicchin - nhà bếp)",
+      "pronunciation": "ki",
+      "meaning": "Chữ cái ki (Katakana)"
+    },
+    {
+      "front": "ク",
+      "back": "ku",
+      "example": "クーラー (kuuraa - máy lạnh)",
+      "pronunciation": "ku",
+      "meaning": "Chữ cái ku (Katakana)"
+    },
+    {
+      "front": "ケ",
+      "back": "ke",
+      "example": "ケーキ (keeki - bánh kem)",
+      "pronunciation": "ke",
+      "meaning": "Chữ cái ke (Katakana)"
+    },
+    {
+      "front": "コ",
+      "back": "ko",
+      "example": "コーヒー (koohii - cà phê)",
+      "pronunciation": "ko",
+      "meaning": "Chữ cái ko (Katakana)"
+    },
+    {
+      "front": "サ",
+      "back": "sa",
+      "example": "サッカー (sakkaa - bóng đá)",
+      "pronunciation": "sa",
+      "meaning": "Chữ cái sa (Katakana)"
+    },
+    {
+      "front": "シ",
+      "back": "shi",
+      "example": "シーディー (shiidii - CD)",
+      "pronunciation": "shi",
+      "meaning": "Chữ cái shi (Katakana)"
+    },
+    {
+      "front": "ス",
+      "back": "su",
+      "example": "スーパー (suupaa - siêu thị)",
+      "pronunciation": "su",
+      "meaning": "Chữ cái su (Katakana)"
+    },
+    {
+      "front": "セ",
+      "back": "se",
+      "example": "セーター (seetaa - áo len)",
+      "pronunciation": "se",
+      "meaning": "Chữ cái se (Katakana)"
+    },
+    {
+      "front": "ソ",
+      "back": "so",
+      "example": "ソフト (sofuto - mềm)",
+      "pronunciation": "so",
+      "meaning": "Chữ cái so (Katakana)"
+    },
+    {
+      "front": "タ",
+      "back": "ta",
+      "example": "タクシー (takushii - taxi)",
+      "pronunciation": "ta",
+      "meaning": "Chữ cái ta (Katakana)"
+    },
+    {
+      "front": "チ",
+      "back": "chi",
+      "example": "チーズ (chiizu - phô mai)",
+      "pronunciation": "chi",
+      "meaning": "Chữ cái chi (Katakana)"
+    },
+    {
+      "front": "ツ",
+      "back": "tsu",
+      "example": "ツアー (tsuaa - tour)",
+      "pronunciation": "tsu",
+      "meaning": "Chữ cái tsu (Katakana)"
+    },
+    {
+      "front": "テ",
+      "back": "te",
+      "example": "テレビ (terebi - TV)",
+      "pronunciation": "te",
+      "meaning": "Chữ cái te (Katakana)"
+    },
+    {
+      "front": "ト",
+      "back": "to",
+      "example": "トイレ (toire - nhà vệ sinh)",
+      "pronunciation": "to",
+      "meaning": "Chữ cái to (Katakana)"
+    },
+    {
+      "front": "ナ",
+      "back": "na",
+      "example": "ナイフ (naifu - dao)",
+      "pronunciation": "na",
+      "meaning": "Chữ cái na (Katakana)"
+    },
+    {
+      "front": "ニ",
+      "back": "ni",
+      "example": "ニュース (nyuusu - tin tức)",
+      "pronunciation": "ni",
+      "meaning": "Chữ cái ni (Katakana)"
+    },
+    {
+      "front": "ヌ",
+      "back": "nu",
+      "example": "ヌードル (nuudoru - mì)",
+      "pronunciation": "nu",
+      "meaning": "Chữ cái nu (Katakana)"
+    },
+    {
+      "front": "ネ",
+      "back": "ne",
+      "example": "ネクタイ (nekutai - cà vạt)",
+      "pronunciation": "ne",
+      "meaning": "Chữ cái ne (Katakana)"
+    },
+    {
+      "front": "ノ",
+      "back": "no",
+      "example": "ノート (nooto - vở)",
+      "pronunciation": "no",
+      "meaning": "Chữ cái no (Katakana)"
+    },
+    {
+      "front": "ハ",
+      "back": "ha",
+      "example": "ハンバーガー (hanbaagaa - hamburger)",
+      "pronunciation": "ha",
+      "meaning": "Chữ cái ha (Katakana)"
+    },
+    {
+      "front": "ヒ",
+      "back": "hi",
+      "example": "ヒーター (hiitaa - máy sưởi)",
+      "pronunciation": "hi",
+      "meaning": "Chữ cái hi (Katakana)"
+    },
+    {
+      "front": "フ",
+      "back": "fu",
+      "example": "フランス (furansu - Pháp)",
+      "pronunciation": "fu",
+      "meaning": "Chữ cái fu (Katakana)"
+    },
+    {
+      "front": "ヘ",
+      "back": "he",
+      "example": "ヘリコプター (herikoputaa - máy bay trực thăng)",
+      "pronunciation": "he",
+      "meaning": "Chữ cái he (Katakana)"
+    },
+    {
+      "front": "ホ",
+      "back": "ho",
+      "example": "ホテル (hoteru - khách sạn)",
+      "pronunciation": "ho",
+      "meaning": "Chữ cái ho (Katakana)"
+    },
+    {
+      "front": "マ",
+      "back": "ma",
+      "example": "マンション (manshon - chung cư)",
+      "pronunciation": "ma",
+      "meaning": "Chữ cái ma (Katakana)"
+    },
+    {
+      "front": "ミ",
+      "back": "mi",
+      "example": "ミルク (miruku - sữa)",
+      "pronunciation": "mi",
+      "meaning": "Chữ cái mi (Katakana)"
+    },
+    {
+      "front": "ム",
+      "back": "mu",
+      "example": "ムービー (muubii - phim)",
+      "pronunciation": "mu",
+      "meaning": "Chữ cái mu (Katakana)"
+    },
+    {
+      "front": "メ",
+      "back": "me",
+      "example": "メニュー (menyuu - thực đơn)",
+      "pronunciation": "me",
+      "meaning": "Chữ cái me (Katakana)"
+    },
+    {
+      "front": "モ",
+      "back": "mo",
+      "example": "モニター (monitaa - màn hình)",
+      "pronunciation": "mo",
+      "meaning": "Chữ cái mo (Katakana)"
+    },
+    {
+      "front": "ヤ",
+      "back": "ya",
+      "example": "ヤンキー (yankii - Yankee)",
+      "pronunciation": "ya",
+      "meaning": "Chữ cái ya (Katakana)"
+    },
+    {
+      "front": "ユ",
+      "back": "yu",
+      "example": "ユニフォーム (yunifoomu - đồng phục)",
+      "pronunciation": "yu",
+      "meaning": "Chữ cái yu (Katakana)"
+    },
+    {
+      "front": "ヨ",
+      "back": "yo",
+      "example": "ヨーロッパ (yooroppa - châu Âu)",
+      "pronunciation": "yo",
+      "meaning": "Chữ cái yo (Katakana)"
+    },
+    {
+      "front": "ラ",
+      "back": "ra",
+      "example": "ラジオ (rajio - radio)",
+      "pronunciation": "ra",
+      "meaning": "Chữ cái ra (Katakana)"
+    },
+    {
+      "front": "リ",
+      "back": "ri",
+      "example": "リモコン (rimokon - điều khiển từ xa)",
+      "pronunciation": "ri",
+      "meaning": "Chữ cái ri (Katakana)"
+    },
+    {
+      "front": "ル",
+      "back": "ru",
+      "example": "ルール (ruuru - quy tắc)",
+      "pronunciation": "ru",
+      "meaning": "Chữ cái ru (Katakana)"
+    },
+    {
+      "front": "レ",
+      "back": "re",
+      "example": "レストラン (resutoran - nhà hàng)",
+      "pronunciation": "re",
+      "meaning": "Chữ cái re (Katakana)"
+    },
+    {
+      "front": "ロ",
+      "back": "ro",
+      "example": "ロボット (robotto - robot)",
+      "pronunciation": "ro",
+      "meaning": "Chữ cái ro (Katakana)"
+    },
+    {
+      "front": "ワ",
+      "back": "wa",
+      "example": "ワイン (wain - rượu vang)",
+      "pronunciation": "wa",
+      "meaning": "Chữ cái wa (Katakana)"
+    },
+    {
+      "front": "ヲ",
+      "back": "wo",
+      "example": "ヲ (wo - trợ từ tân ngữ)",
+      "pronunciation": "wo",
+      "meaning": "Chữ cái wo (Katakana)"
+    },
+    {
+      "front": "ン",
+      "back": "n",
+      "example": "パン (pan - bánh mì)",
+      "pronunciation": "n",
+      "meaning": "Chữ cái n (Katakana)"
+    },
+    {
+      "front": "ガ",
+      "back": "ga",
+      "example": "ガソリン (gasorin - xăng)",
+      "pronunciation": "ga",
+      "meaning": "Biến âm ga (Katakana)"
+    },
+    {
+      "front": "ギ",
+      "back": "gi",
+      "example": "ギター (gitaa - guitar)",
+      "pronunciation": "gi",
+      "meaning": "Biến âm gi (Katakana)"
+    },
+    {
+      "front": "グ",
+      "back": "gu",
+      "example": "グラス (gurasu - ly)",
+      "pronunciation": "gu",
+      "meaning": "Biến âm gu (Katakana)"
+    },
+    {
+      "front": "ゲ",
+      "back": "ge",
+      "example": "ゲーム (geemu - game)",
+      "pronunciation": "ge",
+      "meaning": "Biến âm ge (Katakana)"
+    },
+    {
+      "front": "ゴ",
+      "back": "go",
+      "example": "ゴルフ (gorufu - golf)",
+      "pronunciation": "go",
+      "meaning": "Biến âm go (Katakana)"
+    },
+    {
+      "front": "ザ",
+      "back": "za",
+      "example": "ザッパー (zappaa - áo khoác)",
+      "pronunciation": "za",
+      "meaning": "Biến âm za (Katakana)"
+    },
+    {
+      "front": "ジ",
+      "back": "ji",
+      "example": "ジーンズ (jiinzu - quần jean)",
+      "pronunciation": "ji",
+      "meaning": "Biến âm ji (Katakana)"
+    },
+    {
+      "front": "ズ",
+      "back": "zu",
+      "example": "ズボン (zubon - quần)",
+      "pronunciation": "zu",
+      "meaning": "Biến âm zu (Katakana)"
+    },
+    {
+      "front": "ゼ",
+      "back": "ze",
+      "example": "ゼリー (zerii - thạch)",
+      "pronunciation": "ze",
+      "meaning": "Biến âm ze (Katakana)"
+    },
+    {
+      "front": "ゾ",
+      "back": "zo",
+      "example": "ゾウ (zou - voi)",
+      "pronunciation": "zo",
+      "meaning": "Biến âm zo (Katakana)"
+    },
+    {
+      "front": "ダ",
+      "back": "da",
+      "example": "ダンス (dansu - nhảy)",
+      "pronunciation": "da",
+      "meaning": "Biến âm da (Katakana)"
+    },
+    {
+      "front": "ヂ",
+      "back": "ji",
+      "example": "ヂャズ (jazu - jazz)",
+      "pronunciation": "ji",
+      "meaning": "Biến âm ji (Katakana)"
+    },
+    {
+      "front": "ヅ",
+      "back": "zu",
+      "example": "ヅボン (zubon - quần)",
+      "pronunciation": "zu",
+      "meaning": "Biến âm zu (Katakana)"
+    },
+    {
+      "front": "デ",
+      "back": "de",
+      "example": "デパート (depaato - cửa hàng bách hóa)",
+      "pronunciation": "de",
+      "meaning": "Biến âm de (Katakana)"
+    },
+    {
+      "front": "ド",
+      "back": "do",
+      "example": "ドア (doa - cửa)",
+      "pronunciation": "do",
+      "meaning": "Biến âm do (Katakana)"
+    },
+    {
+      "front": "バ",
+      "back": "ba",
+      "example": "バス (basu - xe buýt)",
+      "pronunciation": "ba",
+      "meaning": "Biến âm ba (Katakana)"
+    },
+    {
+      "front": "ビ",
+      "back": "bi",
+      "example": "ビデオ (bideo - video)",
+      "pronunciation": "bi",
+      "meaning": "Biến âm bi (Katakana)"
+    },
+    {
+      "front": "ブ",
+      "back": "bu",
+      "example": "ブック (bukku - sách)",
+      "pronunciation": "bu",
+      "meaning": "Biến âm bu (Katakana)"
+    },
+    {
+      "front": "ベ",
+      "back": "be",
+      "example": "ベッド (beddo - giường)",
+      "pronunciation": "be",
+      "meaning": "Biến âm be (Katakana)"
+    },
+    {
+      "front": "ボ",
+      "back": "bo",
+      "example": "ボール (booru - bóng)",
+      "pronunciation": "bo",
+      "meaning": "Biến âm bo (Katakana)"
+    },
+    {
+      "front": "パ",
+      "back": "pa",
+      "example": "パーティー (paatii - tiệc)",
+      "pronunciation": "pa",
+      "meaning": "Biến âm pa (Katakana)"
+    },
+    {
+      "front": "ピ",
+      "back": "pi",
+      "example": "ピアノ (piano - piano)",
+      "pronunciation": "pi",
+      "meaning": "Biến âm pi (Katakana)"
+    },
+    {
+      "front": "プ",
+      "back": "pu",
+      "example": "プール (puuru - hồ bơi)",
+      "pronunciation": "pu",
+      "meaning": "Biến âm pu (Katakana)"
+    },
+    {
+      "front": "ペ",
+      "back": "pe",
+      "example": "ペン (pen - bút)",
+      "pronunciation": "pe",
+      "meaning": "Biến âm pe (Katakana)"
+    },
+    {
+      "front": "ポ",
+      "back": "po",
+      "example": "ポスト (posuto - hộp thư)",
+      "pronunciation": "po",
+      "meaning": "Biến âm po (Katakana)"
+    },
+    {
+      "front": "キャ",
+      "back": "kya",
+      "example": "キャンプ (kyanpu - cắm trại)",
+      "pronunciation": "kya",
+      "meaning": "Âm ghép kya (Katakana)"
+    },
+    {
+      "front": "キュ",
+      "back": "kyu",
+      "example": "キュート (kyuuto - dễ thương)",
+      "pronunciation": "kyu",
+      "meaning": "Âm ghép kyu (Katakana)"
+    },
+    {
+      "front": "キョ",
+      "back": "kyo",
+      "example": "キョウ (kyou - hôm nay)",
+      "pronunciation": "kyo",
+      "meaning": "Âm ghép kyo (Katakana)"
+    },
+    {
+      "front": "シャ",
+      "back": "sha",
+      "example": "シャワー (shawaa - vòi sen)",
+      "pronunciation": "sha",
+      "meaning": "Âm ghép sha (Katakana)"
+    },
+    {
+      "front": "シュ",
+      "back": "shu",
+      "example": "シューズ (shuuzu - giày)",
+      "pronunciation": "shu",
+      "meaning": "Âm ghép shu (Katakana)"
+    },
+    {
+      "front": "ショ",
+      "back": "sho",
+      "example": "ショップ (shoppu - cửa hàng)",
+      "pronunciation": "sho",
+      "meaning": "Âm ghép sho (Katakana)"
+    },
+    {
+      "front": "チャ",
+      "back": "cha",
+      "example": "チャンス (chansu - cơ hội)",
+      "pronunciation": "cha",
+      "meaning": "Âm ghép cha (Katakana)"
+    },
+    {
+      "front": "チュ",
+      "back": "chu",
+      "example": "チューリップ (chuurippu - hoa tulip)",
+      "pronunciation": "chu",
+      "meaning": "Âm ghép chu (Katakana)"
+    },
+    {
+      "front": "チョ",
+      "back": "cho",
+      "example": "チョコレート (chokoreeto - sô cô la)",
+      "pronunciation": "cho",
+      "meaning": "Âm ghép cho (Katakana)"
+    },
+    {
+      "front": "ニャ",
+      "back": "nya",
+      "example": "ニャン (nyan - meo meo)",
+      "pronunciation": "nya",
+      "meaning": "Âm ghép nya (Katakana)"
+    },
+    {
+      "front": "ニュ",
+      "back": "nyu",
+      "example": "ニュース (nyuusu - tin tức)",
+      "pronunciation": "nyu",
+      "meaning": "Âm ghép nyu (Katakana)"
+    },
+    {
+      "front": "ニョ",
+      "back": "nyo",
+      "example": "ニョロ (nyoro - trơn)",
+      "pronunciation": "nyo",
+      "meaning": "Âm ghép nyo (Katakana)"
+    },
+    {
+      "front": "ヒャ",
+      "back": "hya",
+      "example": "ヒャク (hyaku - trăm)",
+      "pronunciation": "hya",
+      "meaning": "Âm ghép hya (Katakana)"
+    },
+    {
+      "front": "ヒュ",
+      "back": "hyu",
+      "example": "ヒュウ (hyuu - gió)",
+      "pronunciation": "hyu",
+      "meaning": "Âm ghép hyu (Katakana)"
+    },
+    {
+      "front": "ヒョ",
+      "back": "hyo",
+      "example": "ヒョウ (hyou - báo)",
+      "pronunciation": "hyo",
+      "meaning": "Âm ghép hyo (Katakana)"
+    },
+    {
+      "front": "ミャ",
+      "back": "mya",
+      "example": "ミャク (myaku - mạch)",
+      "pronunciation": "mya",
+      "meaning": "Âm ghép mya (Katakana)"
+    },
+    {
+      "front": "ミュ",
+      "back": "myu",
+      "example": "ミュージック (myuujikku - âm nhạc)",
+      "pronunciation": "myu",
+      "meaning": "Âm ghép myu (Katakana)"
+    },
+    {
+      "front": "ミョ",
+      "back": "myo",
+      "example": "ミョウジ (myouji - họ)",
+      "pronunciation": "myo",
+      "meaning": "Âm ghép myo (Katakana)"
+    },
+    {
+      "front": "リャ",
+      "back": "rya",
+      "example": "リャク (ryaku - tóm tắt)",
+      "pronunciation": "rya",
+      "meaning": "Âm ghép rya (Katakana)"
+    },
+    {
+      "front": "リュ",
+      "back": "ryu",
+      "example": "リュウ (ryuu - rồng)",
+      "pronunciation": "ryu",
+      "meaning": "Âm ghép ryu (Katakana)"
+    },
+    {
+      "front": "リョ",
+      "back": "ryo",
+      "example": "リョウ (ryou - lượng)",
+      "pronunciation": "ryo",
+      "meaning": "Âm ghép ryo (Katakana)"
+    },
+    {
+      "front": "ギャ",
+      "back": "gya",
+      "example": "ギャク (gyaku - ngược)",
+      "pronunciation": "gya",
+      "meaning": "Âm ghép gya (Katakana)"
+    },
+    {
+      "front": "ギュ",
+      "back": "gyu",
+      "example": "ギュウニュウ (gyuunyuu - sữa bò)",
+      "pronunciation": "gyu",
+      "meaning": "Âm ghép gyu (Katakana)"
+    },
+    {
+      "front": "ギョ",
+      "back": "gyo",
+      "example": "ギョウ (gyou - nghề nghiệp)",
+      "pronunciation": "gyo",
+      "meaning": "Âm ghép gyo (Katakana)"
+    },
+    {
+      "front": "ジャ",
+      "back": "ja",
+      "example": "ジャズ (jazu - jazz)",
+      "pronunciation": "ja",
+      "meaning": "Âm ghép ja (Katakana)"
+    },
+    {
+      "front": "ジュ",
+      "back": "ju",
+      "example": "ジュース (juusu - nước ép)",
+      "pronunciation": "ju",
+      "meaning": "Âm ghép ju (Katakana)"
+    },
+    {
+      "front": "ジョ",
+      "back": "jo",
+      "example": "ジョブ (jobu - công việc)",
+      "pronunciation": "jo",
+      "meaning": "Âm ghép jo (Katakana)"
+    },
+    {
+      "front": "ビャ",
+      "back": "bya",
+      "example": "ビャク (byaku - trắng)",
+      "pronunciation": "bya",
+      "meaning": "Âm ghép bya (Katakana)"
+    },
+    {
+      "front": "ビュ",
+      "back": "byu",
+      "example": "ビュウ (byuu - gió)",
+      "pronunciation": "byu",
+      "meaning": "Âm ghép byu (Katakana)"
+    },
+    {
+      "front": "ビョ",
+      "back": "byo",
+      "example": "ビョウ (byou - bệnh)",
+      "pronunciation": "byo",
+      "meaning": "Âm ghép byo (Katakana)"
+    },
+    {
+      "front": "ピャ",
+      "back": "pya",
+      "example": "ピャク (pyaku - trăm)",
+      "pronunciation": "pya",
+      "meaning": "Âm ghép pya (Katakana)"
+    },
+    {
+      "front": "ピュ",
+      "back": "pyu",
+      "example": "ピュウ (pyuu - gió)",
+      "pronunciation": "pyu",
+      "meaning": "Âm ghép pyu (Katakana)"
+    },
+    {
+      "front": "ピョ",
+      "back": "pyo",
+      "example": "ピョウ (pyou - báo)",
+      "pronunciation": "pyo",
+      "meaning": "Âm ghép pyo (Katakana)"
+    }
+  ]
+} 

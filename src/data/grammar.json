@@ -1,0 +1,240 @@
+{
+  "name": "Grammar N5",
+  "description": "Ngữ pháp cơ bản N5",
+  "cards": [
+    {
+      "front": "は (wa)",
+      "back": "Trợ từ chủ ngữ",
+      "example": "私は学生です。 (Watashi wa gakusei desu - Tôi là học sinh)",
+      "pronunciation": "wa",
+      "meaning": "Trợ từ chủ ngữ",
+      "romanji": "wa",
+      "hiragana": "は"
+    },
+    {
+      "front": "が (ga)",
+      "back": "Trợ từ chủ ngữ (nhấn mạnh)",
+      "example": "雨が降っています。 (Ame ga futte imasu - Trời đang mưa)",
+      "pronunciation": "ga",
+      "meaning": "Trợ từ chủ ngữ (nhấn mạnh)",
+      "romanji": "ga",
+      "hiragana": "が"
+    },
+    {
+      "front": "を (wo)",
+      "back": "Trợ từ tân ngữ",
+      "example": "本を読みます。 (Hon wo yomimasu - Đọc sách)",
+      "pronunciation": "wo",
+      "meaning": "Trợ từ tân ngữ",
+      "romanji": "wo",
+      "hiragana": "を"
+    },
+    {
+      "front": "に (ni)",
+      "back": "Trợ từ chỉ đích đến/thời gian",
+      "example": "学校に行きます。 (Gakkou ni ikimasu - Đi đến trường)",
+      "pronunciation": "ni",
+      "meaning": "Trợ từ chỉ đích đến/thời gian",
+      "romanji": "ni",
+      "hiragana": "に"
+    },
+    {
+      "front": "で (de)",
+      "back": "Trợ từ chỉ nơi chốn/phương tiện",
+      "example": "図書館で勉強します。 (Toshokan de benkyou shimasu - Học ở thư viện)",
+      "pronunciation": "de",
+      "meaning": "Trợ từ chỉ nơi chốn/phương tiện",
+      "romanji": "de",
+      "hiragana": "で"
+    },
+    {
+      "front": "から (kara)",
+      "back": "Từ/Trợ từ chỉ điểm bắt đầu",
+      "example": "東京から来ました。 (Tokyo kara kimashita - Đến từ Tokyo)",
+      "pronunciation": "kara",
+      "meaning": "Từ/Trợ từ chỉ điểm bắt đầu",
+      "romanji": "kara",
+      "hiragana": "から"
+    },
+    {
+      "front": "まで (made)",
+      "back": "Đến/Trợ từ chỉ điểm kết thúc",
+      "example": "駅まで歩きます。 (Eki made arukimasu - Đi bộ đến ga)",
+      "pronunciation": "made",
+      "meaning": "Đến/Trợ từ chỉ điểm kết thúc",
+      "romanji": "made",
+      "hiragana": "まで"
+    },
+    {
+      "front": "と (to)",
+      "back": "Và/Cùng với",
+      "example": "友達と映画を見ます。 (Tomodachi to eiga wo mimasu - Xem phim với bạn)",
+      "pronunciation": "to",
+      "meaning": "Và/Cùng với",
+      "romanji": "to",
+      "hiragana": "と"
+    },
+    {
+      "front": "も (mo)",
+      "back": "Cũng",
+      "example": "私も学生です。 (Watashi mo gakusei desu - Tôi cũng là học sinh)",
+      "pronunciation": "mo",
+      "meaning": "Cũng",
+      "romanji": "mo",
+      "hiragana": "も"
+    },
+    {
+      "front": "の (no)",
+      "back": "Của/Trợ từ sở hữu",
+      "example": "田中さんの本です。 (Tanaka-san no hon desu - Sách của Tanaka)",
+      "pronunciation": "no",
+      "meaning": "Của/Trợ từ sở hữu",
+      "romanji": "no",
+      "hiragana": "の"
+    },
+    {
+      "front": "です (desu)",
+      "back": "Là (cách nói lịch sự)",
+      "example": "私は学生です。 (Watashi wa gakusei desu - Tôi là học sinh)",
+      "pronunciation": "desu",
+      "meaning": "Là (cách nói lịch sự)",
+      "romanji": "desu",
+      "hiragana": "です"
+    },
+    {
+      "front": "だ (da)",
+      "back": "Là (cách nói thân mật)",
+      "example": "私は学生だ。 (Watashi wa gakusei da - Tôi là học sinh)",
+      "pronunciation": "da",
+      "meaning": "Là (cách nói thân mật)",
+      "romanji": "da",
+      "hiragana": "だ"
+    },
+    {
+      "front": "ます (masu)",
+      "back": "Đuôi động từ lịch sự",
+      "example": "行きます (ikimasu - đi)",
+      "pronunciation": "masu",
+      "meaning": "Đuôi động từ lịch sự",
+      "romanji": "masu",
+      "hiragana": "ます"
+    },
+    {
+      "front": "る (ru)",
+      "back": "Đuôi động từ thân mật",
+      "example": "行く (iku - đi)",
+      "pronunciation": "ru",
+      "meaning": "Đuôi động từ thân mật",
+      "romanji": "ru",
+      "hiragana": "る"
+    },
+    {
+      "front": "ている (te iru)",
+      "back": "Đang (hành động đang diễn ra)",
+      "example": "勉強しています。 (Benkyou shite imasu - Đang học)",
+      "pronunciation": "te iru",
+      "meaning": "Đang (hành động đang diễn ra)",
+      "romanji": "te iru",
+      "hiragana": "ている"
+    },
+    {
+      "front": "た (ta)",
+      "back": "Đã (thì quá khứ)",
+      "example": "行きました (ikimashita - đã đi)",
+      "pronunciation": "ta",
+      "meaning": "Đã (thì quá khứ)",
+      "romanji": "ta",
+      "hiragana": "た"
+    },
+    {
+      "front": "ない (nai)",
+      "back": "Không (phủ định)",
+      "example": "行きません (ikimasen - không đi)",
+      "pronunciation": "nai",
+      "meaning": "Không (phủ định)",
+      "romanji": "nai",
+      "hiragana": "ない"
+    },
+    {
+      "front": "たい (tai)",
+      "back": "Muốn (mong muốn)",
+      "example": "行きたい (ikitai - muốn đi)",
+      "pronunciation": "tai",
+      "meaning": "Muốn (mong muốn)",
+      "romanji": "tai",
+      "hiragana": "たい"
+    },
+    {
+      "front": "できる (dekiru)",
+      "back": "Có thể (khả năng)",
+      "example": "日本語ができます。 (Nihongo ga dekimasu - Có thể nói tiếng Nhật)",
+      "pronunciation": "dekiru",
+      "meaning": "Có thể (khả năng)",
+      "romanji": "dekiru",
+      "hiragana": "できる"
+    },
+    {
+      "front": "なければならない (nakereba naranai)",
+      "back": "Phải (bắt buộc)",
+      "example": "勉強しなければならない。 (Benkyou shinakereba naranai - Phải học)",
+      "pronunciation": "nakereba naranai",
+      "meaning": "Phải (bắt buộc)",
+      "romanji": "nakereba naranai",
+      "hiragana": "なければならない"
+    },
+    {
+      "front": "てもいい (te mo ii)",
+      "back": "Có thể (được phép)",
+      "example": "帰ってもいいです。 (Kaette mo ii desu - Có thể về)",
+      "pronunciation": "te mo ii",
+      "meaning": "Có thể (được phép)",
+      "romanji": "te mo ii",
+      "hiragana": "てもいい"
+    },
+    {
+      "front": "てはいけない (te wa ikenai)",
+      "back": "Không được (cấm)",
+      "example": "食べてはいけません。 (Tabete wa ikemasen - Không được ăn)",
+      "pronunciation": "te wa ikenai",
+      "meaning": "Không được (cấm)",
+      "romanji": "te wa ikenai",
+      "hiragana": "てはいけない"
+    },
+    {
+      "front": "から (kara)",
+      "back": "Vì (lý do)",
+      "example": "疲れたから寝ます。 (Tsukareta kara nemasu - Vì mệt nên đi ngủ)",
+      "pronunciation": "kara",
+      "meaning": "Vì (lý do)",
+      "romanji": "kara",
+      "hiragana": "から"
+    },
+    {
+      "front": "ので (node)",
+      "back": "Vì (lý do lịch sự)",
+      "example": "疲れたので寝ます。 (Tsukareta node nemasu - Vì mệt nên đi ngủ)",
+      "pronunciation": "node",
+      "meaning": "Vì (lý do lịch sự)",
+      "romanji": "node",
+      "hiragana": "ので"
+    },
+    {
+      "front": "けど (kedo)",
+      "back": "Nhưng (nhượng bộ)",
+      "example": "高いけど買います。 (Takai kedo kaimasu - Đắt nhưng vẫn mua)",
+      "pronunciation": "kedo",
+      "meaning": "Nhưng (nhượng bộ)",
+      "romanji": "kedo",
+      "hiragana": "けど"
+    },
+    {
+      "front": "が (ga)",
+      "back": "Nhưng (nhượng bộ lịch sự)",
+      "example": "高いですが買います。 (Takai desu ga kaimasu - Đắt nhưng vẫn mua)",
+      "pronunciation": "ga",
+      "meaning": "Nhưng (nhượng bộ lịch sự)",
+      "romanji": "ga",
+      "hiragana": "が"
+    }
+  ]
+} 

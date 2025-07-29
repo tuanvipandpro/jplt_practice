@@ -1,0 +1,240 @@
+{
+  "name": "Vocabulary N5",
+  "description": "Từ vựng cơ bản N5",
+  "cards": [
+    {
+      "front": "学生",
+      "back": "Học sinh",
+      "example": "私は学生です。 (Watashi wa gakusei desu - Tôi là học sinh)",
+      "pronunciation": "gakusei",
+      "meaning": "Học sinh",
+      "romanji": "gakusei",
+      "hiragana": "がくせい"
+    },
+    {
+      "front": "先生",
+      "back": "Giáo viên",
+      "example": "田中先生は親切です。 (Tanaka sensei wa shinsetsu desu - Thầy Tanaka rất tốt bụng)",
+      "pronunciation": "sensei",
+      "meaning": "Giáo viên",
+      "romanji": "sensei",
+      "hiragana": "せんせい"
+    },
+    {
+      "front": "会社",
+      "back": "Công ty",
+      "example": "会社で働きます。 (Kaisha de hatarakimasu - Làm việc ở công ty)",
+      "pronunciation": "kaisha",
+      "meaning": "Công ty",
+      "romanji": "kaisha",
+      "hiragana": "かいしゃ"
+    },
+    {
+      "front": "家族",
+      "back": "Gia đình",
+      "example": "家族と一緒に住んでいます。 (Kazoku to issho ni sunde imasu - Sống cùng gia đình)",
+      "pronunciation": "kazoku",
+      "meaning": "Gia đình",
+      "romanji": "kazoku",
+      "hiragana": "かぞく"
+    },
+    {
+      "front": "友達",
+      "back": "Bạn bè",
+      "example": "友達と映画を見ます。 (Tomodachi to eiga wo mimasu - Xem phim với bạn)",
+      "pronunciation": "tomodachi",
+      "meaning": "Bạn bè",
+      "romanji": "tomodachi",
+      "hiragana": "ともだち"
+    },
+    {
+      "front": "学校",
+      "back": "Trường học",
+      "example": "学校に行きます。 (Gakkou ni ikimasu - Đi đến trường)",
+      "pronunciation": "gakkou",
+      "meaning": "Trường học",
+      "romanji": "gakkou",
+      "hiragana": "がっこう"
+    },
+    {
+      "front": "病院",
+      "back": "Bệnh viện",
+      "example": "病院で働いています。 (Byouin de hataraite imasu - Làm việc ở bệnh viện)",
+      "pronunciation": "byouin",
+      "meaning": "Bệnh viện",
+      "romanji": "byouin",
+      "hiragana": "びょういん"
+    },
+    {
+      "front": "銀行",
+      "back": "Ngân hàng",
+      "example": "銀行でお金を下ろします。 (Ginkou de okane wo oroshimasu - Rút tiền ở ngân hàng)",
+      "pronunciation": "ginkou",
+      "meaning": "Ngân hàng",
+      "romanji": "ginkou",
+      "hiragana": "ぎんこう"
+    },
+    {
+      "front": "郵便局",
+      "back": "Bưu điện",
+      "example": "郵便局で手紙を送ります。 (Yuubinkyoku de tegami wo okurimasu - Gửi thư ở bưu điện)",
+      "pronunciation": "yuubinkyoku",
+      "meaning": "Bưu điện",
+      "romanji": "yuubinkyoku",
+      "hiragana": "ゆうびんきょく"
+    },
+    {
+      "front": "図書館",
+      "back": "Thư viện",
+      "example": "図書館で勉強します。 (Toshokan de benkyou shimasu - Học ở thư viện)",
+      "pronunciation": "toshokan",
+      "meaning": "Thư viện",
+      "romanji": "toshokan",
+      "hiragana": "としょかん"
+    },
+    {
+      "front": "駅",
+      "back": "Ga tàu",
+      "example": "駅まで歩きます。 (Eki made arukimasu - Đi bộ đến ga)",
+      "pronunciation": "eki",
+      "meaning": "Ga tàu",
+      "romanji": "eki",
+      "hiragana": "えき"
+    },
+    {
+      "front": "空港",
+      "back": "Sân bay",
+      "example": "空港で飛行機に乗ります。 (Kuukou de hikouki ni norimasu - Lên máy bay ở sân bay)",
+      "pronunciation": "kuukou",
+      "meaning": "Sân bay",
+      "romanji": "kuukou",
+      "hiragana": "くうこう"
+    },
+    {
+      "front": "ホテル",
+      "back": "Khách sạn",
+      "example": "ホテルに泊まります。 (Hoteru ni tomarimasu - Ở khách sạn)",
+      "pronunciation": "hoteru",
+      "meaning": "Khách sạn",
+      "romanji": "hoteru",
+      "hiragana": "ホテル"
+    },
+    {
+      "front": "レストラン",
+      "back": "Nhà hàng",
+      "example": "レストランで食事をします。 (Resutoran de shokuji wo shimasu - Ăn ở nhà hàng)",
+      "pronunciation": "resutoran",
+      "meaning": "Nhà hàng",
+      "romanji": "resutoran",
+      "hiragana": "レストラン"
+    },
+    {
+      "front": "スーパー",
+      "back": "Siêu thị",
+      "example": "スーパーで買い物をします。 (Suupaa de kaimono wo shimasu - Mua sắm ở siêu thị)",
+      "pronunciation": "suupaa",
+      "meaning": "Siêu thị",
+      "romanji": "suupaa",
+      "hiragana": "スーパー"
+    },
+    {
+      "front": "デパート",
+      "back": "Cửa hàng bách hóa",
+      "example": "デパートで服を買います。 (Depaato de fuku wo kaimasu - Mua quần áo ở cửa hàng)",
+      "pronunciation": "depaato",
+      "meaning": "Cửa hàng bách hóa",
+      "romanji": "depaato",
+      "hiragana": "デパート"
+    },
+    {
+      "front": "本屋",
+      "back": "Hiệu sách",
+      "example": "本屋で本を買います。 (Honya de hon wo kaimasu - Mua sách ở hiệu sách)",
+      "pronunciation": "honya",
+      "meaning": "Hiệu sách",
+      "romanji": "honya",
+      "hiragana": "ほんや"
+    },
+    {
+      "front": "薬局",
+      "back": "Hiệu thuốc",
+      "example": "薬局で薬を買います。 (Yakkyoku de kusuri wo kaimasu - Mua thuốc ở hiệu thuốc)",
+      "pronunciation": "yakkyoku",
+      "meaning": "Hiệu thuốc",
+      "romanji": "yakkyoku",
+      "hiragana": "やっきょく"
+    },
+    {
+      "front": "美容院",
+      "back": "Tiệm làm tóc",
+      "example": "美容院で髪を切ります。 (Biyouin de kami wo kirimasu - Cắt tóc ở tiệm)",
+      "pronunciation": "biyouin",
+      "meaning": "Tiệm làm tóc",
+      "romanji": "biyouin",
+      "hiragana": "びよういん"
+    },
+    {
+      "front": "映画館",
+      "back": "Rạp chiếu phim",
+      "example": "映画館で映画を見ます。 (Eigakan de eiga wo mimasu - Xem phim ở rạp)",
+      "pronunciation": "eigakan",
+      "meaning": "Rạp chiếu phim",
+      "romanji": "eigakan",
+      "hiragana": "えいがかん"
+    },
+    {
+      "front": "公園",
+      "back": "Công viên",
+      "example": "公園で散歩します。 (Kouen de sanpo shimasu - Đi dạo ở công viên)",
+      "pronunciation": "kouen",
+      "meaning": "Công viên",
+      "romanji": "kouen",
+      "hiragana": "こうえん"
+    },
+    {
+      "front": "美術館",
+      "back": "Bảo tàng mỹ thuật",
+      "example": "美術館で絵を見ます。 (Bijutsukan de e wo mimasu - Xem tranh ở bảo tàng)",
+      "pronunciation": "bijutsukan",
+      "meaning": "Bảo tàng mỹ thuật",
+      "romanji": "bijutsukan",
+      "hiragana": "びじゅつかん"
+    },
+    {
+      "front": "博物館",
+      "back": "Bảo tàng",
+      "example": "博物館で歴史を学びます。 (Hakubutsukan de rekishi wo manabimasu - Học lịch sử ở bảo tàng)",
+      "pronunciation": "hakubutsukan",
+      "meaning": "Bảo tàng",
+      "romanji": "hakubutsukan",
+      "hiragana": "はくぶつかん"
+    },
+    {
+      "front": "動物園",
+      "back": "Vườn thú",
+      "example": "動物園で動物を見ます。 (Doubutsuen de doubutsu wo mimasu - Xem động vật ở vườn thú)",
+      "pronunciation": "doubutsuen",
+      "meaning": "Vườn thú",
+      "romanji": "doubutsuen",
+      "hiragana": "どうぶつえん"
+    },
+    {
+      "front": "水族館",
+      "back": "Thủy cung",
+      "example": "水族館で魚を見ます。 (Suizokukan de sakana wo mimasu - Xem cá ở thủy cung)",
+      "pronunciation": "suizokukan",
+      "meaning": "Thủy cung",
+      "romanji": "suizokukan",
+      "hiragana": "すいぞくかん"
+    },
+    {
+      "front": "温泉",
+      "back": "Suối nước nóng",
+      "example": "温泉に入ります。 (Onsen ni hairimasu - Tắm suối nước nóng)",
+      "pronunciation": "onsen",
+      "meaning": "Suối nước nóng",
+      "romanji": "onsen",
+      "hiragana": "おんせん"
+    }
+  ]
+} 

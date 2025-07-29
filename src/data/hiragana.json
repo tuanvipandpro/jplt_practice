@@ -1,0 +1,734 @@
+{
+  "name": "Hiragana",
+  "description": "Bảng chữ cái cơ bản tiếng Nhật",
+  "cards": [
+    {
+      "front": "あ",
+      "back": "a",
+      "example": "あお (ao - xanh)",
+      "pronunciation": "a",
+      "meaning": "Chữ cái a"
+    },
+    {
+      "front": "い",
+      "back": "i",
+      "example": "いぬ (inu - chó)",
+      "pronunciation": "i",
+      "meaning": "Chữ cái i"
+    },
+    {
+      "front": "う",
+      "back": "u",
+      "example": "うみ (umi - biển)",
+      "pronunciation": "u",
+      "meaning": "Chữ cái u"
+    },
+    {
+      "front": "え",
+      "back": "e",
+      "example": "えき (eki - nhà ga)",
+      "pronunciation": "e",
+      "meaning": "Chữ cái e"
+    },
+    {
+      "front": "お",
+      "back": "o",
+      "example": "おと (oto - âm thanh)",
+      "pronunciation": "o",
+      "meaning": "Chữ cái o"
+    },
+    {
+      "front": "か",
+      "back": "ka",
+      "example": "かみ (kami - giấy)",
+      "pronunciation": "ka",
+      "meaning": "Chữ cái ka"
+    },
+    {
+      "front": "き",
+      "back": "ki",
+      "example": "きく (kiku - hoa cúc)",
+      "pronunciation": "ki",
+      "meaning": "Chữ cái ki"
+    },
+    {
+      "front": "く",
+      "back": "ku",
+      "example": "くも (kumo - mây)",
+      "pronunciation": "ku",
+      "meaning": "Chữ cái ku"
+    },
+    {
+      "front": "け",
+      "back": "ke",
+      "example": "けん (ken - kiếm)",
+      "pronunciation": "ke",
+      "meaning": "Chữ cái ke"
+    },
+    {
+      "front": "こ",
+      "back": "ko",
+      "example": "こと (koto - sự việc)",
+      "pronunciation": "ko",
+      "meaning": "Chữ cái ko"
+    },
+    {
+      "front": "さ",
+      "back": "sa",
+      "example": "さくら (sakura - hoa anh đào)",
+      "pronunciation": "sa",
+      "meaning": "Chữ cái sa"
+    },
+    {
+      "front": "し",
+      "back": "shi",
+      "example": "しろ (shiro - trắng)",
+      "pronunciation": "shi",
+      "meaning": "Chữ cái shi"
+    },
+    {
+      "front": "す",
+      "back": "su",
+      "example": "すみ (sumi - góc)",
+      "pronunciation": "su",
+      "meaning": "Chữ cái su"
+    },
+    {
+      "front": "せ",
+      "back": "se",
+      "example": "せん (sen - nghìn)",
+      "pronunciation": "se",
+      "meaning": "Chữ cái se"
+    },
+    {
+      "front": "そ",
+      "back": "so",
+      "example": "そら (sora - bầu trời)",
+      "pronunciation": "so",
+      "meaning": "Chữ cái so"
+    },
+    {
+      "front": "た",
+      "back": "ta",
+      "example": "たべる (taberu - ăn)",
+      "pronunciation": "ta",
+      "meaning": "Chữ cái ta"
+    },
+    {
+      "front": "ち",
+      "back": "chi",
+      "example": "ちいさい (chiisai - nhỏ)",
+      "pronunciation": "chi",
+      "meaning": "Chữ cái chi"
+    },
+    {
+      "front": "つ",
+      "back": "tsu",
+      "example": "つくえ (tsukue - bàn)",
+      "pronunciation": "tsu",
+      "meaning": "Chữ cái tsu"
+    },
+    {
+      "front": "て",
+      "back": "te",
+      "example": "て (te - tay)",
+      "pronunciation": "te",
+      "meaning": "Chữ cái te"
+    },
+    {
+      "front": "と",
+      "back": "to",
+      "example": "とけい (tokei - đồng hồ)",
+      "pronunciation": "to",
+      "meaning": "Chữ cái to"
+    },
+    {
+      "front": "な",
+      "back": "na",
+      "example": "なまえ (namae - tên)",
+      "pronunciation": "na",
+      "meaning": "Chữ cái na"
+    },
+    {
+      "front": "に",
+      "back": "ni",
+      "example": "にほん (nihon - Nhật Bản)",
+      "pronunciation": "ni",
+      "meaning": "Chữ cái ni"
+    },
+    {
+      "front": "ぬ",
+      "back": "nu",
+      "example": "ぬる (nuru - bôi)",
+      "pronunciation": "nu",
+      "meaning": "Chữ cái nu"
+    },
+    {
+      "front": "ね",
+      "back": "ne",
+      "example": "ねこ (neko - mèo)",
+      "pronunciation": "ne",
+      "meaning": "Chữ cái ne"
+    },
+    {
+      "front": "の",
+      "back": "no",
+      "example": "のむ (nomu - uống)",
+      "pronunciation": "no",
+      "meaning": "Chữ cái no"
+    },
+    {
+      "front": "は",
+      "back": "ha",
+      "example": "はな (hana - hoa)",
+      "pronunciation": "ha",
+      "meaning": "Chữ cái ha"
+    },
+    {
+      "front": "ひ",
+      "back": "hi",
+      "example": "ひこうき (hikouki - máy bay)",
+      "pronunciation": "hi",
+      "meaning": "Chữ cái hi"
+    },
+    {
+      "front": "ふ",
+      "back": "fu",
+      "example": "ふね (fune - thuyền)",
+      "pronunciation": "fu",
+      "meaning": "Chữ cái fu"
+    },
+    {
+      "front": "へ",
+      "back": "he",
+      "example": "へや (heya - phòng)",
+      "pronunciation": "he",
+      "meaning": "Chữ cái he"
+    },
+    {
+      "front": "ほ",
+      "back": "ho",
+      "example": "ほし (hoshi - ngôi sao)",
+      "pronunciation": "ho",
+      "meaning": "Chữ cái ho"
+    },
+    {
+      "front": "ま",
+      "back": "ma",
+      "example": "まんが (manga - truyện tranh)",
+      "pronunciation": "ma",
+      "meaning": "Chữ cái ma"
+    },
+    {
+      "front": "み",
+      "back": "mi",
+      "example": "みず (mizu - nước)",
+      "pronunciation": "mi",
+      "meaning": "Chữ cái mi"
+    },
+    {
+      "front": "む",
+      "back": "mu",
+      "example": "むし (mushi - côn trùng)",
+      "pronunciation": "mu",
+      "meaning": "Chữ cái mu"
+    },
+    {
+      "front": "め",
+      "back": "me",
+      "example": "め (me - mắt)",
+      "pronunciation": "me",
+      "meaning": "Chữ cái me"
+    },
+    {
+      "front": "も",
+      "back": "mo",
+      "example": "もも (momo - đào)",
+      "pronunciation": "mo",
+      "meaning": "Chữ cái mo"
+    },
+    {
+      "front": "や",
+      "back": "ya",
+      "example": "やさい (yasai - rau)",
+      "pronunciation": "ya",
+      "meaning": "Chữ cái ya"
+    },
+    {
+      "front": "ゆ",
+      "back": "yu",
+      "example": "ゆき (yuki - tuyết)",
+      "pronunciation": "yu",
+      "meaning": "Chữ cái yu"
+    },
+    {
+      "front": "よ",
+      "back": "yo",
+      "example": "よる (yoru - đêm)",
+      "pronunciation": "yo",
+      "meaning": "Chữ cái yo"
+    },
+    {
+      "front": "ら",
+      "back": "ra",
+      "example": "らく (raku - dễ)",
+      "pronunciation": "ra",
+      "meaning": "Chữ cái ra"
+    },
+    {
+      "front": "り",
+      "back": "ri",
+      "example": "りんご (ringo - táo)",
+      "pronunciation": "ri",
+      "meaning": "Chữ cái ri"
+    },
+    {
+      "front": "る",
+      "back": "ru",
+      "example": "るす (rusu - vắng nhà)",
+      "pronunciation": "ru",
+      "meaning": "Chữ cái ru"
+    },
+    {
+      "front": "れ",
+      "back": "re",
+      "example": "れきし (rekishi - lịch sử)",
+      "pronunciation": "re",
+      "meaning": "Chữ cái re"
+    },
+    {
+      "front": "ろ",
+      "back": "ro",
+      "example": "ろく (roku - sáu)",
+      "pronunciation": "ro",
+      "meaning": "Chữ cái ro"
+    },
+    {
+      "front": "わ",
+      "back": "wa",
+      "example": "わたし (watashi - tôi)",
+      "pronunciation": "wa",
+      "meaning": "Chữ cái wa"
+    },
+    {
+      "front": "を",
+      "back": "wo",
+      "example": "を (wo - trợ từ tân ngữ)",
+      "pronunciation": "wo",
+      "meaning": "Chữ cái wo"
+    },
+    {
+      "front": "ん",
+      "back": "n",
+      "example": "にほん (nihon - Nhật Bản)",
+      "pronunciation": "n",
+      "meaning": "Chữ cái n"
+    },
+    {
+      "front": "が",
+      "back": "ga",
+      "example": "がくせい (gakusei - học sinh)",
+      "pronunciation": "ga",
+      "meaning": "Biến âm ga"
+    },
+    {
+      "front": "ぎ",
+      "back": "gi",
+      "example": "ぎんこう (ginkou - ngân hàng)",
+      "pronunciation": "gi",
+      "meaning": "Biến âm gi"
+    },
+    {
+      "front": "ぐ",
+      "back": "gu",
+      "example": "ぐん (gun - quân đội)",
+      "pronunciation": "gu",
+      "meaning": "Biến âm gu"
+    },
+    {
+      "front": "げ",
+      "back": "ge",
+      "example": "げんき (genki - khỏe mạnh)",
+      "pronunciation": "ge",
+      "meaning": "Biến âm ge"
+    },
+    {
+      "front": "ご",
+      "back": "go",
+      "example": "ごはん (gohan - cơm)",
+      "pronunciation": "go",
+      "meaning": "Biến âm go"
+    },
+    {
+      "front": "ざ",
+      "back": "za",
+      "example": "ざっし (zasshi - tạp chí)",
+      "pronunciation": "za",
+      "meaning": "Biến âm za"
+    },
+    {
+      "front": "じ",
+      "back": "ji",
+      "example": "じかん (jikan - thời gian)",
+      "pronunciation": "ji",
+      "meaning": "Biến âm ji"
+    },
+    {
+      "front": "ず",
+      "back": "zu",
+      "example": "ずっと (zutto - mãi mãi)",
+      "pronunciation": "zu",
+      "meaning": "Biến âm zu"
+    },
+    {
+      "front": "ぜ",
+      "back": "ze",
+      "example": "ぜんぶ (zenbu - tất cả)",
+      "pronunciation": "ze",
+      "meaning": "Biến âm ze"
+    },
+    {
+      "front": "ぞ",
+      "back": "zo",
+      "example": "ぞう (zou - voi)",
+      "pronunciation": "zo",
+      "meaning": "Biến âm zo"
+    },
+    {
+      "front": "だ",
+      "back": "da",
+      "example": "だいがく (daigaku - đại học)",
+      "pronunciation": "da",
+      "meaning": "Biến âm da"
+    },
+    {
+      "front": "ぢ",
+      "back": "ji",
+      "example": "ちぢむ (chijimu - co lại)",
+      "pronunciation": "ji",
+      "meaning": "Biến âm ji"
+    },
+    {
+      "front": "づ",
+      "back": "zu",
+      "example": "つづく (tsuzuku - tiếp tục)",
+      "pronunciation": "zu",
+      "meaning": "Biến âm zu"
+    },
+    {
+      "front": "で",
+      "back": "de",
+      "example": "でんわ (denwa - điện thoại)",
+      "pronunciation": "de",
+      "meaning": "Biến âm de"
+    },
+    {
+      "front": "ど",
+      "back": "do",
+      "example": "どうぶつ (doubutsu - động vật)",
+      "pronunciation": "do",
+      "meaning": "Biến âm do"
+    },
+    {
+      "front": "ば",
+      "back": "ba",
+      "example": "ばんごはん (bangohan - bữa tối)",
+      "pronunciation": "ba",
+      "meaning": "Biến âm ba"
+    },
+    {
+      "front": "び",
+      "back": "bi",
+      "example": "びょういん (byouin - bệnh viện)",
+      "pronunciation": "bi",
+      "meaning": "Biến âm bi"
+    },
+    {
+      "front": "ぶ",
+      "back": "bu",
+      "example": "ぶんか (bunka - văn hóa)",
+      "pronunciation": "bu",
+      "meaning": "Biến âm bu"
+    },
+    {
+      "front": "べ",
+      "back": "be",
+      "example": "べんきょう (benkyou - học tập)",
+      "pronunciation": "be",
+      "meaning": "Biến âm be"
+    },
+    {
+      "front": "ぼ",
+      "back": "bo",
+      "example": "ぼく (boku - tôi)",
+      "pronunciation": "bo",
+      "meaning": "Biến âm bo"
+    },
+    {
+      "front": "ぱ",
+      "back": "pa",
+      "example": "ぱん (pan - bánh mì)",
+      "pronunciation": "pa",
+      "meaning": "Biến âm pa"
+    },
+    {
+      "front": "ぴ",
+      "back": "pi",
+      "example": "ぴかぴか (pikapika - lấp lánh)",
+      "pronunciation": "pi",
+      "meaning": "Biến âm pi"
+    },
+    {
+      "front": "ぷ",
+      "back": "pu",
+      "example": "ぷりん (purin - bánh pudding)",
+      "pronunciation": "pu",
+      "meaning": "Biến âm pu"
+    },
+    {
+      "front": "ぺ",
+      "back": "pe",
+      "example": "ぺん (pen - bút)",
+      "pronunciation": "pe",
+      "meaning": "Biến âm pe"
+    },
+    {
+      "front": "ぽ",
+      "back": "po",
+      "example": "ぽすと (posuto - hộp thư)",
+      "pronunciation": "po",
+      "meaning": "Biến âm po"
+    },
+    {
+      "front": "きゃ",
+      "back": "kya",
+      "example": "きゃく (kyaku - khách)",
+      "pronunciation": "kya",
+      "meaning": "Âm ghép kya"
+    },
+    {
+      "front": "きゅ",
+      "back": "kyu",
+      "example": "きゅうり (kyuuri - dưa chuột)",
+      "pronunciation": "kyu",
+      "meaning": "Âm ghép kyu"
+    },
+    {
+      "front": "きょ",
+      "back": "kyo",
+      "example": "きょう (kyou - hôm nay)",
+      "pronunciation": "kyo",
+      "meaning": "Âm ghép kyo"
+    },
+    {
+      "front": "しゃ",
+      "back": "sha",
+      "example": "しゃしん (shashin - ảnh)",
+      "pronunciation": "sha",
+      "meaning": "Âm ghép sha"
+    },
+    {
+      "front": "しゅ",
+      "back": "shu",
+      "example": "しゅみ (shumi - sở thích)",
+      "pronunciation": "shu",
+      "meaning": "Âm ghép shu"
+    },
+    {
+      "front": "しょ",
+      "back": "sho",
+      "example": "しょくじ (shokuji - bữa ăn)",
+      "pronunciation": "sho",
+      "meaning": "Âm ghép sho"
+    },
+    {
+      "front": "ちゃ",
+      "back": "cha",
+      "example": "ちゃ (cha - trà)",
+      "pronunciation": "cha",
+      "meaning": "Âm ghép cha"
+    },
+    {
+      "front": "ちゅ",
+      "back": "chu",
+      "example": "ちゅうごく (chuugoku - Trung Quốc)",
+      "pronunciation": "chu",
+      "meaning": "Âm ghép chu"
+    },
+    {
+      "front": "ちょ",
+      "back": "cho",
+      "example": "ちょっと (chotto - một chút)",
+      "pronunciation": "cho",
+      "meaning": "Âm ghép cho"
+    },
+    {
+      "front": "にゃ",
+      "back": "nya",
+      "example": "にゃん (nyan - meo meo)",
+      "pronunciation": "nya",
+      "meaning": "Âm ghép nya"
+    },
+    {
+      "front": "にゅ",
+      "back": "nyu",
+      "example": "にゅうがく (nyuugaku - nhập học)",
+      "pronunciation": "nyu",
+      "meaning": "Âm ghép nyu"
+    },
+    {
+      "front": "にょ",
+      "back": "nyo",
+      "example": "にょうぼう (nyoubou - vợ)",
+      "pronunciation": "nyo",
+      "meaning": "Âm ghép nyo"
+    },
+    {
+      "front": "ひゃ",
+      "back": "hya",
+      "example": "ひゃく (hyaku - trăm)",
+      "pronunciation": "hya",
+      "meaning": "Âm ghép hya"
+    },
+    {
+      "front": "ひゅ",
+      "back": "hyu",
+      "example": "ひゅう (hyuu - gió)",
+      "pronunciation": "hyu",
+      "meaning": "Âm ghép hyu"
+    },
+    {
+      "front": "ひょ",
+      "back": "hyo",
+      "example": "ひょう (hyou - báo)",
+      "pronunciation": "hyo",
+      "meaning": "Âm ghép hyo"
+    },
+    {
+      "front": "みゃ",
+      "back": "mya",
+      "example": "みゃく (myaku - mạch)",
+      "pronunciation": "mya",
+      "meaning": "Âm ghép mya"
+    },
+    {
+      "front": "みゅ",
+      "back": "myu",
+      "example": "みゅうじかん (myuujikan - thời gian miễn phí)",
+      "pronunciation": "myu",
+      "meaning": "Âm ghép myu"
+    },
+    {
+      "front": "みょ",
+      "back": "myo",
+      "example": "みょうじ (myouji - họ)",
+      "pronunciation": "myo",
+      "meaning": "Âm ghép myo"
+    },
+    {
+      "front": "りゃ",
+      "back": "rya",
+      "example": "りゃく (ryaku - tóm tắt)",
+      "pronunciation": "rya",
+      "meaning": "Âm ghép rya"
+    },
+    {
+      "front": "りゅ",
+      "back": "ryu",
+      "example": "りゅう (ryuu - rồng)",
+      "pronunciation": "ryu",
+      "meaning": "Âm ghép ryu"
+    },
+    {
+      "front": "りょ",
+      "back": "ryo",
+      "example": "りょう (ryou - lượng)",
+      "pronunciation": "ryo",
+      "meaning": "Âm ghép ryo"
+    },
+    {
+      "front": "ぎゃ",
+      "back": "gya",
+      "example": "ぎゃく (gyaku - ngược)",
+      "pronunciation": "gya",
+      "meaning": "Âm ghép gya"
+    },
+    {
+      "front": "ぎゅ",
+      "back": "gyu",
+      "example": "ぎゅうにゅう (gyuunyuu - sữa bò)",
+      "pronunciation": "gyu",
+      "meaning": "Âm ghép gyu"
+    },
+    {
+      "front": "ぎょ",
+      "back": "gyo",
+      "example": "ぎょう (gyou - nghề nghiệp)",
+      "pronunciation": "gyo",
+      "meaning": "Âm ghép gyo"
+    },
+    {
+      "front": "じゃ",
+      "back": "ja",
+      "example": "じゃあ (jaa - vậy thì)",
+      "pronunciation": "ja",
+      "meaning": "Âm ghép ja"
+    },
+    {
+      "front": "じゅ",
+      "back": "ju",
+      "example": "じゅう (juu - mười)",
+      "pronunciation": "ju",
+      "meaning": "Âm ghép ju"
+    },
+    {
+      "front": "じょ",
+      "back": "jo",
+      "example": "じょうず (jouzu - giỏi)",
+      "pronunciation": "jo",
+      "meaning": "Âm ghép jo"
+    },
+    {
+      "front": "びゃ",
+      "back": "bya",
+      "example": "びゃく (byaku - trắng)",
+      "pronunciation": "bya",
+      "meaning": "Âm ghép bya"
+    },
+    {
+      "front": "びゅ",
+      "back": "byu",
+      "example": "びゅう (byuu - gió)",
+      "pronunciation": "byu",
+      "meaning": "Âm ghép byu"
+    },
+    {
+      "front": "びょ",
+      "back": "byo",
+      "example": "びょう (byou - bệnh)",
+      "pronunciation": "byo",
+      "meaning": "Âm ghép byo"
+    },
+    {
+      "front": "ぴゃ",
+      "back": "pya",
+      "example": "ぴゃく (pyaku - trăm)",
+      "pronunciation": "pya",
+      "meaning": "Âm ghép pya"
+    },
+    {
+      "front": "ぴゅ",
+      "back": "pyu",
+      "example": "ぴゅう (pyuu - gió)",
+      "pronunciation": "pyu",
+      "meaning": "Âm ghép pyu"
+    },
+    {
+      "front": "ぴょ",
+      "back": "pyo",
+      "example": "ぴょう (pyou - báo)",
+      "pronunciation": "pyo",
+      "meaning": "Âm ghép pyo"
+    }
+  ]
+} 
