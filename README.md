@@ -32,6 +32,7 @@ Project được cấu hình để tự động deploy lên GitHub Pages thông 
 
 ### URL Deployment:
 `https://your-username.github.io/jplt_practice/`
+E.g: `https://tuanvipandpro.github.io/jplt_practice/`
 
 Xem file [DEPLOYMENT.md](./DEPLOYMENT.md) để biết thêm chi tiết về cấu hình deployment.
 
