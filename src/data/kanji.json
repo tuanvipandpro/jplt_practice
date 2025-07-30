@@ -3,238 +3,2380 @@
   "description": "Hán tự cơ bản N5",
   "cards": [
     {
-      "front": "人",
-      "back": "Người",
-      "example": "日本人 (nihonjin - người Nhật)",
-      "pronunciation": "hito",
-      "meaning": "Người",
-      "romanji": "hito",
-      "hiragana": "ひと"
-    },
-    {
-      "front": "大",
-      "back": "Lớn",
-      "example": "大きい (ookii - lớn)",
-      "pronunciation": "oo",
-      "meaning": "Lớn",
-      "romanji": "dai",
-      "hiragana": "おお"
-    },
-    {
-      "front": "小",
-      "back": "Nhỏ",
-      "example": "小さい (chiisai - nhỏ)",
-      "pronunciation": "chiisai",
-      "meaning": "Nhỏ",
-      "romanji": "shou",
-      "hiragana": "ちい"
-    },
-    {
-      "front": "上",
-      "back": "Trên",
-      "example": "上手 (jouzu - giỏi)",
-      "pronunciation": "ue",
-      "meaning": "Trên",
-      "romanji": "jou",
-      "hiragana": "うえ"
-    },
-    {
-      "front": "下",
-      "back": "Dưới",
-      "example": "下手 (heta - kém)",
-      "pronunciation": "shita",
-      "meaning": "Dưới",
-      "romanji": "ka",
-      "hiragana": "した"
-    },
-    {
-      "front": "中",
-      "back": "Giữa",
-      "example": "中国 (chuugoku - Trung Quốc)",
-      "pronunciation": "naka",
-      "meaning": "Giữa",
-      "romanji": "chuu",
-      "hiragana": "なか"
-    },
-    {
       "front": "山",
       "back": "Núi",
-      "example": "富士山 (fujisan - núi Phú Sĩ)",
+      "example": "富士山 (ふじさん - núi Phú Sĩ)",
       "pronunciation": "yama",
       "meaning": "Núi",
-      "romanji": "san",
+      "romanji": "yama",
       "hiragana": "やま"
-    },
-    {
-      "front": "川",
-      "back": "Sông",
-      "example": "川 (kawa - sông)",
-      "pronunciation": "kawa",
-      "meaning": "Sông",
-      "romanji": "sen",
-      "hiragana": "かわ"
-    },
-    {
-      "front": "火",
-      "back": "Lửa",
-      "example": "火曜日 (kayoubi - thứ Ba)",
-      "pronunciation": "hi",
-      "meaning": "Lửa",
-      "romanji": "ka",
-      "hiragana": "ひ"
-    },
-    {
-      "front": "水",
-      "back": "Nước",
-      "example": "水曜日 (suiyoubi - thứ Tư)",
-      "pronunciation": "mizu",
-      "meaning": "Nước",
-      "romanji": "sui",
-      "hiragana": "みず"
-    },
-    {
-      "front": "木",
-      "back": "Cây",
-      "example": "木曜日 (mokuyoubi - thứ Năm)",
-      "pronunciation": "ki",
-      "meaning": "Cây",
-      "romanji": "moku",
-      "hiragana": "き"
     },
     {
       "front": "土",
       "back": "Đất",
-      "example": "土曜日 (doyoubi - thứ Bảy)",
+      "example": "土曜日 (どようび - thứ Bảy)",
       "pronunciation": "tsuchi",
       "meaning": "Đất",
-      "romanji": "do",
+      "romanji": "tsuchi",
       "hiragana": "つち"
+    },
+    {
+      "front": "日曜日",
+      "back": "Chủ nhật",
+      "example": "日曜日 (にちようび - Chủ nhật)",
+      "pronunciation": "nichiyoubi",
+      "meaning": "Chủ nhật",
+      "romanji": "nichiyoubi",
+      "hiragana": "にちようび"
     },
     {
       "front": "日",
       "back": "Mặt trời/Ngày",
-      "example": "日曜日 (nichiyoubi - Chủ nhật)",
+      "example": "日本 (にほん - Nhật Bản)",
       "pronunciation": "hi",
       "meaning": "Mặt trời/Ngày",
-      "romanji": "nichi",
-      "hiragana": "ひ"
+      "romanji": "hi / nichi",
+      "hiragana": "ひ / にち"
+    },
+    {
+      "front": "土曜日",
+      "back": "Thứ Bảy",
+      "example": "土曜日 (どようび - thứ Bảy)",
+      "pronunciation": "doyoubi",
+      "meaning": "Thứ Bảy",
+      "romanji": "doyoubi",
+      "hiragana": "どようび"
     },
     {
       "front": "月",
       "back": "Mặt trăng/Tháng",
-      "example": "月曜日 (getsuyoubi - thứ Hai)",
+      "example": "月曜日 (げつようび - thứ Hai)",
       "pronunciation": "tsuki",
       "meaning": "Mặt trăng/Tháng",
-      "romanji": "getsu",
-      "hiragana": "つき"
+      "romanji": "tsuki / getsu",
+      "hiragana": "つき / げつ"
     },
     {
-      "front": "金",
-      "back": "Vàng/Tiền",
-      "example": "金曜日 (kinyoubi - thứ Sáu)",
-      "pronunciation": "kane",
-      "meaning": "Vàng/Tiền",
-      "romanji": "kin",
-      "hiragana": "かね"
+      "front": "火曜日",
+      "back": "Thứ Ba",
+      "example": "火曜日 (かようび - thứ Ba)",
+      "pronunciation": "kayoubi",
+      "meaning": "Thứ Ba",
+      "romanji": "kayoubi",
+      "hiragana": "かようび"
     },
     {
-      "front": "年",
+      "front": "水",
+      "back": "Nước",
+      "example": "水曜日 (すいようび - thứ Tư)",
+      "pronunciation": "mizu",
+      "meaning": "Nước",
+      "romanji": "mizu / sui",
+      "hiragana": "みず / すい"
+    },
+    {
+      "front": "月曜日",
+      "back": "Thứ Hai",
+      "example": "月曜日 (げつようび - thứ Hai)",
+      "pronunciation": "getsuyoubi",
+      "meaning": "Thứ Hai",
+      "romanji": "getsuyoubi",
+      "hiragana": "げつようび"
+    },
+    {
+      "front": "お金",
+      "back": "Tiền",
+      "example": "お金 (おかね - tiền)",
+      "pronunciation": "okane",
+      "meaning": "Tiền",
+      "romanji": "okane",
+      "hiragana": "おかね"
+    },
+    {
+      "front": "火",
+      "back": "Lửa",
+      "example": "火曜日 (かようび - thứ Ba)",
+      "pronunciation": "hi",
+      "meaning": "Lửa",
+      "romanji": "hi / ka",
+      "hiragana": "ひ / か"
+    },
+    {
+      "front": "木曜日",
+      "back": "Thứ Năm",
+      "example": "木曜日 (もくようび - thứ Năm)",
+      "pronunciation": "mokuyoubi",
+      "meaning": "Thứ Năm",
+      "romanji": "mokuyoubi",
+      "hiragana": "もくようび"
+    },
+    {
+      "front": "水曜日",
+      "back": "Thứ Tư",
+      "example": "水曜日 (すいようび - thứ Tư)",
+      "pronunciation": "suiyoubi",
+      "meaning": "Thứ Tư",
+      "romanji": "suiyoubi",
+      "hiragana": "すいようび"
+    },
+    {
+      "front": "木",
+      "back": "Cây/Gỗ",
+      "example": "木曜日 (もくようび - thứ Năm)",
+      "pronunciation": "ki",
+      "meaning": "Cây/Gỗ",
+      "romanji": "ki / moku",
+      "hiragana": "き / もく"
+    },
+    {
+      "front": "金曜日",
+      "back": "Thứ Sáu",
+      "example": "金曜日 (きんようび - thứ Sáu)",
+      "pronunciation": "kinyoubi",
+      "meaning": "Thứ Sáu",
+      "romanji": "kinyoubi",
+      "hiragana": "きんようび"
+    },
+    {
+      "front": "川",
+      "back": "Sông",
+      "example": "川 (かわ - sông)",
+      "pronunciation": "kawa",
+      "meaning": "Sông",
+      "romanji": "kawa",
+      "hiragana": "かわ"
+    },
+    {
+      "front": "四",
+      "back": "Bốn",
+      "example": "四月 (しがつ - tháng 4)",
+      "pronunciation": "shi / yon",
+      "meaning": "Bốn",
+      "romanji": "shi / yon",
+      "hiragana": "し / よん"
+    },
+    {
+      "front": "一日",
+      "back": "Ngày mùng 1",
+      "example": "一日 (ついたち - ngày 1)",
+      "pronunciation": "tsuitachi",
+      "meaning": "Ngày mùng 1",
+      "romanji": "tsuitachi",
+      "hiragana": "ついたち"
+    },
+    {
+      "front": "七月",
+      "back": "Tháng 7",
+      "example": "七月 (しちがつ - tháng 7)",
+      "pronunciation": "shichigatsu",
+      "meaning": "Tháng 7",
+      "romanji": "shichigatsu",
+      "hiragana": "しちがつ"
+    },
+    {
+      "front": "一",
+      "back": "Một",
+      "example": "一つ (ひとつ - một cái)",
+      "pronunciation": "ichi / hito(tsu)",
+      "meaning": "Một",
+      "romanji": "ichi / hito(tsu)",
+      "hiragana": "いち / ひとつ"
+    },
+    {
+      "front": "十日",
+      "back": "Ngày mùng 10",
+      "example": "十日 (とおか - ngày 10)",
+      "pronunciation": "tooka",
+      "meaning": "Ngày mùng 10",
+      "romanji": "tooka",
+      "hiragana": "とおか"
+    },
+    {
+      "front": "五日",
+      "back": "Ngày mùng 5",
+      "example": "五日 (いつか - ngày mùng 5)",
+      "pronunciation": "itsuka",
+      "meaning": "Ngày mùng 5",
+      "romanji": "itsuka",
+      "hiragana": "いつか"
+    },
+    {
+      "front": "三日",
+      "back": "Ngày mùng 3",
+      "example": "三日 (みっか - ngày mùng 3)",
+      "pronunciation": "mikka",
+      "meaning": "Ngày mùng 3",
+      "romanji": "mikka",
+      "hiragana": "みっか"
+    },
+    {
+      "front": "四月",
+      "back": "Tháng 4",
+      "example": "四月 (しがつ - tháng 4)",
+      "pronunciation": "shigatsu",
+      "meaning": "Tháng 4",
+      "romanji": "shigatsu",
+      "hiragana": "しがつ"
+    },
+    {
+      "front": "七日",
+      "back": "Ngày mùng 7",
+      "example": "七日 (なのか - ngày mùng 7)",
+      "pronunciation": "nanoka",
+      "meaning": "Ngày mùng 7",
+      "romanji": "nanoka",
+      "hiragana": "なのか"
+    },
+    {
+      "front": "五月",
+      "back": "Tháng 5",
+      "example": "五月 (ごがつ - tháng 5)",
+      "pronunciation": "gogatsu",
+      "meaning": "Tháng 5",
+      "romanji": "gogatsu",
+      "hiragana": "ごがつ"
+    },
+    {
+      "front": "六日",
+      "back": "Ngày mùng 6",
+      "example": "六日 (むいか - ngày mùng 6)",
+      "pronunciation": "muika",
+      "meaning": "Ngày mùng 6",
+      "romanji": "muika",
+      "hiragana": "むいか"
+    },
+    {
+      "front": "五",
       "back": "Năm",
-      "example": "今年 (kotoshi - năm nay)",
-      "pronunciation": "toshi",
+      "example": "五つ (いつつ - năm cái)",
+      "pronunciation": "go / itsu(tsu)",
       "meaning": "Năm",
-      "romanji": "nen",
-      "hiragana": "とし"
+      "romanji": "go / itsu(tsu)",
+      "hiragana": "ご / いつつ"
     },
     {
-      "front": "時",
-      "back": "Thời gian",
-      "example": "時間 (jikan - thời gian)",
-      "pronunciation": "toki",
-      "meaning": "Thời gian",
-      "romanji": "ji",
-      "hiragana": "とき"
+      "front": "一月",
+      "back": "Tháng 1",
+      "example": "一月 (いちがつ - tháng 1)",
+      "pronunciation": "ichigatsu",
+      "meaning": "Tháng 1",
+      "romanji": "ichigatsu",
+      "hiragana": "いちがつ"
     },
     {
-      "front": "分",
-      "back": "Phút/Phân",
-      "example": "五分 (gofun - 5 phút)",
-      "pronunciation": "fun",
-      "meaning": "Phút/Phân",
-      "romanji": "bun",
-      "hiragana": "ふん"
+      "front": "二日",
+      "back": "Ngày mùng 2",
+      "example": "二日 (ふつか - ngày mùng 2)",
+      "pronunciation": "futsuka",
+      "meaning": "Ngày mùng 2",
+      "romanji": "futsuka",
+      "hiragana": "ふつか"
+    },
+    {
+      "front": "六月",
+      "back": "Tháng 6",
+      "example": "六月 (ろくがつ - tháng 6)",
+      "pronunciation": "rokugatsu",
+      "meaning": "Tháng 6",
+      "romanji": "rokugatsu",
+      "hiragana": "ろくがつ"
+    },
+    {
+      "front": "二",
+      "back": "Hai",
+      "example": "二つ (ふたつ - hai cái)",
+      "pronunciation": "ni / futa(tsu)",
+      "meaning": "Hai",
+      "romanji": "ni / futa(tsu)",
+      "hiragana": "に / ふたつ"
+    },
+    {
+      "front": "二月",
+      "back": "Tháng 2",
+      "example": "二月 (にがつ - tháng 2)",
+      "pronunciation": "nigatsu",
+      "meaning": "Tháng 2",
+      "romanji": "nigatsu",
+      "hiragana": "にがつ"
+    },
+    {
+      "front": "十月",
+      "back": "Tháng 10",
+      "example": "十月 (じゅうがつ - tháng 10)",
+      "pronunciation": "juugatsu",
+      "meaning": "Tháng 10",
+      "romanji": "juugatsu",
+      "hiragana": "じゅうがつ"
+    },
+    {
+      "front": "八千",
+      "back": "Tám nghìn",
+      "example": "八千 (はっせん - tám nghìn)",
+      "pronunciation": "hassen",
+      "meaning": "Tám nghìn",
+      "romanji": "hassen",
+      "hiragana": "はっせん"
+    },
+    {
+      "front": "九",
+      "back": "Chín",
+      "example": "九つ (ここのつ - chín cái)",
+      "pronunciation": "kyuu / kokonotsu",
+      "meaning": "Chín",
+      "romanji": "kyuu / kokonotsu",
+      "hiragana": "きゅう / ここのつ"
+    },
+    {
+      "front": "九日",
+      "back": "Ngày mùng 9",
+      "example": "九日 (ここのか - ngày mùng 9)",
+      "pronunciation": "kokonoka",
+      "meaning": "Ngày mùng 9",
+      "romanji": "kokonoka",
+      "hiragana": "ここのか"
+    },
+    {
+      "front": "八日",
+      "back": "Ngày mùng 8",
+      "example": "八日 (ようか - ngày mùng 8)",
+      "pronunciation": "youka",
+      "meaning": "Ngày mùng 8",
+      "romanji": "youka",
+      "hiragana": "ようか"
+    },
+    {
+      "front": "百万円",
+      "back": "Một triệu yên",
+      "example": "百万円 (ひゃくまんえん - một triệu yên)",
+      "pronunciation": "hyakuman en",
+      "meaning": "Một triệu yên",
+      "romanji": "hyaku man en",
+      "hiragana": "ひゃくまんえん"
+    },
+    {
+      "front": "三百",
+      "back": "Ba trăm",
+      "example": "三百 (さんびゃく - ba trăm)",
+      "pronunciation": "sanbyaku",
+      "meaning": "Ba trăm",
+      "romanji": "sanbyaku",
+      "hiragana": "さんびゃく"
+    },
+    {
+      "front": "九月",
+      "back": "Tháng 9",
+      "example": "九月 (くがつ - tháng 9)",
+      "pronunciation": "kugatsu",
+      "meaning": "Tháng 9",
+      "romanji": "kugatsu",
+      "hiragana": "くがつ"
+    },
+    {
+      "front": "八",
+      "back": "Tám",
+      "example": "八つ (やっつ - tám cái)",
+      "pronunciation": "hachi / yattsu",
+      "meaning": "Tám",
+      "romanji": "hachi / yattsu",
+      "hiragana": "はち / やっつ"
+    },
+    {
+      "front": "社員",
+      "back": "Nhân viên công ty",
+      "example": "会社の社員 (かいしゃのしゃいん - nhân viên công ty)",
+      "pronunciation": "shain",
+      "meaning": "Nhân viên công ty",
+      "romanji": "shain",
+      "hiragana": "しゃいん"
+    },
+    {
+      "front": "先月",
+      "back": "Tháng trước",
+      "example": "先月 (せんげつ - tháng trước)",
+      "pronunciation": "sengetsu",
+      "meaning": "Tháng trước",
+      "romanji": "sengetsu",
+      "hiragana": "せんげつ"
+    },
+    {
+      "front": "大学生",
+      "back": "Sinh viên đại học",
+      "example": "大学生 (だいがくせい - sinh viên đại học)",
+      "pronunciation": "daigakusei",
+      "meaning": "Sinh viên đại học",
+      "romanji": "daigakusei",
+      "hiragana": "だいがくせい"
+    },
+    {
+      "front": "会社",
+      "back": "Công ty",
+      "example": "会社 (かいしゃ - công ty)",
+      "pronunciation": "kaisha",
+      "meaning": "Công ty",
+      "romanji": "kaisha",
+      "hiragana": "かいしゃ"
+    },
+    {
+      "front": "会社員",
+      "back": "Nhân viên công ty",
+      "example": "会社員 (かいしゃいん - nhân viên công ty)",
+      "pronunciation": "kaishain",
+      "meaning": "Nhân viên công ty",
+      "romanji": "kaishain",
+      "hiragana": "かいしゃいん"
+    },
+    {
+      "front": "大学",
+      "back": "Đại học",
+      "example": "大学 (だいがく - đại học)",
+      "pronunciation": "daigaku",
+      "meaning": "Đại học",
+      "romanji": "daigaku",
+      "hiragana": "だいがく"
+    },
+    {
+      "front": "先生",
+      "back": "Giáo viên",
+      "example": "先生 (せんせい - giáo viên)",
+      "pronunciation": "sensei",
+      "meaning": "Giáo viên",
+      "romanji": "sensei",
+      "hiragana": "せんせい"
+    },
+    {
+      "front": "会います",
+      "back": "Gặp",
+      "example": "会います (あいます - gặp)",
+      "pronunciation": "aimasu",
+      "meaning": "Gặp",
+      "romanji": "aimasu",
+      "hiragana": "あいます"
+    },
+    {
+      "front": "学生",
+      "back": "Học sinh, sinh viên",
+      "example": "学生 (がくせい - học sinh, sinh viên)",
+      "pronunciation": "gakusei",
+      "meaning": "Học sinh, sinh viên",
+      "romanji": "gakusei",
+      "hiragana": "がくせい"
+    },
+    {
+      "front": "社会",
+      "back": "Xã hội",
+      "example": "社会 (しゃかい - xã hội)",
+      "pronunciation": "shakai",
+      "meaning": "Xã hội",
+      "romanji": "shakai",
+      "hiragana": "しゃかい"
+    },
+    {
+      "front": "人",
+      "back": "Người",
+      "example": "日本人 (にほんじん - người Nhật)",
+      "pronunciation": "hito / jin",
+      "meaning": "Người",
+      "romanji": "hito / jin",
+      "hiragana": "ひと / じん"
+    },
+    {
+      "front": "ベトナム人",
+      "back": "Người Việt Nam",
+      "example": "ベトナム人 (ベトナムじん - người Việt Nam)",
+      "pronunciation": "betonamujin",
+      "meaning": "Người Việt Nam",
+      "romanji": "betonamujin",
+      "hiragana": "べとなむじん"
+    },
+    {
+      "front": "日本",
+      "back": "Nhật Bản",
+      "example": "日本 (にほん - Nhật Bản)",
+      "pronunciation": "nihon",
+      "meaning": "Nhật Bản",
+      "romanji": "nihon",
+      "hiragana": "にほん"
+    },
+    {
+      "front": "中国",
+      "back": "Trung Quốc",
+      "example": "中国 (ちゅうごく - Trung Quốc)",
+      "pronunciation": "chuugoku",
+      "meaning": "Trung Quốc",
+      "romanji": "chuugoku",
+      "hiragana": "ちゅうごく"
+    },
+    {
+      "front": "医者",
+      "back": "Bác sĩ",
+      "example": "医者 (いしゃ - bác sĩ)",
+      "pronunciation": "isha",
+      "meaning": "Bác sĩ",
+      "romanji": "isha",
+      "hiragana": "いしゃ"
+    },
+    {
+      "front": "中国人",
+      "back": "Người Trung Quốc",
+      "example": "中国人 (ちゅうごくじん - người Trung Quốc)",
+      "pronunciation": "chuugokujin",
+      "meaning": "Người Trung Quốc",
+      "romanji": "chuugokujin",
+      "hiragana": "ちゅうごくじん"
+    },
+    {
+      "front": "本",
+      "back": "Sách/Gốc",
+      "example": "本 (ほん - sách)",
+      "pronunciation": "hon",
+      "meaning": "Sách/Gốc",
+      "romanji": "hon",
+      "hiragana": "ほん"
+    },
+    {
+      "front": "国",
+      "back": "Quốc gia",
+      "example": "国 (くに - quốc gia, đất nước)",
+      "pronunciation": "kuni",
+      "meaning": "Quốc gia",
+      "romanji": "kuni / koku",
+      "hiragana": "くに / こく"
+    },
+    {
+      "front": "田中",
+      "back": "Tanaka (họ Nhật)",
+      "example": "",
+      "pronunciation": "Tanaka",
+      "meaning": "Họ Tanaka",
+      "romanji": "Tanaka",
+      "hiragana": "たなか"
+    },
+    {
+      "front": "中川",
+      "back": "Nakagawa (họ Nhật, nghĩa là sông ở giữa)",
+      "example": "",
+      "pronunciation": "Nakagawa",
+      "meaning": "Họ Nakagawa",
+      "romanji": "Nakagawa",
+      "hiragana": "なかがわ"
+    },
+    {
+      "front": "日本人",
+      "back": "Người Nhật",
+      "example": "日本人 (にほんじん - người Nhật)",
+      "pronunciation": "nihonjin",
+      "meaning": "Người Nhật",
+      "romanji": "nihonjin",
+      "hiragana": "にほんじん"
+    },
+    {
+      "front": "中",
+      "back": "Giữa/Bên trong",
+      "example": "中国 (ちゅうごく - Trung Quốc)",
+      "pronunciation": "naka / chuu",
+      "meaning": "Giữa/Bên trong",
+      "romanji": "naka / chuu",
+      "hiragana": "なか / ちゅう"
+    },
+    {
+      "front": "朝",
+      "back": "Buổi sáng",
+      "example": "朝ごはん (あさごはん - bữa sáng)",
+      "pronunciation": "asa",
+      "meaning": "Buổi sáng",
+      "romanji": "asa",
+      "hiragana": "あさ"
+    },
+    {
+      "front": "半分",
+      "back": "Một nửa",
+      "example": "半分 (はんぶん - một nửa)",
+      "pronunciation": "hanbun",
+      "meaning": "Một nửa",
+      "romanji": "hanbun",
+      "hiragana": "はんぶん"
+    },
+    {
+      "front": "晩ごはん",
+      "back": "Bữa tối",
+      "example": "晩ごはん (ばんごはん - bữa tối)",
+      "pronunciation": "bangohan",
+      "meaning": "Bữa tối",
+      "romanji": "bangohan",
+      "hiragana": "ばんごはん"
     },
     {
       "front": "今",
       "back": "Bây giờ",
-      "example": "今 (ima - bây giờ)",
+      "example": "今 (いま - bây giờ)",
       "pronunciation": "ima",
       "meaning": "Bây giờ",
-      "romanji": "kon",
+      "romanji": "ima",
       "hiragana": "いま"
     },
     {
-      "front": "先",
-      "back": "Trước",
-      "example": "先生 (sensei - giáo viên)",
-      "pronunciation": "saki",
-      "meaning": "Trước",
-      "romanji": "sen",
-      "hiragana": "さき"
+      "front": "昼",
+      "back": "Buổi trưa",
+      "example": "昼ごはん (ひるごはん - bữa trưa)",
+      "pronunciation": "hiru",
+      "meaning": "Buổi trưa",
+      "romanji": "hiru",
+      "hiragana": "ひる"
     },
     {
-      "front": "後",
-      "back": "Sau",
-      "example": "午後 (gogo - buổi chiều)",
-      "pronunciation": "ato",
-      "meaning": "Sau",
-      "romanji": "go",
-      "hiragana": "あと"
+      "front": "今月",
+      "back": "Tháng này",
+      "example": "今月 (こんげつ - tháng này)",
+      "pronunciation": "kongetsu",
+      "meaning": "Tháng này",
+      "romanji": "kongetsu",
+      "hiragana": "こんげつ"
+    },
+    {
+      "front": "晩",
+      "back": "Buổi tối",
+      "example": "今晩 (こんばん - tối nay)",
+      "pronunciation": "ban",
+      "meaning": "Buổi tối",
+      "romanji": "ban",
+      "hiragana": "ばん"
+    },
+    {
+      "front": "今日",
+      "back": "Hôm nay",
+      "example": "今日 (きょう - hôm nay)",
+      "pronunciation": "kyou",
+      "meaning": "Hôm nay",
+      "romanji": "kyou",
+      "hiragana": "きょう"
+    },
+    {
+      "front": "4時",
+      "back": "4 giờ",
+      "example": "4時 (よじ - 4 giờ)",
+      "pronunciation": "yoji",
+      "meaning": "4 giờ",
+      "romanji": "yoji",
+      "hiragana": "よじ"
+    },
+    {
+      "front": "１０分",
+      "back": "10 phút",
+      "example": "１０分 (じゅっぷん - 10 phút)",
+      "pronunciation": "juppun",
+      "meaning": "10 phút",
+      "romanji": "juppun",
+      "hiragana": "じゅっぷん"
+    },
+    {
+      "front": "今朝",
+      "back": "Sáng nay",
+      "example": "今朝 (けさ - sáng nay)",
+      "pronunciation": "kesa",
+      "meaning": "Sáng nay",
+      "romanji": "kesa",
+      "hiragana": "けさ"
+    },
+    {
+      "front": "昼ごはん",
+      "back": "Bữa trưa",
+      "example": "昼ごはん (ひるごはん - bữa trưa)",
+      "pronunciation": "hirugohan",
+      "meaning": "Bữa trưa",
+      "romanji": "hirugohan",
+      "hiragana": "ひるごはん"
+    },
+    {
+      "front": "7時半",
+      "back": "7 giờ rưỡi",
+      "example": "7時半 (しちじはん - 7 giờ rưỡi)",
+      "pronunciation": "shichijihann",
+      "meaning": "7 giờ rưỡi",
+      "romanji": "shichijihann",
+      "hiragana": "しちじはん"
+    },
+    {
+      "front": "今晩",
+      "back": "Tối nay",
+      "example": "今晩 (こんばん - tối nay)",
+      "pronunciation": "konban",
+      "meaning": "Tối nay",
+      "romanji": "konban",
+      "hiragana": "こんばん"
+    },
+    {
+      "front": "朝ごはん",
+      "back": "Bữa sáng",
+      "example": "朝ごはん (あさごはん - bữa sáng)",
+      "pronunciation": "asagohan",
+      "meaning": "Bữa sáng",
+      "romanji": "asagohan",
+      "hiragana": "あさごはん"
+    },
+    {
+      "front": "今年",
+      "back": "Năm nay",
+      "example": "今年 (ことし - năm nay)",
+      "pronunciation": "kotoshi",
+      "meaning": "Năm nay",
+      "romanji": "kotoshi",
+      "hiragana": "ことし"
+    },
+    {
+      "front": "毎日",
+      "back": "Mỗi ngày",
+      "example": "毎日 (まいにち - mỗi ngày)",
+      "pronunciation": "mainichi",
+      "meaning": "Mỗi ngày",
+      "romanji": "mainichi",
+      "hiragana": "まいにち"
+    },
+    {
+      "front": "午前",
+      "back": "Buổi sáng (AM)",
+      "example": "午前９時 (ごぜんくじ - 9 giờ sáng)",
+      "pronunciation": "gozen",
+      "meaning": "Buổi sáng (AM)",
+      "romanji": "gozen",
+      "hiragana": "ごぜん"
+    },
+    {
+      "front": "毎朝",
+      "back": "Mỗi sáng",
+      "example": "毎朝 (まいあさ - mỗi sáng)",
+      "pronunciation": "maiasa",
+      "meaning": "Mỗi sáng",
+      "romanji": "maiasa",
+      "hiragana": "まいあさ"
+    },
+    {
+      "front": "昼休み",
+      "back": "Nghỉ trưa",
+      "example": "昼休み (ひるやすみ - nghỉ trưa)",
+      "pronunciation": "hiruyasumi",
+      "meaning": "Nghỉ trưa",
+      "romanji": "hiruyasumi",
+      "hiragana": "ひるやすみ"
+    },
+    {
+      "front": "何月",
+      "back": "Tháng mấy",
+      "example": "何月ですか (なんがつですか - tháng mấy?)",
+      "pronunciation": "nangatsu",
+      "meaning": "Tháng mấy",
+      "romanji": "nangatsu",
+      "hiragana": "なんがつ"
+    },
+    {
+      "front": "毎年",
+      "back": "Mỗi năm",
+      "example": "毎年 (まいとし - mỗi năm)",
+      "pronunciation": "maitoshi",
+      "meaning": "Mỗi năm",
+      "romanji": "maitoshi",
+      "hiragana": "まいとし"
     },
     {
       "front": "前",
       "back": "Trước",
-      "example": "午前 (gozen - buổi sáng)",
+      "example": "午前 (ごぜん - buổi sáng)",
       "pronunciation": "mae",
       "meaning": "Trước",
-      "romanji": "zen",
+      "romanji": "mae",
       "hiragana": "まえ"
     },
     {
-      "front": "外",
-      "back": "Ngoài",
-      "example": "外国 (gaikoku - nước ngoài)",
-      "pronunciation": "soto",
-      "meaning": "Ngoài",
-      "romanji": "gai",
-      "hiragana": "そと"
+      "front": "毎晩",
+      "back": "Mỗi tối",
+      "example": "毎晩 (まいばん - mỗi tối)",
+      "pronunciation": "maiban",
+      "meaning": "Mỗi tối",
+      "romanji": "maiban",
+      "hiragana": "まいばん"
     },
     {
-      "front": "内",
-      "back": "Trong",
-      "example": "国内 (kokunai - trong nước)",
-      "pronunciation": "uchi",
-      "meaning": "Trong",
-      "romanji": "nai",
-      "hiragana": "うち"
+      "front": "後ろ",
+      "back": "Phía sau",
+      "example": "後ろ (うしろ - phía sau)",
+      "pronunciation": "ushiro",
+      "meaning": "Phía sau",
+      "romanji": "ushiro",
+      "hiragana": "うしろ"
+    },
+    {
+      "front": "何時",
+      "back": "Mấy giờ",
+      "example": "何時ですか (なんじですか - mấy giờ?)",
+      "pronunciation": "nanji",
+      "meaning": "Mấy giờ",
+      "romanji": "nanji",
+      "hiragana": "なんじ"
+    },
+    {
+      "front": "何日",
+      "back": "Ngày mấy",
+      "example": "何日ですか (なんにちですか - ngày mấy?)",
+      "pronunciation": "nannichi",
+      "meaning": "Ngày mấy",
+      "romanji": "nannichi",
+      "hiragana": "なんにち"
+    },
+    {
+      "front": "午後",
+      "back": "Buổi chiều (PM)",
+      "example": "午後３時 (ごごさんじ - 3 giờ chiều)",
+      "pronunciation": "gogo",
+      "meaning": "Buổi chiều (PM)",
+      "romanji": "gogo",
+      "hiragana": "ごご"
+    },
+    {
+      "front": "何",
+      "back": "Cái gì",
+      "example": "何ですか (なんですか - cái gì vậy?)",
+      "pronunciation": "nani",
+      "meaning": "Cái gì",
+      "romanji": "nani",
+      "hiragana": "なに"
+    },
+    {
+      "front": "休み",
+      "back": "Nghỉ, ngày nghỉ",
+      "example": "休み (やすみ - nghỉ, ngày nghỉ)",
+      "pronunciation": "yasumi",
+      "meaning": "Nghỉ, ngày nghỉ",
+      "romanji": "yasumi",
+      "hiragana": "やすみ"
+    },
+    {
+      "front": "先週",
+      "back": "Tuần trước",
+      "example": "先週 (せんしゅう - tuần trước)",
+      "pronunciation": "senshuu",
+      "meaning": "Tuần trước",
+      "romanji": "senshuu",
+      "hiragana": "せんしゅう"
+    },
+    {
+      "front": "自転車",
+      "back": "Xe đạp",
+      "example": "自転車 (じてんしゃ - xe đạp)",
+      "pronunciation": "jitensha",
+      "meaning": "Xe đạp",
+      "romanji": "jitensha",
+      "hiragana": "じてんしゃ"
+    },
+    {
+      "front": "来ます",
+      "back": "Đến",
+      "example": "来ます (きます - đến)",
+      "pronunciation": "kimasu",
+      "meaning": "Đến",
+      "romanji": "kimasu",
+      "hiragana": "きます"
+    },
+    {
+      "front": "来週",
+      "back": "Tuần sau",
+      "example": "来週 (らいしゅう - tuần sau)",
+      "pronunciation": "raishuu",
+      "meaning": "Tuần sau",
+      "romanji": "raishuu",
+      "hiragana": "らいしゅう"
+    },
+    {
+      "front": "学校",
+      "back": "Trường học",
+      "example": "学校 (がっこう - trường học)",
+      "pronunciation": "gakkou",
+      "meaning": "Trường học",
+      "romanji": "gakkou",
+      "hiragana": "がっこう"
+    },
+    {
+      "front": "去年",
+      "back": "Năm ngoái",
+      "example": "去年 (きょねん - năm ngoái)",
+      "pronunciation": "kyonen",
+      "meaning": "Năm ngoái",
+      "romanji": "kyonen",
+      "hiragana": "きょねん"
+    },
+    {
+      "front": "自分で",
+      "back": "Tự mình",
+      "example": "自分で (じぶんで - tự mình)",
+      "pronunciation": "jibun de",
+      "meaning": "Tự mình",
+      "romanji": "jibun de",
+      "hiragana": "じぶんで"
+    },
+    {
+      "front": "今週",
+      "back": "Tuần này",
+      "example": "今週 (こんしゅう - tuần này)",
+      "pronunciation": "konshuu",
+      "meaning": "Tuần này",
+      "romanji": "konshuu",
+      "hiragana": "こんしゅう"
+    },
+    {
+      "front": "行きます",
+      "back": "Đi",
+      "example": "行きます (いきます - đi)",
+      "pronunciation": "ikimasu",
+      "meaning": "Đi",
+      "romanji": "ikimasu",
+      "hiragana": "いきます"
+    },
+    {
+      "front": "駅",
+      "back": "Nhà ga",
+      "example": "駅 (えき - nhà ga)",
+      "pronunciation": "eki",
+      "meaning": "Nhà ga",
+      "romanji": "eki",
+      "hiragana": "えき"
+    },
+    {
+      "front": "来年",
+      "back": "Năm sau",
+      "example": "来年 (らいねん - năm sau)",
+      "pronunciation": "rainen",
+      "meaning": "Năm sau",
+      "romanji": "rainen",
+      "hiragana": "らいねん"
+    },
+    {
+      "front": "車",
+      "back": "Xe, ô tô",
+      "example": "車 (くるま - xe)",
+      "pronunciation": "kuruma",
+      "meaning": "Xe",
+      "romanji": "kuruma",
+      "hiragana": "くるま"
+    },
+    {
+      "front": "今年",
+      "back": "Năm nay",
+      "example": "今年 (ことし - năm nay)",
+      "pronunciation": "kotoshi",
+      "meaning": "Năm nay",
+      "romanji": "kotoshi",
+      "hiragana": "ことし"
+    },
+    {
+      "front": "中学校",
+      "back": "Trường cấp hai",
+      "example": "中学校 (ちゅうがっこう - trường cấp hai)",
+      "pronunciation": "chuugakkou",
+      "meaning": "Trường cấp hai",
+      "romanji": "chuugakkou",
+      "hiragana": "ちゅうがっこう"
+    },
+    {
+      "front": "毎週",
+      "back": "Mỗi tuần",
+      "example": "毎週 (まいしゅう - mỗi tuần)",
+      "pronunciation": "maishuu",
+      "meaning": "Mỗi tuần",
+      "romanji": "maishuu",
+      "hiragana": "まいしゅう"
+    },
+    {
+      "front": "電車",
+      "back": "Tàu điện",
+      "example": "電車 (でんしゃ - tàu điện)",
+      "pronunciation": "densha",
+      "meaning": "Tàu điện",
+      "romanji": "densha",
+      "hiragana": "でんしゃ"
+    },
+    {
+      "front": "来年",
+      "back": "Năm sau",
+      "example": "来年 (らいねん - năm sau)",
+      "pronunciation": "rainen",
+      "meaning": "Năm sau",
+      "romanji": "rainen",
+      "hiragana": "らいねん"
+    },
+    {
+      "front": "大きい",
+      "back": "To, lớn",
+      "example": "大きい (おおきい - to, lớn)",
+      "pronunciation": "ookii",
+      "meaning": "To, lớn",
+      "romanji": "ookii",
+      "hiragana": "おおきい"
+    },
+    {
+      "front": "安い",
+      "back": "Rẻ",
+      "example": "安い (やすい - rẻ)",
+      "pronunciation": "yasui",
+      "meaning": "Rẻ",
+      "romanji": "yasui",
+      "hiragana": "やすい"
+    },
+    {
+      "front": "高い",
+      "back": "Cao/Đắt",
+      "example": "高い (たかい - cao, đắt)",
+      "pronunciation": "takai",
+      "meaning": "Cao/Đắt",
+      "romanji": "takai",
+      "hiragana": "たかい"
+    },
+    {
+      "front": "大学",
+      "back": "Đại học",
+      "example": "大学 (だいがく - đại học)",
+      "pronunciation": "daigaku",
+      "meaning": "Đại học",
+      "romanji": "daigaku",
+      "hiragana": "だいがく"
+    },
+    {
+      "front": "小学校",
+      "back": "Trường tiểu học",
+      "example": "小学校 (しょうがっこう - trường tiểu học)",
+      "pronunciation": "shougakkou",
+      "meaning": "Trường tiểu học",
+      "romanji": "shougakkou",
+      "hiragana": "しょうがっこう"
+    },
+    {
+      "front": "高校",
+      "back": "Trường trung học phổ thông",
+      "example": "高校 (こうこう - trường THPT)",
+      "pronunciation": "koukou",
+      "meaning": "Trường trung học phổ thông",
+      "romanji": "koukou",
+      "hiragana": "こうこう"
+    },
+    {
+      "front": "古い",
+      "back": "Cũ",
+      "example": "古い (ふるい - cũ)",
+      "pronunciation": "furui",
+      "meaning": "Cũ",
+      "romanji": "furui",
+      "hiragana": "ふるい"
+    },
+    {
+      "front": "小さい",
+      "back": "Nhỏ",
+      "example": "小さい (ちいさい - nhỏ)",
+      "pronunciation": "chiisai",
+      "meaning": "Nhỏ",
+      "romanji": "chiisai",
+      "hiragana": "ちいさい"
+    },
+    {
+      "front": "青い",
+      "back": "Xanh da trời",
+      "example": "青い (あおい - xanh da trời)",
+      "pronunciation": "aoi",
+      "meaning": "Xanh da trời",
+      "romanji": "aoi",
+      "hiragana": "あおい"
+    },
+    {
+      "front": "赤い",
+      "back": "Đỏ",
+      "example": "赤い (あかい - đỏ)",
+      "pronunciation": "akai",
+      "meaning": "Đỏ",
+      "romanji": "akai",
+      "hiragana": "あかい"
+    },
+    {
+      "front": "新しい",
+      "back": "Mới",
+      "example": "新しい (あたらしい - mới)",
+      "pronunciation": "atarashii",
+      "meaning": "Mới",
+      "romanji": "atarashii",
+      "hiragana": "あたらしい"
+    },
+    {
+      "front": "黒い",
+      "back": "Đen",
+      "example": "黒い (くろい - đen)",
+      "pronunciation": "kuroi",
+      "meaning": "Đen",
+      "romanji": "kuroi",
+      "hiragana": "くろい"
+    },
+    {
+      "front": "新年",
+      "back": "Năm mới",
+      "example": "新年 (しんねん - năm mới)",
+      "pronunciation": "shinnen",
+      "meaning": "Năm mới",
+      "romanji": "shinnen",
+      "hiragana": "しんねん"
+    },
+    {
+      "front": "赤ちゃん",
+      "back": "Em bé",
+      "example": "赤ちゃん (あかちゃん - em bé)",
+      "pronunciation": "akachan",
+      "meaning": "Em bé",
+      "romanji": "akachan",
+      "hiragana": "あかちゃん"
+    },
+    {
+      "front": "お父さん",
+      "back": "Bố",
+      "example": "お父さん (おとうさん - bố)",
+      "pronunciation": "otousan",
+      "meaning": "Bố",
+      "romanji": "otousan",
+      "hiragana": "おとうさん"
+    },
+    {
+      "front": "下手",
+      "back": "Kém, dở",
+      "example": "下手 (へた - kém, dở)",
+      "pronunciation": "heta",
+      "meaning": "Kém, dở",
+      "romanji": "heta",
+      "hiragana": "へた"
+    },
+    {
+      "front": "母",
+      "back": "Mẹ",
+      "example": "母 (はは - mẹ)",
+      "pronunciation": "haha",
+      "meaning": "Mẹ",
+      "romanji": "haha",
+      "hiragana": "はは"
+    },
+    {
+      "front": "肉",
+      "back": "Thịt",
+      "example": "肉 (にく - thịt)",
+      "pronunciation": "niku",
+      "meaning": "Thịt",
+      "romanji": "niku",
+      "hiragana": "にく"
+    },
+    {
+      "front": "子ども",
+      "back": "Trẻ em",
+      "example": "子ども (こども - trẻ em)",
+      "pronunciation": "kodomo",
+      "meaning": "Trẻ em",
+      "romanji": "kodomo",
+      "hiragana": "こども"
+    },
+    {
+      "front": "下",
+      "back": "Dưới",
+      "example": "下 (した - dưới)",
+      "pronunciation": "shita",
+      "meaning": "Dưới",
+      "romanji": "shita",
+      "hiragana": "した"
+    },
+    {
+      "front": "お母さん",
+      "back": "Mẹ",
+      "example": "お母さん (おかあさん - mẹ)",
+      "pronunciation": "okaasan",
+      "meaning": "Mẹ",
+      "romanji": "okaasan",
+      "hiragana": "おかあさん"
+    },
+    {
+      "front": "上手",
+      "back": "Giỏi",
+      "example": "上手 (じょうず - giỏi)",
+      "pronunciation": "jouzu",
+      "meaning": "Giỏi",
+      "romanji": "jouzu",
+      "hiragana": "じょうず"
+    },
+    {
+      "front": "父",
+      "back": "Bố",
+      "example": "父 (ちち - bố)",
+      "pronunciation": "chichi",
+      "meaning": "Bố",
+      "romanji": "chichi",
+      "hiragana": "ちち"
+    },
+    {
+      "front": "手",
+      "back": "Tay",
+      "example": "手 (て - tay)",
+      "pronunciation": "te",
+      "meaning": "Tay",
+      "romanji": "te",
+      "hiragana": "て"
+    },
+    {
+      "front": "上",
+      "back": "Trên",
+      "example": "上 (うえ - trên)",
+      "pronunciation": "ue",
+      "meaning": "Trên",
+      "romanji": "ue",
+      "hiragana": "うえ"
+    },
+    {
+      "front": "飲みます",
+      "back": "Uống",
+      "example": "飲みます (のみます - uống)",
+      "pronunciation": "nomimasu",
+      "meaning": "Uống",
+      "romanji": "nomimasu",
+      "hiragana": "のみます"
+    },
+    {
+      "front": "好き",
+      "back": "Thích",
+      "example": "好き (すき - thích)",
+      "pronunciation": "suki",
+      "meaning": "Thích",
+      "romanji": "suki",
+      "hiragana": "すき"
+    },
+    {
+      "front": "食べ物",
+      "back": "Đồ ăn",
+      "example": "食べ物 (たべもの - đồ ăn)",
+      "pronunciation": "tabemono",
+      "meaning": "Đồ ăn",
+      "romanji": "tabemono",
+      "hiragana": "たべもの"
+    },
+    {
+      "front": "魚",
+      "back": "Cá",
+      "example": "魚 (さかな - cá)",
+      "pronunciation": "sakana",
+      "meaning": "Cá",
+      "romanji": "sakana",
+      "hiragana": "さかな"
+    },
+    {
+      "front": "飲み物",
+      "back": "Đồ uống",
+      "example": "飲み物 (のみもの - đồ uống)",
+      "pronunciation": "nomimono",
+      "meaning": "Đồ uống",
+      "romanji": "nomimono",
+      "hiragana": "のみもの"
+    },
+    {
+      "front": "主人",
+      "back": "Chồng/Chủ nhân",
+      "example": "主人 (しゅじん - chồng, chủ nhân)",
+      "pronunciation": "shujin",
+      "meaning": "Chồng/Chủ nhân",
+      "romanji": "shujin",
+      "hiragana": "しゅじん"
+    },
+    {
+      "front": "食べます",
+      "back": "Ăn",
+      "example": "食べます (たべます - ăn)",
+      "pronunciation": "tabemasu",
+      "meaning": "Ăn",
+      "romanji": "tabemasu",
+      "hiragana": "たべます"
+    },
+    {
+      "front": "左手",
+      "back": "Tay trái",
+      "example": "左手 (ひだりて - tay trái)",
+      "pronunciation": "hidarite",
+      "meaning": "Tay trái",
+      "romanji": "hidarite",
+      "hiragana": "ひだりて"
+    },
+    {
+      "front": "男の子",
+      "back": "Bé trai",
+      "example": "男の子 (おとこのこ - bé trai)",
+      "pronunciation": "otokonoko",
+      "meaning": "Bé trai",
+      "romanji": "otokonoko",
+      "hiragana": "おとこのこ"
+    },
+    {
+      "front": "近く",
+      "back": "Gần",
+      "example": "近く (ちかく - gần)",
+      "pronunciation": "chikaku",
+      "meaning": "Gần",
+      "romanji": "chikaku",
+      "hiragana": "ちかく"
+    },
+    {
+      "front": "犬",
+      "back": "Chó",
+      "example": "犬 (いぬ - chó)",
+      "pronunciation": "inu",
+      "meaning": "Chó",
+      "romanji": "inu",
+      "hiragana": "いぬ"
     },
     {
       "front": "左",
       "back": "Trái",
-      "example": "左 (hidari - trái)",
+      "example": "左 (ひだり - bên trái)",
       "pronunciation": "hidari",
       "meaning": "Trái",
-      "romanji": "sa",
+      "romanji": "hidari",
       "hiragana": "ひだり"
+    },
+    {
+      "front": "女の人",
+      "back": "Phụ nữ",
+      "example": "女の人 (おんなのひと - phụ nữ)",
+      "pronunciation": "onnanohito",
+      "meaning": "Phụ nữ",
+      "romanji": "onnanohito",
+      "hiragana": "おんなのひと"
+    },
+    {
+      "front": "外",
+      "back": "Ngoài",
+      "example": "外 (そと - ngoài)",
+      "pronunciation": "soto",
+      "meaning": "Ngoài",
+      "romanji": "soto",
+      "hiragana": "そと"
+    },
+    {
+      "front": "間",
+      "back": "Giữa/Khoảng cách",
+      "example": "時間 (じかん - thời gian)",
+      "pronunciation": "aida / kan",
+      "meaning": "Giữa/Khoảng cách",
+      "romanji": "aida / kan",
+      "hiragana": "あいだ / かん"
+    },
+    {
+      "front": "右手",
+      "back": "Tay phải",
+      "example": "右手 (みぎて - tay phải)",
+      "pronunciation": "migite",
+      "meaning": "Tay phải",
+      "romanji": "migite",
+      "hiragana": "みぎて"
+    },
+    {
+      "front": "外国",
+      "back": "Nước ngoài",
+      "example": "外国 (がいこく - nước ngoài)",
+      "pronunciation": "gaikoku",
+      "meaning": "Nước ngoài",
+      "romanji": "gaikoku",
+      "hiragana": "がいこく"
+    },
+    {
+      "front": "男の人",
+      "back": "Đàn ông",
+      "example": "男の人 (おとこのひと - đàn ông)",
+      "pronunciation": "otokonohito",
+      "meaning": "Đàn ông",
+      "romanji": "otokonohito",
+      "hiragana": "おとこのひと"
+    },
+    {
+      "front": "外国人",
+      "back": "Người nước ngoài",
+      "example": "外国人 (がいこくじん - người nước ngoài)",
+      "pronunciation": "gaikokujin",
+      "meaning": "Người nước ngoài",
+      "romanji": "gaikokujin",
+      "hiragana": "がいこくじん"
     },
     {
       "front": "右",
       "back": "Phải",
-      "example": "右 (migi - phải)",
+      "example": "右 (みぎ - bên phải)",
       "pronunciation": "migi",
       "meaning": "Phải",
-      "romanji": "yuu",
+      "romanji": "migi",
       "hiragana": "みぎ"
+    },
+    {
+      "front": "女の子",
+      "back": "Bé gái",
+      "example": "女の子 (おんなのこ - bé gái)",
+      "pronunciation": "onnanoko",
+      "meaning": "Bé gái",
+      "romanji": "onnanoko",
+      "hiragana": "おんなのこ"
+    },
+    {
+      "front": "時間",
+      "back": "Thời gian",
+      "example": "時間 (じかん - thời gian)",
+      "pronunciation": "jikan",
+      "meaning": "Thời gian",
+      "romanji": "jikan",
+      "hiragana": "じかん"
+    },
+    {
+      "front": "買います",
+      "back": "Mua",
+      "example": "買います (かいます - mua)",
+      "pronunciation": "kaimasu",
+      "meaning": "Mua",
+      "romanji": "kaimasu",
+      "hiragana": "かいます"
+    },
+    {
+      "front": "起きます",
+      "back": "Thức dậy/Xảy ra",
+      "example": "起きます (おきます - thức dậy)",
+      "pronunciation": "okimasu",
+      "meaning": "Thức dậy/Xảy ra",
+      "romanji": "okimasu",
+      "hiragana": "おきます"
+    },
+    {
+      "front": "友達",
+      "back": "Bạn bè",
+      "example": "友達 (ともだち - bạn bè)",
+      "pronunciation": "tomodachi",
+      "meaning": "Bạn bè",
+      "romanji": "tomodachi",
+      "hiragana": "ともだち"
+    },
+    {
+      "front": "買い物",
+      "back": "Mua sắm",
+      "example": "買い物 (かいもの - mua sắm)",
+      "pronunciation": "kaimono",
+      "meaning": "Mua sắm",
+      "romanji": "kaimono",
+      "hiragana": "かいもの"
+    },
+    {
+      "front": "帰ります",
+      "back": "Về (nhà)",
+      "example": "帰ります (かえります - về nhà)",
+      "pronunciation": "kaerimasu",
+      "meaning": "Về (nhà)",
+      "romanji": "kaerimasu",
+      "hiragana": "かえります"
+    },
+    {
+      "front": "電話",
+      "back": "Điện thoại",
+      "example": "電話 (でんわ - điện thoại)",
+      "pronunciation": "denwa",
+      "meaning": "Điện thoại",
+      "romanji": "denwa",
+      "hiragana": "でんわ"
+    },
+    {
+      "front": "話",
+      "back": "Nói chuyện/Câu chuyện",
+      "example": "話します (はなします - nói chuyện)",
+      "pronunciation": "hanashi / hanasu",
+      "meaning": "Nói chuyện/Câu chuyện",
+      "romanji": "hanashi / hanasu",
+      "hiragana": "はなし / はなす"
+    },
+    {
+      "front": "見せます",
+      "back": "Cho xem",
+      "example": "見せます (みせます - cho xem)",
+      "pronunciation": "misemasu",
+      "meaning": "Cho xem",
+      "romanji": "misemasu",
+      "hiragana": "みせます"
+    },
+    {
+      "front": "新聞",
+      "back": "Báo",
+      "example": "新聞 (しんぶん - báo)",
+      "pronunciation": "shinbun",
+      "meaning": "Báo",
+      "romanji": "shinbun",
+      "hiragana": "しんぶん"
+    },
+    {
+      "front": "書きます",
+      "back": "Viết",
+      "example": "書きます (かきます - viết)",
+      "pronunciation": "kakimasu",
+      "meaning": "Viết",
+      "romanji": "kakimasu",
+      "hiragana": "かきます"
+    },
+    {
+      "front": "読みます",
+      "back": "Đọc",
+      "example": "読みます (よみます - đọc)",
+      "pronunciation": "yomimasu",
+      "meaning": "Đọc",
+      "romanji": "yomimasu",
+      "hiragana": "よみます"
+    },
+    {
+      "front": "見ます",
+      "back": "Nhìn/Xem",
+      "example": "見ます (みます - nhìn, xem)",
+      "pronunciation": "mimasu",
+      "meaning": "Nhìn/Xem",
+      "romanji": "mimasu",
+      "hiragana": "みます"
+    },
+    {
+      "front": "話します",
+      "back": "Nói chuyện",
+      "example": "話します (はなします - nói chuyện)",
+      "pronunciation": "hanashimasu",
+      "meaning": "Nói chuyện",
+      "romanji": "hanashimasu",
+      "hiragana": "はなします"
+    },
+    {
+      "front": "聞きます",
+      "back": "Nghe/Hỏi",
+      "example": "聞きます (ききます - nghe, hỏi)",
+      "pronunciation": "kikimasu",
+      "meaning": "Nghe/Hỏi",
+      "romanji": "kikimasu",
+      "hiragana": "ききます"
+    },
+    {
+      "front": "電話します",
+      "back": "Gọi điện thoại",
+      "example": "電話します (でんわします - gọi điện thoại)",
+      "pronunciation": "denwa shimasu",
+      "meaning": "Gọi điện thoại",
+      "romanji": "denwa shimasu",
+      "hiragana": "でんわします"
+    },
+    {
+      "front": "英語",
+      "back": "Tiếng Anh",
+      "example": "英語 (えいご - tiếng Anh)",
+      "pronunciation": "eigo",
+      "meaning": "Tiếng Anh",
+      "romanji": "eigo",
+      "hiragana": "えいご"
+    },
+    {
+      "front": "手紙",
+      "back": "Thư tay",
+      "example": "手紙 (てがみ - thư tay)",
+      "pronunciation": "tegami",
+      "meaning": "Thư tay",
+      "romanji": "tegami",
+      "hiragana": "てがみ"
+    },
+    {
+      "front": "ベトナム語",
+      "back": "Tiếng Việt",
+      "example": "",
+      "pronunciation": "betonamugo",
+      "meaning": "Tiếng Việt",
+      "romanji": "betonamugo",
+      "hiragana": "べとなむご"
+    },
+    {
+      "front": "お酒",
+      "back": "Rượu",
+      "example": "お酒 (おさけ - rượu)",
+      "pronunciation": "osake",
+      "meaning": "Rượu",
+      "romanji": "osake",
+      "hiragana": "おさけ"
+    },
+    {
+      "front": "中国語",
+      "back": "Tiếng Trung",
+      "example": "中国語 (ちゅうごくご - tiếng Trung)",
+      "pronunciation": "chuugokugo",
+      "meaning": "Tiếng Trung",
+      "romanji": "chuugokugo",
+      "hiragana": "ちゅうごくご"
+    },
+    {
+      "front": "写真",
+      "back": "Ảnh",
+      "example": "写真 (しゃしん - ảnh)",
+      "pronunciation": "shashin",
+      "meaning": "Ảnh",
+      "romanji": "shashin",
+      "hiragana": "しゃしん"
+    },
+    {
+      "front": "お茶",
+      "back": "Trà",
+      "example": "お茶 (おちゃ - trà)",
+      "pronunciation": "ocha",
+      "meaning": "Trà",
+      "romanji": "ocha",
+      "hiragana": "おちゃ"
+    },
+    {
+      "front": "～語",
+      "back": "Tiếng ~",
+      "example": "日本語 (にほんご - tiếng Nhật)",
+      "pronunciation": "go",
+      "meaning": "Tiếng ~",
+      "romanji": "go",
+      "hiragana": "ご"
+    },
+    {
+      "front": "紙",
+      "back": "Giấy",
+      "example": "紙 (かみ - giấy)",
+      "pronunciation": "kami",
+      "meaning": "Giấy",
+      "romanji": "kami",
+      "hiragana": "かみ"
+    },
+    {
+      "front": "店",
+      "back": "Cửa hàng",
+      "example": "店 (みせ - cửa hàng)",
+      "pronunciation": "mise",
+      "meaning": "Cửa hàng",
+      "romanji": "mise",
+      "hiragana": "みせ"
+    },
+    {
+      "front": "外国語",
+      "back": "Ngoại ngữ",
+      "example": "外国語 (がいこくご - ngoại ngữ)",
+      "pronunciation": "gaikokugo",
+      "meaning": "Ngoại ngữ",
+      "romanji": "gaikokugo",
+      "hiragana": "がいこくご"
+    },
+    {
+      "front": "日本語",
+      "back": "Tiếng Nhật",
+      "example": "日本語 (にほんご - tiếng Nhật)",
+      "pronunciation": "nihongo",
+      "meaning": "Tiếng Nhật",
+      "romanji": "nihongo",
+      "hiragana": "にほんご"
+    },
+    {
+      "front": "映画",
+      "back": "Phim",
+      "example": "映画 (えいが - phim)",
+      "pronunciation": "eiga",
+      "meaning": "Phim",
+      "romanji": "eiga",
+      "hiragana": "えいが"
+    },
+    {
+      "front": "旅行",
+      "back": "Du lịch",
+      "example": "旅行 (りょこう - du lịch)",
+      "pronunciation": "ryokou",
+      "meaning": "Du lịch",
+      "romanji": "ryokou",
+      "hiragana": "りょこう"
+    },
+    {
+      "front": "教えます",
+      "back": "Dạy, chỉ bảo",
+      "example": "教えます (おしえます - dạy, chỉ bảo)",
+      "pronunciation": "oshiemasu",
+      "meaning": "Dạy, chỉ bảo",
+      "romanji": "oshiemasu",
+      "hiragana": "おしえます"
+    },
+    {
+      "front": "花",
+      "back": "Hoa",
+      "example": "花 (はな - hoa)",
+      "pronunciation": "hana",
+      "meaning": "Hoa",
+      "romanji": "hana",
+      "hiragana": "はな"
+    },
+    {
+      "front": "送ります",
+      "back": "Gửi",
+      "example": "送ります (おくります - gửi)",
+      "pronunciation": "okurimasu",
+      "meaning": "Gửi",
+      "romanji": "okurimasu",
+      "hiragana": "おくります"
+    },
+    {
+      "front": "大切",
+      "back": "Quan trọng",
+      "example": "大切 (たいせつ - quan trọng)",
+      "pronunciation": "taisetsu",
+      "meaning": "Quan trọng",
+      "romanji": "taisetsu",
+      "hiragana": "たいせつ"
+    },
+    {
+      "front": "習います",
+      "back": "Học (từ ai đó)",
+      "example": "習います (ならいます - học)",
+      "pronunciation": "naraimasu",
+      "meaning": "Học (từ ai đó)",
+      "romanji": "naraimasu",
+      "hiragana": "ならいます"
+    },
+    {
+      "front": "貸します",
+      "back": "Cho mượn",
+      "example": "貸します (かします - cho mượn)",
+      "pronunciation": "kashimasu",
+      "meaning": "Cho mượn",
+      "romanji": "kashimasu",
+      "hiragana": "かします"
+    },
+    {
+      "front": "切ります",
+      "back": "Cắt",
+      "example": "切ります (きります - cắt)",
+      "pronunciation": "kirimasu",
+      "meaning": "Cắt",
+      "romanji": "kirimasu",
+      "hiragana": "きります"
+    },
+    {
+      "front": "勉強します",
+      "back": "Học",
+      "example": "勉強します (べんきょうします - học)",
+      "pronunciation": "benkyou shimasu",
+      "meaning": "Học",
+      "romanji": "benkyou shimasu",
+      "hiragana": "べんきょうします"
+    },
+    {
+      "front": "借ります",
+      "back": "Mượn",
+      "example": "借ります (かります - mượn)",
+      "pronunciation": "karimasu",
+      "meaning": "Mượn",
+      "romanji": "karimasu",
+      "hiragana": "かります"
+    },
+    {
+      "front": "待ちます",
+      "back": "Chờ",
+      "example": "待ちます (まちます - chờ)",
+      "pronunciation": "machimasu",
+      "meaning": "Chờ",
+      "romanji": "machimasu",
+      "hiragana": "まちます"
+    },
+    {
+      "front": "雨",
+      "back": "Mưa",
+      "example": "雨 (あめ - mưa)",
+      "pronunciation": "ame",
+      "meaning": "Mưa",
+      "romanji": "ame",
+      "hiragana": "あめ"
+    },
+    {
+      "front": "歩きます",
+      "back": "Đi bộ",
+      "example": "歩きます (あるきます - đi bộ)",
+      "pronunciation": "arukimasu",
+      "meaning": "Đi bộ",
+      "romanji": "arukimasu",
+      "hiragana": "あるきます"
+    },
+    {
+      "front": "立ちます",
+      "back": "Đứng",
+      "example": "立ちます (たちます - đứng)",
+      "pronunciation": "tachimasu",
+      "meaning": "Đứng",
+      "romanji": "tachimasu",
+      "hiragana": "たちます"
+    },
+    {
+      "front": "止めます",
+      "back": "Dừng lại",
+      "example": "止めます (とめます - dừng lại)",
+      "pronunciation": "tomemasu",
+      "meaning": "Dừng lại",
+      "romanji": "tomemasu",
+      "hiragana": "とめます"
+    },
+    {
+      "front": "出します",
+      "back": "Lấy ra, đưa ra",
+      "example": "出します (だします - lấy ra, đưa ra)",
+      "pronunciation": "dashimasu",
+      "meaning": "Lấy ra, đưa ra",
+      "romanji": "dashimasu",
+      "hiragana": "だします"
+    },
+    {
+      "front": "売ります",
+      "back": "Bán",
+      "example": "売ります (うります - bán)",
+      "pronunciation": "urimasu",
+      "meaning": "Bán",
+      "romanji": "urimasu",
+      "hiragana": "うります"
+    },
+    {
+      "front": "作ります",
+      "back": "Làm, chế tạo",
+      "example": "作ります (つくります - làm, chế tạo)",
+      "pronunciation": "tsukurimasu",
+      "meaning": "Làm, chế tạo",
+      "romanji": "tsukurimasu",
+      "hiragana": "つくります"
+    },
+    {
+      "front": "出ます",
+      "back": "Ra, ra ngoài",
+      "example": "出ます (でます - ra ngoài)",
+      "pronunciation": "demasu",
+      "meaning": "Ra, ra ngoài",
+      "romanji": "demasu",
+      "hiragana": "でます"
+    },
+    {
+      "front": "入ります",
+      "back": "Vào",
+      "example": "入ります (はいります - vào)",
+      "pronunciation": "hairimasu",
+      "meaning": "Vào",
+      "romanji": "hairimasu",
+      "hiragana": "はいります"
+    },
+    {
+      "front": "使います",
+      "back": "Sử dụng",
+      "example": "使います (つかいます - sử dụng)",
+      "pronunciation": "tsukaimasu",
+      "meaning": "Sử dụng",
+      "romanji": "tsukaimasu",
+      "hiragana": "つかいます"
+    },
+    {
+      "front": "出かけます",
+      "back": "Ra ngoài",
+      "example": "出かけます (でかけます - ra ngoài)",
+      "pronunciation": "dekakemasu",
+      "meaning": "Ra ngoài",
+      "romanji": "dekakemasu",
+      "hiragana": "でかけます"
+    },
+    {
+      "front": "重い",
+      "back": "Nặng",
+      "example": "重い (おもい - nặng)",
+      "pronunciation": "omoi",
+      "meaning": "Nặng",
+      "romanji": "omoi",
+      "hiragana": "おもい"
+    },
+    {
+      "front": "学長",
+      "back": "Hiệu trưởng (trường đại học)",
+      "example": "学長 (がくちょう - hiệu trưởng đại học)",
+      "pronunciation": "gakuchou",
+      "meaning": "Hiệu trưởng (trường đại học)",
+      "romanji": "gakuchou",
+      "hiragana": "がくちょう"
+    },
+    {
+      "front": "短い",
+      "back": "Ngắn",
+      "example": "短い (みじかい - ngắn)",
+      "pronunciation": "mijikai",
+      "meaning": "Ngắn",
+      "romanji": "mijikai",
+      "hiragana": "みじかい"
+    },
+    {
+      "front": "社長",
+      "back": "Giám đốc",
+      "example": "社長 (しゃちょう - giám đốc)",
+      "pronunciation": "shachou",
+      "meaning": "Giám đốc",
+      "romanji": "shachou",
+      "hiragana": "しゃちょう"
+    },
+    {
+      "front": "駅長",
+      "back": "Trưởng ga",
+      "example": "駅長 (えきちょう - trưởng ga)",
+      "pronunciation": "ekichou",
+      "meaning": "Trưởng ga",
+      "romanji": "ekichou",
+      "hiragana": "えきちょう"
+    },
+    {
+      "front": "軽い",
+      "back": "Nhẹ",
+      "example": "軽い (かるい - nhẹ)",
+      "pronunciation": "karui",
+      "meaning": "Nhẹ",
+      "romanji": "karui",
+      "hiragana": "かるい"
+    },
+    {
+      "front": "校長",
+      "back": "Hiệu trưởng (trường phổ thông)",
+      "example": "校長 (こうちょう - hiệu trưởng trường phổ thông)",
+      "pronunciation": "kouchou",
+      "meaning": "Hiệu trưởng (trường phổ thông)",
+      "romanji": "kouchou",
+      "hiragana": "こうちょう"
+    },
+    {
+      "front": "悪い",
+      "back": "Xấu",
+      "example": "悪い (わるい - xấu)",
+      "pronunciation": "warui",
+      "meaning": "Xấu",
+      "romanji": "warui",
+      "hiragana": "わるい"
+    },
+    {
+      "front": "早い",
+      "back": "Sớm",
+      "example": "早い (はやい - sớm)",
+      "pronunciation": "hayai",
+      "meaning": "Sớm",
+      "romanji": "hayai",
+      "hiragana": "はやい"
+    },
+    {
+      "front": "長い",
+      "back": "Dài",
+      "example": "長い (ながい - dài)",
+      "pronunciation": "nagai",
+      "meaning": "Dài",
+      "romanji": "nagai",
+      "hiragana": "ながい"
+    },
+    {
+      "front": "少ない",
+      "back": "Ít (số lượng)",
+      "example": "少ない (すくない - ít)",
+      "pronunciation": "sukunai",
+      "meaning": "Ít (số lượng)",
+      "romanji": "sukunai",
+      "hiragana": "すくない"
+    },
+    {
+      "front": "明るい",
+      "back": "Sáng, tươi sáng",
+      "example": "明るい (あかるい - sáng, tươi sáng)",
+      "pronunciation": "akarui",
+      "meaning": "Sáng, tươi sáng",
+      "romanji": "akarui",
+      "hiragana": "あかるい"
+    },
+    {
+      "front": "広い",
+      "back": "Rộng",
+      "example": "広い (ひろい - rộng)",
+      "pronunciation": "hiroi",
+      "meaning": "Rộng",
+      "romanji": "hiroi",
+      "hiragana": "ひろい"
+    },
+    {
+      "front": "少し",
+      "back": "Một chút",
+      "example": "少し (すこし - một chút)",
+      "pronunciation": "sukoshi",
+      "meaning": "Một chút",
+      "romanji": "sukoshi",
+      "hiragana": "すこし"
+    },
+    {
+      "front": "暗い",
+      "back": "Tối, u ám",
+      "example": "暗い (くらい - tối)",
+      "pronunciation": "kurai",
+      "meaning": "Tối, u ám",
+      "romanji": "kurai",
+      "hiragana": "くらい"
+    },
+    {
+      "front": "食事",
+      "back": "Bữa ăn",
+      "example": "食事 (しょくじ - bữa ăn)",
+      "pronunciation": "shokuji",
+      "meaning": "Bữa ăn",
+      "romanji": "shokuji",
+      "hiragana": "しょくじ"
+    },
+    {
+      "front": "地図",
+      "back": "Bản đồ",
+      "example": "地図 (ちず - bản đồ)",
+      "pronunciation": "chizu",
+      "meaning": "Bản đồ",
+      "romanji": "chizu",
+      "hiragana": "ちず"
+    },
+    {
+      "front": "家事",
+      "back": "Việc nhà",
+      "example": "家事 (かじ - việc nhà)",
+      "pronunciation": "kaji",
+      "meaning": "Việc nhà",
+      "romanji": "kaji",
+      "hiragana": "かじ"
+    },
+    {
+      "front": "有名",
+      "back": "Nổi tiếng",
+      "example": "有名 (ゆうめい - nổi tiếng)",
+      "pronunciation": "yuumei",
+      "meaning": "Nổi tiếng",
+      "romanji": "yuumei",
+      "hiragana": "ゆうめい"
+    },
+    {
+      "front": "仕事",
+      "back": "Công việc",
+      "example": "仕事 (しごと - công việc)",
+      "pronunciation": "shigoto",
+      "meaning": "Công việc",
+      "romanji": "shigoto",
+      "hiragana": "しごと"
+    },
+    {
+      "front": "火事",
+      "back": "Hỏa hoạn",
+      "example": "火事 (かじ - hỏa hoạn)",
+      "pronunciation": "kaji",
+      "meaning": "Hỏa hoạn",
+      "romanji": "kaji",
+      "hiragana": "かじ"
+    },
+    {
+      "front": "名前",
+      "back": "Tên",
+      "example": "名前 (なまえ - tên)",
+      "pronunciation": "namae",
+      "meaning": "Tên",
+      "romanji": "namae",
+      "hiragana": "なまえ"
+    },
+    {
+      "front": "地下鉄",
+      "back": "Tàu điện ngầm",
+      "example": "地下鉄 (ちかてつ - tàu điện ngầm)",
+      "pronunciation": "chikatetsu",
+      "meaning": "Tàu điện ngầm",
+      "romanji": "chikatetsu",
+      "hiragana": "ちかてつ"
+    },
+    {
+      "front": "鉄",
+      "back": "Sắt",
+      "example": "鉄 (てつ - sắt)",
+      "pronunciation": "tetsu",
+      "meaning": "Sắt",
+      "romanji": "tetsu",
+      "hiragana": "てつ"
+    },
+    {
+      "front": "土地",
+      "back": "Đất đai",
+      "example": "土地 (とち - đất đai)",
+      "pronunciation": "tochi",
+      "meaning": "Đất đai",
+      "romanji": "tochi",
+      "hiragana": "とち"
+    },
+    {
+      "front": "地下",
+      "back": "Dưới đất",
+      "example": "地下 (ちか - dưới đất)",
+      "pronunciation": "chika",
+      "meaning": "Dưới đất",
+      "romanji": "chika",
+      "hiragana": "ちか"
+    },
+    {
+      "front": "便利",
+      "back": "Tiện lợi",
+      "example": "便利 (べんり - tiện lợi)",
+      "pronunciation": "benri",
+      "meaning": "Tiện lợi",
+      "romanji": "benri",
+      "hiragana": "べんり"
+    },
+    {
+      "front": "電気",
+      "back": "Điện",
+      "example": "電気 (でんき - điện)",
+      "pronunciation": "denki",
+      "meaning": "Điện",
+      "romanji": "denki",
+      "hiragana": "でんき"
+    },
+    {
+      "front": "元気",
+      "back": "Khỏe mạnh",
+      "example": "元気 (げんき - khỏe mạnh)",
+      "pronunciation": "genki",
+      "meaning": "Khỏe mạnh",
+      "romanji": "genki",
+      "hiragana": "げんき"
+    },
+    {
+      "front": "天気",
+      "back": "Thời tiết",
+      "example": "天気 (てんき - thời tiết)",
+      "pronunciation": "tenki",
+      "meaning": "Thời tiết",
+      "romanji": "tenki",
+      "hiragana": "てんき"
+    },
+    {
+      "front": "親",
+      "back": "Cha mẹ",
+      "example": "親 (おや - cha mẹ)",
+      "pronunciation": "oya",
+      "meaning": "Cha mẹ",
+      "romanji": "oya",
+      "hiragana": "おや"
+    },
+    {
+      "front": "病気",
+      "back": "Bệnh",
+      "example": "病気 (びょうき - bệnh)",
+      "pronunciation": "byouki",
+      "meaning": "Bệnh",
+      "romanji": "byouki",
+      "hiragana": "びょうき"
+    },
+    {
+      "front": "両親",
+      "back": "Bố mẹ",
+      "example": "両親 (りょうしん - bố mẹ)",
+      "pronunciation": "ryoushin",
+      "meaning": "Bố mẹ",
+      "romanji": "ryoushin",
+      "hiragana": "りょうしん"
+    },
+    {
+      "front": "左足",
+      "back": "Chân trái",
+      "example": "左足 (ひだりあし - chân trái)",
+      "pronunciation": "hidari ashi",
+      "meaning": "Chân trái",
+      "romanji": "hidari ashi",
+      "hiragana": "ひだりあし"
+    },
+    {
+      "front": "右足",
+      "back": "Chân phải",
+      "example": "右足 (みぎあし - chân phải)",
+      "pronunciation": "migi ashi",
+      "meaning": "Chân phải",
+      "romanji": "migi ashi",
+      "hiragana": "みぎあし"
+    },
+    {
+      "front": "足ります",
+      "back": "Đủ",
+      "example": "足ります (たります - đủ)",
+      "pronunciation": "tarimasu",
+      "meaning": "Đủ",
+      "romanji": "tarimasu",
+      "hiragana": "たります"
+    },
+    {
+      "front": "料理",
+      "back": "Món ăn, nấu ăn",
+      "example": "料理 (りょうり - món ăn, nấu ăn)",
+      "pronunciation": "ryouri",
+      "meaning": "Món ăn, nấu ăn",
+      "romanji": "ryouri",
+      "hiragana": "りょうり"
+    },
+    {
+      "front": "口",
+      "back": "Miệng",
+      "example": "口 (くち - miệng)",
+      "pronunciation": "kuchi",
+      "meaning": "Miệng",
+      "romanji": "kuchi",
+      "hiragana": "くち"
+    },
+    {
+      "front": "出口",
+      "back": "Lối ra",
+      "example": "出口 (でぐち - lối ra)",
+      "pronunciation": "deguchi",
+      "meaning": "Lối ra",
+      "romanji": "deguchi",
+      "hiragana": "でぐち"
+    },
+    {
+      "front": "目",
+      "back": "Mắt",
+      "example": "目 (め - mắt)",
+      "pronunciation": "me",
+      "meaning": "Mắt",
+      "romanji": "me",
+      "hiragana": "め"
+    },
+    {
+      "front": "足",
+      "back": "Chân, bàn chân",
+      "example": "足 (あし - chân, bàn chân)",
+      "pronunciation": "ashi",
+      "meaning": "Chân, bàn chân",
+      "romanji": "ashi",
+      "hiragana": "あし"
+    },
+    {
+      "front": "入口",
+      "back": "Lối vào",
+      "example": "入口 (いりぐち - lối vào)",
+      "pronunciation": "iriguchi",
+      "meaning": "Lối vào",
+      "romanji": "iriguchi",
+      "hiragana": "いりぐち"
+    },
+    {
+      "front": "東ヨーロッパ",
+      "back": "Đông Âu",
+      "example": "",
+      "pronunciation": "higashi yooroppa",
+      "meaning": "Đông Âu",
+      "romanji": "higashi yooroppa",
+      "hiragana": "ひがし よーろっぱ"
+    },
+    {
+      "front": "中東",
+      "back": "Trung Đông",
+      "example": "",
+      "pronunciation": "chuutou",
+      "meaning": "Trung Đông",
+      "romanji": "chuutou",
+      "hiragana": "ちゅうとう"
+    },
+    {
+      "front": "東南アジア",
+      "back": "Đông Nam Á",
+      "example": "",
+      "pronunciation": "tounan ajia",
+      "meaning": "Đông Nam Á",
+      "romanji": "tounan ajia",
+      "hiragana": "とうなん あじあ"
+    },
+    {
+      "front": "南アメリカ",
+      "back": "Nam Mỹ",
+      "example": "",
+      "pronunciation": "minami amerika",
+      "meaning": "Nam Mỹ",
+      "romanji": "minami amerika",
+      "hiragana": "みなみ あめりか"
+    },
+    {
+      "front": "北",
+      "back": "Bắc",
+      "example": "北 (きた - phía bắc)",
+      "pronunciation": "kita",
+      "meaning": "Bắc",
+      "romanji": "kita",
+      "hiragana": "きた"
+    },
+    {
+      "front": "西ヨーロッパ",
+      "back": "Tây Âu",
+      "example": "",
+      "pronunciation": "nishi yooroppa",
+      "meaning": "Tây Âu",
+      "romanji": "nishi yooroppa",
+      "hiragana": "にし よーろっぱ"
+    },
+    {
+      "front": "京都",
+      "back": "Kyoto (thành phố)",
+      "example": "",
+      "pronunciation": "kyouto",
+      "meaning": "Kyoto (thành phố)",
+      "romanji": "kyouto",
+      "hiragana": "きょうと"
+    },
+    {
+      "front": "南",
+      "back": "Nam",
+      "example": "南 (みなみ - phía nam)",
+      "pronunciation": "minami",
+      "meaning": "Nam",
+      "romanji": "minami",
+      "hiragana": "みなみ"
+    },
+    {
+      "front": "夜",
+      "back": "Đêm",
+      "example": "夜 (よる - đêm)",
+      "pronunciation": "yoru",
+      "meaning": "Đêm",
+      "romanji": "yoru",
+      "hiragana": "よる"
+    },
+    {
+      "front": "東",
+      "back": "Đông",
+      "example": "東 (ひがし - phía đông)",
+      "pronunciation": "higashi",
+      "meaning": "Đông",
+      "romanji": "higashi",
+      "hiragana": "ひがし"
+    },
+    {
+      "front": "北海道",
+      "back": "Hokkaido (đảo lớn nhất phía bắc Nhật Bản)",
+      "example": "",
+      "pronunciation": "hokkaidou",
+      "meaning": "Hokkaido",
+      "romanji": "hokkaidou",
+      "hiragana": "ほっかいどう"
+    },
+    {
+      "front": "西",
+      "back": "Tây",
+      "example": "西 (にし - phía tây)",
+      "pronunciation": "nishi",
+      "meaning": "Tây",
+      "romanji": "nishi",
+      "hiragana": "にし"
+    },
+    {
+      "front": "東京",
+      "back": "Tokyo (thủ đô Nhật Bản)",
+      "example": "",
+      "pronunciation": "toukyou",
+      "meaning": "Tokyo (thủ đô Nhật Bản)",
+      "romanji": "toukyou",
+      "hiragana": "とうきょう"
+    },
+    {
+      "front": "東北",
+      "back": "Đông Bắc",
+      "example": "東北 (とうほく - đông bắc)",
+      "pronunciation": "touhoku",
+      "meaning": "Đông Bắc",
+      "romanji": "touhoku",
+      "hiragana": "とうほく"
     }
   ]
-} 
+}

@@ -26,6 +26,7 @@ import {
 import HiraganaTest from './HiraganaTest'
 import KatakanaTest from './KatakanaTest'
 import GrammarTest from './GrammarTest'
+import KanjiTest from './KanjiTest'
 import ExamManager from './ExamManager'
 import GrammarExam from './GrammarExam'
 
@@ -53,6 +54,14 @@ const TestMode = ({ level, onBack }) => {
       available: true
     },
     {
+      id: 'kanji',
+      name: 'Hán tự',
+      description: 'Kiểm tra Hán tự N5',
+      icon: <Translate />,
+      color: '#F44336',
+      available: true
+    },
+    {
       id: 'grammar',
       name: 'Ngữ pháp',
       description: 'Kiểm tra ngữ pháp cơ bản',
@@ -74,14 +83,6 @@ const TestMode = ({ level, onBack }) => {
       description: 'Kiểm tra từ vựng N5',
       icon: <School />,
       color: '#FF9800',
-      available: false
-    },
-    {
-      id: 'kanji',
-      name: 'Hán tự',
-      description: 'Kiểm tra Hán tự N5',
-      icon: <Translate />,
-      color: '#F44336',
       available: false
     },
     {
@@ -129,6 +130,9 @@ const TestMode = ({ level, onBack }) => {
     }
     if (currentTest.id === 'grammar') {
       return <GrammarTest onBack={handleBackFromTest} onFinish={finishTest} />
+    }
+    if (currentTest.id === 'kanji') {
+      return <KanjiTest onBack={handleBackFromTest} onFinish={finishTest} />
     }
     
     // Fallback for other tests (not implemented yet)

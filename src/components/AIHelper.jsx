@@ -39,6 +39,23 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
       prompt += `- \`code\` cho ví dụ ngắn\n`
       prompt += `- Lists cho các điểm chính\n`
       prompt += `- > Blockquote cho lưu ý đặc biệt`
+    } else if (questionType === 'kanji') {
+      prompt += `**Hán tự:** ${question}\n`
+      prompt += `**Đáp án của tôi:** ${userAnswer}\n`
+      prompt += `**Đáp án đúng:** ${correctAnswer}\n\n`
+      prompt += `Hãy giải thích chi tiết về Hán tự này bằng tiếng Việt, sử dụng markdown format:\n\n`
+      prompt += `## 📝 Phân tích Hán tự\n`
+      prompt += `### 1. Ý nghĩa và cách đọc\n`
+      prompt += `### 2. Cách nhớ Hán tự\n`
+      prompt += `### 3. Từ ghép thường gặp\n`
+      prompt += `### 4. Lịch sử và nguồn gốc\n`
+      prompt += `### 5. Lời khuyên học tập\n\n`
+      prompt += `**Lưu ý:** Sử dụng markdown để format đẹp, bao gồm:\n`
+      prompt += `- **Bold** cho từ khóa quan trọng\n`
+      prompt += `- *Italic* cho nhấn mạnh\n`
+      prompt += `- \`code\` cho ví dụ ngắn\n`
+      prompt += `- Lists cho các điểm chính\n`
+      prompt += `- > Blockquote cho lưu ý đặc biệt`
     } else {
       prompt += `**Câu hỏi:** ${question}\n`
       prompt += `**Đáp án của tôi:** ${userAnswer}\n`

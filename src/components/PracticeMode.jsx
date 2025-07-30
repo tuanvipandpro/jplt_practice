@@ -29,6 +29,7 @@ import kanjiData from '../data/kanji.json'
 import vocabularyData from '../data/vocabulary.json'
 import grammarData from '../data/grammar.json'
 import GrammarPractice from './GrammarPractice'
+import KanjiPractice from './KanjiPractice'
 
 const PracticeMode = ({ level, onBack }) => {
   const [currentPractice, setCurrentPractice] = useState(null)
@@ -55,18 +56,10 @@ const PracticeMode = ({ level, onBack }) => {
     {
       id: 'kanji',
       name: 'Hán tự',
-      description: 'Học Hán tự N5',
+      description: 'Học Hán tự N5 với AI thú vị',
       icon: <Translate />,
       color: '#F44336',
       data: kanjiData
-    },
-    {
-      id: 'vocabulary',
-      name: 'Từ vựng',
-      description: 'Học từ vựng N5',
-      icon: <School />,
-      color: '#4CAF50',
-      data: vocabularyData
     },
     {
       id: 'grammar',
@@ -75,12 +68,20 @@ const PracticeMode = ({ level, onBack }) => {
       icon: <Book />,
       color: '#9C27B0',
       data: grammarData
+    },
+    {
+      id: 'vocabulary',
+      name: 'Từ vựng',
+      description: 'Học từ vựng N5',
+      icon: <School />,
+      color: '#4CAF50',
+      data: vocabularyData
     }
   ]
 
   const startPractice = (practiceType) => {
-    // Xử lý đặc biệt cho ngữ pháp
-    if (practiceType.id === 'grammar') {
+    // Xử lý đặc biệt cho ngữ pháp và kanji
+    if (practiceType.id === 'grammar' || practiceType.id === 'kanji') {
       setCurrentPractice(practiceType)
       return
     }
@@ -117,9 +118,12 @@ const PracticeMode = ({ level, onBack }) => {
     setShowAnswer(!showAnswer)
   }
 
-  // Xử lý đặc biệt cho ngữ pháp
+  // Xử lý đặc biệt cho ngữ pháp và kanji
   if (currentPractice && currentPractice.id === 'grammar') {
     return <GrammarPractice onBack={() => setCurrentPractice(null)} />
+  }
+  if (currentPractice && currentPractice.id === 'kanji') {
+    return <KanjiPractice onBack={() => setCurrentPractice(null)} />
   }
 
   if (currentPractice && currentPractice.cards && currentPractice.cards.length > 0) {
