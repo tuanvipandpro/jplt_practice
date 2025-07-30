@@ -1,240 +1,131 @@
 {
-  "name": "Grammar N5",
-  "description": "Ngữ pháp cơ bản N5",
-  "cards": [
-    {
-      "front": "は (wa)",
-      "back": "Trợ từ chủ ngữ",
-      "example": "私は学生です。 (Watashi wa gakusei desu - Tôi là học sinh)",
-      "pronunciation": "wa",
-      "meaning": "Trợ từ chủ ngữ",
-      "romanji": "wa",
-      "hiragana": "は"
-    },
-    {
-      "front": "が (ga)",
-      "back": "Trợ từ chủ ngữ (nhấn mạnh)",
-      "example": "雨が降っています。 (Ame ga futte imasu - Trời đang mưa)",
-      "pronunciation": "ga",
-      "meaning": "Trợ từ chủ ngữ (nhấn mạnh)",
-      "romanji": "ga",
-      "hiragana": "が"
-    },
-    {
-      "front": "を (wo)",
-      "back": "Trợ từ tân ngữ",
-      "example": "本を読みます。 (Hon wo yomimasu - Đọc sách)",
-      "pronunciation": "wo",
-      "meaning": "Trợ từ tân ngữ",
-      "romanji": "wo",
-      "hiragana": "を"
-    },
-    {
-      "front": "に (ni)",
-      "back": "Trợ từ chỉ đích đến/thời gian",
-      "example": "学校に行きます。 (Gakkou ni ikimasu - Đi đến trường)",
-      "pronunciation": "ni",
-      "meaning": "Trợ từ chỉ đích đến/thời gian",
-      "romanji": "ni",
-      "hiragana": "に"
-    },
-    {
-      "front": "で (de)",
-      "back": "Trợ từ chỉ nơi chốn/phương tiện",
-      "example": "図書館で勉強します。 (Toshokan de benkyou shimasu - Học ở thư viện)",
-      "pronunciation": "de",
-      "meaning": "Trợ từ chỉ nơi chốn/phương tiện",
-      "romanji": "de",
-      "hiragana": "で"
-    },
-    {
-      "front": "から (kara)",
-      "back": "Từ/Trợ từ chỉ điểm bắt đầu",
-      "example": "東京から来ました。 (Tokyo kara kimashita - Đến từ Tokyo)",
-      "pronunciation": "kara",
-      "meaning": "Từ/Trợ từ chỉ điểm bắt đầu",
-      "romanji": "kara",
-      "hiragana": "から"
-    },
-    {
-      "front": "まで (made)",
-      "back": "Đến/Trợ từ chỉ điểm kết thúc",
-      "example": "駅まで歩きます。 (Eki made arukimasu - Đi bộ đến ga)",
-      "pronunciation": "made",
-      "meaning": "Đến/Trợ từ chỉ điểm kết thúc",
-      "romanji": "made",
-      "hiragana": "まで"
-    },
-    {
-      "front": "と (to)",
-      "back": "Và/Cùng với",
-      "example": "友達と映画を見ます。 (Tomodachi to eiga wo mimasu - Xem phim với bạn)",
-      "pronunciation": "to",
-      "meaning": "Và/Cùng với",
-      "romanji": "to",
-      "hiragana": "と"
-    },
-    {
-      "front": "も (mo)",
-      "back": "Cũng",
-      "example": "私も学生です。 (Watashi mo gakusei desu - Tôi cũng là học sinh)",
-      "pronunciation": "mo",
-      "meaning": "Cũng",
-      "romanji": "mo",
-      "hiragana": "も"
-    },
-    {
-      "front": "の (no)",
-      "back": "Của/Trợ từ sở hữu",
-      "example": "田中さんの本です。 (Tanaka-san no hon desu - Sách của Tanaka)",
-      "pronunciation": "no",
-      "meaning": "Của/Trợ từ sở hữu",
-      "romanji": "no",
-      "hiragana": "の"
-    },
-    {
-      "front": "です (desu)",
-      "back": "Là (cách nói lịch sự)",
-      "example": "私は学生です。 (Watashi wa gakusei desu - Tôi là học sinh)",
-      "pronunciation": "desu",
-      "meaning": "Là (cách nói lịch sự)",
-      "romanji": "desu",
-      "hiragana": "です"
-    },
-    {
-      "front": "だ (da)",
-      "back": "Là (cách nói thân mật)",
-      "example": "私は学生だ。 (Watashi wa gakusei da - Tôi là học sinh)",
-      "pronunciation": "da",
-      "meaning": "Là (cách nói thân mật)",
-      "romanji": "da",
-      "hiragana": "だ"
-    },
-    {
-      "front": "ます (masu)",
-      "back": "Đuôi động từ lịch sự",
-      "example": "行きます (ikimasu - đi)",
-      "pronunciation": "masu",
-      "meaning": "Đuôi động từ lịch sự",
-      "romanji": "masu",
-      "hiragana": "ます"
-    },
-    {
-      "front": "る (ru)",
-      "back": "Đuôi động từ thân mật",
-      "example": "行く (iku - đi)",
-      "pronunciation": "ru",
-      "meaning": "Đuôi động từ thân mật",
-      "romanji": "ru",
-      "hiragana": "る"
-    },
-    {
-      "front": "ている (te iru)",
-      "back": "Đang (hành động đang diễn ra)",
-      "example": "勉強しています。 (Benkyou shite imasu - Đang học)",
-      "pronunciation": "te iru",
-      "meaning": "Đang (hành động đang diễn ra)",
-      "romanji": "te iru",
-      "hiragana": "ている"
-    },
-    {
-      "front": "た (ta)",
-      "back": "Đã (thì quá khứ)",
-      "example": "行きました (ikimashita - đã đi)",
-      "pronunciation": "ta",
-      "meaning": "Đã (thì quá khứ)",
-      "romanji": "ta",
-      "hiragana": "た"
-    },
-    {
-      "front": "ない (nai)",
-      "back": "Không (phủ định)",
-      "example": "行きません (ikimasen - không đi)",
-      "pronunciation": "nai",
-      "meaning": "Không (phủ định)",
-      "romanji": "nai",
-      "hiragana": "ない"
-    },
-    {
-      "front": "たい (tai)",
-      "back": "Muốn (mong muốn)",
-      "example": "行きたい (ikitai - muốn đi)",
-      "pronunciation": "tai",
-      "meaning": "Muốn (mong muốn)",
-      "romanji": "tai",
-      "hiragana": "たい"
-    },
-    {
-      "front": "できる (dekiru)",
-      "back": "Có thể (khả năng)",
-      "example": "日本語ができます。 (Nihongo ga dekimasu - Có thể nói tiếng Nhật)",
-      "pronunciation": "dekiru",
-      "meaning": "Có thể (khả năng)",
-      "romanji": "dekiru",
-      "hiragana": "できる"
-    },
-    {
-      "front": "なければならない (nakereba naranai)",
-      "back": "Phải (bắt buộc)",
-      "example": "勉強しなければならない。 (Benkyou shinakereba naranai - Phải học)",
-      "pronunciation": "nakereba naranai",
-      "meaning": "Phải (bắt buộc)",
-      "romanji": "nakereba naranai",
-      "hiragana": "なければならない"
-    },
-    {
-      "front": "てもいい (te mo ii)",
-      "back": "Có thể (được phép)",
-      "example": "帰ってもいいです。 (Kaette mo ii desu - Có thể về)",
-      "pronunciation": "te mo ii",
-      "meaning": "Có thể (được phép)",
-      "romanji": "te mo ii",
-      "hiragana": "てもいい"
-    },
-    {
-      "front": "てはいけない (te wa ikenai)",
-      "back": "Không được (cấm)",
-      "example": "食べてはいけません。 (Tabete wa ikemasen - Không được ăn)",
-      "pronunciation": "te wa ikenai",
-      "meaning": "Không được (cấm)",
-      "romanji": "te wa ikenai",
-      "hiragana": "てはいけない"
-    },
-    {
-      "front": "から (kara)",
-      "back": "Vì (lý do)",
-      "example": "疲れたから寝ます。 (Tsukareta kara nemasu - Vì mệt nên đi ngủ)",
-      "pronunciation": "kara",
-      "meaning": "Vì (lý do)",
-      "romanji": "kara",
-      "hiragana": "から"
-    },
-    {
-      "front": "ので (node)",
-      "back": "Vì (lý do lịch sự)",
-      "example": "疲れたので寝ます。 (Tsukareta node nemasu - Vì mệt nên đi ngủ)",
-      "pronunciation": "node",
-      "meaning": "Vì (lý do lịch sự)",
-      "romanji": "node",
-      "hiragana": "ので"
-    },
-    {
-      "front": "けど (kedo)",
-      "back": "Nhưng (nhượng bộ)",
-      "example": "高いけど買います。 (Takai kedo kaimasu - Đắt nhưng vẫn mua)",
-      "pronunciation": "kedo",
-      "meaning": "Nhưng (nhượng bộ)",
-      "romanji": "kedo",
-      "hiragana": "けど"
-    },
-    {
-      "front": "が (ga)",
-      "back": "Nhưng (nhượng bộ lịch sự)",
-      "example": "高いですが買います。 (Takai desu ga kaimasu - Đắt nhưng vẫn mua)",
-      "pronunciation": "ga",
-      "meaning": "Nhưng (nhượng bộ lịch sự)",
-      "romanji": "ga",
-      "hiragana": "が"
-    }
-  ]
-} 
+  "1": {
+    "title": "Câu Danh Từ",
+    "structures": [
+      {"pattern": "N1 は N2 です", "example": "これは本です。"},
+      {"pattern": "N1 は N2 じゃありません / ではありません", "example": "ミラーさんは医者じゃありません。"},
+      {"pattern": "N1 は N2 ですか", "example": "あそこは銀行ですか。"},
+      {"pattern": "N1 は Nghi vấn từ ですか", "example": "あの人はだれですか。"}
+    ]
+  },
+  "2": {
+    "title": "Câu Tính Từ",
+    "structures": [
+      {"pattern": "N は Aい・Aな です", "example": "ミラーさんはいいです。"},
+      {"pattern": "N は Aいくないです / Aなじゃありません", "example": "ミラーさんはよくないです。ミラーさんはしんせつじゃありません。"},
+      {"pattern": "N は Aい・Aなですか", "example": "ミラーさんはハンサムですか。"},
+      {"pattern": "N は どうですか", "example": "ミラーさんはどうですか。"},
+      {"pattern": "Aい＋N / Aな＋N / どんな＋N", "example": "ミラーさんはいい人です。ミラーさんはしんせつな人です。ミラーさんはどんな人ですか。"},
+      {"pattern": "N1 が すき・きらい・じょうず・へた です", "example": "日本語がじょうずです。"}
+    ]
+  },
+  "3": {
+    "title": "Câu So Sánh",
+    "structures": [
+      {"pattern": "N1 と N2 と どちらが A ですか", "example": "電車とバスとどちらがべんりですか。"},
+      {"pattern": "N1 のほうが A です", "example": "電車のほうがべんりです。"},
+      {"pattern": "N1 は N2 より A です", "example": "でんしゃはバスよりべんりです。"},
+      {"pattern": "N1（の中）で Nghi vấn từ が一番A ですか", "example": "くだもので何が一番すきですか。⇒りんごがいちばんすきです。"}
+    ]
+  },
+  "4": {
+    "title": "Thể Hiện Mong Muốn",
+    "structures": [
+      {"pattern": "N がほしいです", "example": "お金がほしいです。"},
+      {"pattern": "N をVます＋たいです", "example": "ごはんを食べたいです。"}
+    ]
+  },
+  "5": {
+    "title": "Câu Động Từ",
+    "structures": [
+      {"pattern": "N1 はN2 (へ・を・が・で・に) V", "example": null},
+      {"pattern": "Nphương tiện で Nngười đồng hành と Nnơi chốn へ V", "example": "飛行機でミラーさんと国へ帰ります。"},
+      {"pattern": "Nnơi chốn で Nvật を V", "example": "食堂でごはんを食べました。"},
+      {"pattern": "Nnơi chốn に Nvật, người, động vật が あります・います", "example": "かばんの中に本やノートやえんぴつがあります。"},
+      {"pattern": "N が わかります・あります", "example": "日本語がよくわかります。"},
+      {"pattern": "Nngười cho は Nngười nhận に Nvật を V", "example": "わたしはミラーさんにお金をかしました。"},
+      {"pattern": "Nngười nhận は Nngười cho に Nvật を V", "example": "ミラーさんはわたしにお金をかりました。"},
+      {"pattern": "Nnơi chốn へ N を Vますに Vdi chuyển", "example": null},
+      {"pattern": "A いく なります／Ａな・Ｎに なります", "example": "さむくなります。きれいになります。"}
+    ]
+  },
+  "6": {
+    "title": "Nghi Vấn Từ",
+    "structures": [
+      {"pattern": "だれ・どなた", "example": "Ai"},
+      {"pattern": "どう・どんな", "example": "Như thế nào"},
+      {"pattern": "なんさい・おいくつ", "example": "Bao nhiêu tuổi"},
+      {"pattern": "どうして", "example": "Tại sao"},
+      {"pattern": "なに・なん", "example": "Cái gì"},
+      {"pattern": "どうやって", "example": "Làm như thế nào"},
+      {"pattern": "どこ・どちら", "example": "Ở đâu/Phía nào"},
+      {"pattern": "どれ・どの", "example": "Cái nào"},
+      {"pattern": "いくら", "example": "Bao nhiêu tiền"},
+      {"pattern": "いつ・何時・何曜日・何日・何月・何年", "example": "Khi nào/Mấy giờ/Thứ mấy/Ngày mấy/Tháng mấy/Năm nào"},
+      {"pattern": "いくつ・何台・何枚・何人・何回・どのくらい・何週間・何か月・何年間", "example": "Bao nhiêu cái/bao nhiêu chiếc/bao nhiêu người/bao nhiêu lần/khoảng bao lâu/bao nhiêu tuần/bao nhiêu tháng/bao nhiêu năm"}
+    ]
+  },
+  "7": {
+    "title": "Thể て",
+    "structures": [
+      {"pattern": "Ｖてください", "example": "薬を飲んでください。"},
+      {"pattern": "Ｖています", "example": "ミラーさんはごはんを食べています。"},
+      {"pattern": "Ｖてもいいですか", "example": "このケーキを食べてもいいですか。"},
+      {"pattern": "Ｖてはいけません", "example": "ここでたばこをすってはいけません。"},
+      {"pattern": "Ｖ１てから、Ｖ2", "example": "ごはんを食べてから、歯を磨きます。"},
+      {"pattern": "Ｖ1て、Ｖ2て、......Ｖます", "example": "毎朝、起きて、歯を磨いて、朝ごはんを食べて、会社に行きます。"},
+      {"pattern": "Aい+くて / Aな・Ｎ＋で", "example": "ハン先生は親切で、可愛くて、頭がいい人です。"},
+      {"pattern": "N・A・Vても、～", "example": "お金があっても、車を買いません。"}
+    ]
+  },
+  "8": {
+    "title": "Mẫu Câu Ơn Huệ",
+    "structures": [
+      {"pattern": "あげます／もらいます／くれます", "example": "山田さんはミラーさんにお金を貸してあげました。"}
+    ]
+  },
+  "9": {
+    "title": "Thể る và Thể た",
+    "structures": [
+      {"pattern": "しゅみは Vることです", "example": "わたしのしゅみは切手をあつめることです。"},
+      {"pattern": "Vることができます", "example": "私は100メートルぐらい泳ぐことができます。"},
+      {"pattern": "Vる／Nの まえに、～", "example": "毎日、寝るまえに、本を読みます。"},
+      {"pattern": "Vたことがあります", "example": "山にのぼったことがあります。"},
+      {"pattern": "V1たり、V2たり、....Vたりします", "example": "去年の夏休みに山に登ったり、泳いだりしました."}
+    ]
+  },
+  "10": {
+    "title": "Câu Điều Kiện",
+    "structures": [
+      {"pattern": "A・N・Vたら、～", "example": "お金があったら、車を買います。"},
+      {"pattern": "V1たら、～", "example": "うちへ帰ったら、すぐシャワーをあびます。"}
+    ]
+  },
+  "11": {
+    "title": "Thể ない",
+    "structures": [
+      {"pattern": "Vないでください", "example": "むりをしないでください。"},
+      {"pattern": "Vないければなりません", "example": "しゅくだいをしなければなりません。"},
+      {"pattern": "Vないくてもいいです", "example": "休みですから、はやく起きなくてもいいです。"}
+    ]
+  },
+  "12": {
+    "title": "Thể Thông Thường",
+    "structures": [
+      {"pattern": "V普通形＋と思います", "example": "べんりだと思います。"},
+      {"pattern": "V普通形＋と言います", "example": "先生はあしたテストがあると言いました。"}
+    ]
+  },
+  "13": {
+    "title": "Mẫu Câu Khi ...",
+    "structures": [
+      {"pattern": "Vる・Vない・Vた／Nの／Aい／Aな とき、～", "example": "子どものとき、アニメが好きです。"}
+    ]
+  },
+  "14": {
+    "title": "Mẫu Câu Khi/Hễ mà ... thì ...",
+    "structures": [
+      {"pattern": "Vると、～", "example": "このボタンを押すと、お湯が出ます。"}
+    ]
+  }
+}

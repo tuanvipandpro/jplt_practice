@@ -28,6 +28,7 @@ import katakanaData from '../data/katakana.json'
 import kanjiData from '../data/kanji.json'
 import vocabularyData from '../data/vocabulary.json'
 import grammarData from '../data/grammar.json'
+import GrammarPractice from './GrammarPractice'
 
 const PracticeMode = ({ level, onBack }) => {
   const [currentPractice, setCurrentPractice] = useState(null)
@@ -78,6 +79,12 @@ const PracticeMode = ({ level, onBack }) => {
   ]
 
   const startPractice = (practiceType) => {
+    // Xử lý đặc biệt cho ngữ pháp
+    if (practiceType.id === 'grammar') {
+      setCurrentPractice(practiceType)
+      return
+    }
+
     // Khởi tạo cards từ data nếu cần
     let cards = practiceType.cards
     if (practiceType.data) {
@@ -108,6 +115,11 @@ const PracticeMode = ({ level, onBack }) => {
 
   const toggleAnswer = () => {
     setShowAnswer(!showAnswer)
+  }
+
+  // Xử lý đặc biệt cho ngữ pháp
+  if (currentPractice && currentPractice.id === 'grammar') {
+    return <GrammarPractice onBack={() => setCurrentPractice(null)} />
   }
 
   if (currentPractice && currentPractice.cards && currentPractice.cards.length > 0) {

@@ -13,9 +13,9 @@ import {
   FormLabel
 } from '@mui/material'
 import { ArrowBack, CheckCircle, PlayArrow } from '@mui/icons-material'
-import katakanaData from '../data/katakana.json'
+import grammarData from '../data/grammar.json'
 
-const KatakanaTest = ({ onBack, onFinish }) => {
+const GrammarTest = ({ onBack, onFinish }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
@@ -23,28 +23,44 @@ const KatakanaTest = ({ onBack, onFinish }) => {
   const [questions, setQuestions] = useState([])
   const [answered, setAnswered] = useState(false)
 
-  // Tạo câu hỏi từ dữ liệu Katakana
+  // Tạo câu hỏi từ dữ liệu Grammar
   useEffect(() => {
     const generateQuestions = () => {
-      const allCards = katakanaData.cards
-      const shuffled = [...allCards].sort(() => Math.random() - 0.5)
-      const selectedCards = shuffled // Tất cả câu hỏi
+      const allStructures = []
       
-      const questions = selectedCards.map((card, index) => {
+      // Lấy tất cả các cấu trúc từ tất cả các bài
+      Object.keys(grammarData).forEach(lessonId => {
+        const lesson = grammarData[lessonId]
+        lesson.structures.forEach((structure, index) => {
+          allStructures.push({
+            lessonId,
+            lessonTitle: lesson.title,
+            structure: structure.pattern,
+            example: structure.example,
+            id: `${lessonId}-${index}`
+          })
+        })
+      })
+      
+      const shuffled = [...allStructures].sort(() => Math.random() - 0.5)
+      const selectedStructures = shuffled // Tất cả câu hỏi
+      
+      const questions = selectedStructures.map((structure, index) => {
         // Tạo 4 đáp án ngẫu nhiên
-        const allPronunciations = allCards.map(c => c.pronunciation)
-        const correctAnswer = card.pronunciation
-        let wrongAnswers = allPronunciations.filter(p => p !== correctAnswer)
+        const allPatterns = allStructures.map(s => s.structure)
+        const correctAnswer = structure.structure
+        let wrongAnswers = allPatterns.filter(p => p !== correctAnswer)
         wrongAnswers = wrongAnswers.sort(() => Math.random() - 0.5).slice(0, 3)
         
         const answers = [...wrongAnswers, correctAnswer].sort(() => Math.random() - 0.5)
         
         return {
           id: index,
-          question: card.front,
+          question: structure.example || structure.structure,
           correctAnswer: correctAnswer,
           answers: answers,
-          card: card
+          structure: structure,
+          questionType: structure.example ? 'example' : 'pattern'
         }
       })
       
@@ -134,7 +150,7 @@ const KatakanaTest = ({ onBack, onFinish }) => {
         </Button>
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h5" component="h2" sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
-            Test Katakana
+            Test Ngữ Pháp
           </Typography>
           <Typography variant="body2" sx={{ opacity: 0.9, fontSize: { xs: '0.8rem', sm: '1rem' } }}>
             Câu {currentQuestion + 1} / {questions.length}
@@ -171,7 +187,7 @@ const KatakanaTest = ({ onBack, onFinish }) => {
           mb: { xs: 1, sm: 2 },
           bgcolor: 'rgba(255, 255, 255, 0.2)',
           '& .MuiLinearProgress-bar': {
-            bgcolor: '#FF9800',
+            bgcolor: '#2196F3',
           }
         }}
       />
@@ -186,12 +202,22 @@ const KatakanaTest = ({ onBack, onFinish }) => {
         flexDirection: 'column',
         overflow: 'hidden'
       }}>
-        <Typography variant="h3" component="div" gutterBottom sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0, fontSize: { xs: '2rem', sm: '3rem' } }}>
-          {currentQ.question}
+        {/* Lesson Info */}
+        <Box sx={{ mb: { xs: 1, sm: 2 }, p: { xs: 1, sm: 1.5 }, bgcolor: 'rgba(33, 150, 243, 0.1)', borderRadius: 2, flexShrink: 0 }}>
+          <Typography variant="caption" color="primary" sx={{ fontWeight: 'bold', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
+            Bài {currentQ.structure.lessonId}: {currentQ.structure.lessonTitle}
+          </Typography>
+        </Box>
+
+        {/* Question */}
+        <Typography variant="body1" component="div" gutterBottom sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0, fontSize: { xs: '0.9rem', sm: '1rem' } }}>
+          {currentQ.questionType === 'example' ? currentQ.question : currentQ.question}
         </Typography>
         
         <Typography variant="caption" color="text.secondary" gutterBottom sx={{ flexShrink: 0, fontSize: { xs: '0.7rem', sm: '0.8rem' } }}>
-          Chọn phiên âm đúng:
+          {currentQ.questionType === 'example' 
+            ? 'Chọn cấu trúc ngữ pháp đúng cho câu trên:' 
+            : 'Chọn cấu trúc ngữ pháp đúng:'}
         </Typography>
 
         {/* Answer Options */}
@@ -205,7 +231,13 @@ const KatakanaTest = ({ onBack, onFinish }) => {
                 key={index}
                 value={answer}
                 control={<Radio />}
-                label={answer}
+                label={
+                  <Box>
+                    <Typography variant="body1" sx={{ fontFamily: 'monospace' }}>
+                      {answer}
+                    </Typography>
+                  </Box>
+                }
                 sx={{
                   display: 'block',
                   margin: { xs: '2px 0', sm: '4px 0' },
@@ -219,19 +251,19 @@ const KatakanaTest = ({ onBack, onFinish }) => {
                         ? '#F44336' 
                         : 'transparent'
                     : selectedAnswer === answer 
-                      ? '#FF9800' 
+                      ? '#2196F3' 
                       : 'transparent',
                   bgcolor: answered 
                     ? answer === currentQ.correctAnswer 
                       ? 'rgba(76, 175, 80, 0.1)' 
                       : answer === selectedAnswer 
                         ? 'rgba(244, 67, 54, 0.1)' 
-                        : 'transparent'
+                      : 'transparent'
                     : selectedAnswer === answer 
-                      ? 'rgba(255, 152, 0, 0.1)' 
+                      ? 'rgba(33, 150, 243, 0.1)' 
                       : 'transparent',
                   '&:hover': {
-                    bgcolor: answered ? 'transparent' : 'rgba(255, 152, 0, 0.05)',
+                    bgcolor: answered ? 'transparent' : 'rgba(33, 150, 243, 0.05)',
                   },
                   cursor: answered ? 'default' : 'pointer',
                   flexShrink: 0,
@@ -251,11 +283,16 @@ const KatakanaTest = ({ onBack, onFinish }) => {
               {selectedAnswer === currentQ.correctAnswer ? '✅ Đúng!' : '❌ Sai!'}
             </Typography>
             <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' }, display: 'block', mb: 0.5 }}>
-              Đáp án đúng: <strong>{currentQ.correctAnswer}</strong>
+              Đáp án đúng: <strong style={{ fontFamily: 'monospace' }}>{currentQ.correctAnswer}</strong>
             </Typography>
-            {currentQ.card.example && (
+            {currentQ.questionType === 'example' && (
               <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
-                Ví dụ: {currentQ.card.example}
+                Cấu trúc: {currentQ.correctAnswer}
+              </Typography>
+            )}
+            {currentQ.questionType === 'pattern' && currentQ.structure.example && (
+              <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
+                Ví dụ: {currentQ.structure.example}
               </Typography>
             )}
           </Box>
@@ -265,4 +302,4 @@ const KatakanaTest = ({ onBack, onFinish }) => {
   )
 }
 
-export default KatakanaTest 
+export default GrammarTest 

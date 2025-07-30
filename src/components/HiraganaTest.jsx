@@ -28,7 +28,7 @@ const HiraganaTest = ({ onBack, onFinish }) => {
     const generateQuestions = () => {
       const allCards = hiraganaData.cards
       const shuffled = [...allCards].sort(() => Math.random() - 0.5)
-      const selectedCards = shuffled.slice(0, 10) // 10 câu hỏi
+      const selectedCards = shuffled // Tất cả câu hỏi
       
       const questions = selectedCards.map((card, index) => {
         // Tạo 4 đáp án ngẫu nhiên
@@ -57,6 +57,14 @@ const HiraganaTest = ({ onBack, onFinish }) => {
   const handleAnswerSelect = (answer) => {
     if (answered) return
     setSelectedAnswer(answer)
+    
+    // Tự động check kết quả khi chọn đáp án
+    const currentQ = questions[currentQuestion]
+    if (answer === currentQ.correctAnswer) {
+      setScore(score + 1)
+    }
+    
+    setAnswered(true)
   }
 
   const handleSubmitAnswer = () => {
@@ -76,9 +84,8 @@ const HiraganaTest = ({ onBack, onFinish }) => {
       setSelectedAnswer('')
       setAnswered(false)
     } else {
-      // Kết thúc test
-      const finalScore = selectedAnswer === questions[currentQuestion].correctAnswer ? score + 1 : score
-      onFinish({ score: finalScore, total: questions.length })
+      // Kết thúc test - không cần cộng thêm điểm vì đã được tính trong handleAnswerSelect
+      onFinish({ score: score, total: questions.length })
     }
   }
 
@@ -94,14 +101,23 @@ const HiraganaTest = ({ onBack, onFinish }) => {
   const progress = ((currentQuestion + 1) / questions.length) * 100
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+    <Box sx={{ 
+      maxWidth: { xs: '95%', sm: 600 }, 
+      mx: 'auto',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      py: { xs: 1, sm: 2 }
+    }}>
       {/* Header */}
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         color: 'white',
-        mb: 4
+        mb: { xs: 1, sm: 2 },
+        flexShrink: 0,
+        gap: 1
       }}>
         <Button
           startIcon={<ArrowBack />}
@@ -117,21 +133,32 @@ const HiraganaTest = ({ onBack, onFinish }) => {
           Quay lại
         </Button>
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h4" component="h2">
+          <Typography variant="h5" component="h2" sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
             Test Hiragana
           </Typography>
-          <Typography variant="h6" sx={{ opacity: 0.9 }}>
+          <Typography variant="body2" sx={{ opacity: 0.9, fontSize: { xs: '0.8rem', sm: '1rem' } }}>
             Câu {currentQuestion + 1} / {questions.length}
           </Typography>
         </Box>
-        <Chip
-          label={`${score} điểm`}
+        <Button
+          variant="contained"
+          onClick={handleNextQuestion}
+          disabled={!answered}
+          startIcon={currentQuestion < questions.length - 1 ? <PlayArrow /> : <CheckCircle />}
           sx={{
-            bgcolor: 'rgba(255, 255, 255, 0.2)',
-            color: 'white',
-            backdropFilter: 'blur(5px)'
+            bgcolor: answered ? '#4CAF50' : 'rgba(255, 255, 255, 0.2)',
+            color: answered ? 'white' : 'rgba(255, 255, 255, 0.6)',
+            '&:hover': {
+              bgcolor: answered ? '#45a049' : 'rgba(255, 255, 255, 0.3)',
+            },
+            '&:disabled': {
+              bgcolor: 'rgba(255, 255, 255, 0.2)',
+              color: 'rgba(255, 255, 255, 0.6)',
+            },
           }}
-        />
+        >
+          {currentQuestion < questions.length - 1 ? 'Câu tiếp theo' : 'Kết thúc'}
+        </Button>
       </Box>
 
       {/* Progress Bar */}
@@ -139,9 +166,9 @@ const HiraganaTest = ({ onBack, onFinish }) => {
         variant="determinate"
         value={progress}
         sx={{
-          height: 8,
+          height: { xs: 4, sm: 6 },
           borderRadius: 4,
-          mb: 3,
+          mb: { xs: 1, sm: 2 },
           bgcolor: 'rgba(255, 255, 255, 0.2)',
           '& .MuiLinearProgress-bar': {
             bgcolor: '#2196F3',
@@ -150,17 +177,25 @@ const HiraganaTest = ({ onBack, onFinish }) => {
       />
 
       {/* Question Card */}
-      <Paper elevation={8} sx={{ p: 4, textAlign: 'center', mb: 3 }}>
-        <Typography variant="h3" component="div" gutterBottom sx={{ mb: 3 }}>
+      <Paper elevation={8} sx={{ 
+        p: { xs: 2, sm: 3 }, 
+        textAlign: 'center', 
+        mb: { xs: 1, sm: 2 },
+        maxHeight: { xs: '70vh', sm: '75vh' },
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden'
+      }}>
+        <Typography variant="h3" component="div" gutterBottom sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0, fontSize: { xs: '2rem', sm: '3rem' } }}>
           {currentQ.question}
         </Typography>
         
-        <Typography variant="h6" color="text.secondary" gutterBottom>
+        <Typography variant="caption" color="text.secondary" gutterBottom sx={{ flexShrink: 0, fontSize: { xs: '0.7rem', sm: '0.8rem' } }}>
           Chọn phiên âm đúng:
         </Typography>
 
         {/* Answer Options */}
-        <FormControl component="fieldset" sx={{ width: '100%', mt: 3 }}>
+        <FormControl component="fieldset" sx={{ width: '100%', mt: { xs: 1, sm: 2 }, maxHeight: { xs: '40vh', sm: '50vh' }, display: 'flex', flexDirection: 'column' }}>
           <RadioGroup
             value={selectedAnswer}
             onChange={(e) => handleAnswerSelect(e.target.value)}
@@ -173,8 +208,8 @@ const HiraganaTest = ({ onBack, onFinish }) => {
                 label={answer}
                 sx={{
                   display: 'block',
-                  margin: '8px 0',
-                  padding: '12px',
+                  margin: { xs: '2px 0', sm: '4px 0' },
+                  padding: { xs: '6px', sm: '8px' },
                   borderRadius: 2,
                   border: '2px solid',
                   borderColor: answered 
@@ -197,66 +232,35 @@ const HiraganaTest = ({ onBack, onFinish }) => {
                       : 'transparent',
                   '&:hover': {
                     bgcolor: answered ? 'transparent' : 'rgba(33, 150, 243, 0.05)',
-                  }
+                  },
+                  cursor: answered ? 'default' : 'pointer',
+                  flexShrink: 0,
+                  fontSize: { xs: '0.8rem', sm: '1rem' }
                 }}
               />
             ))}
           </RadioGroup>
         </FormControl>
 
+
+
         {/* Feedback */}
         {answered && (
-          <Box sx={{ mt: 3, p: 2, bgcolor: 'grey.50', borderRadius: 2 }}>
-            <Typography variant="h6" color="text.secondary" gutterBottom>
+          <Box sx={{ mt: { xs: 1, sm: 2 }, p: { xs: 1, sm: 1.5 }, bgcolor: 'grey.50', borderRadius: 2, flexShrink: 0 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' }, display: 'block', mb: 0.5 }}>
               {selectedAnswer === currentQ.correctAnswer ? '✅ Đúng!' : '❌ Sai!'}
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' }, display: 'block', mb: 0.5 }}>
               Đáp án đúng: <strong>{currentQ.correctAnswer}</strong>
             </Typography>
             {currentQ.card.example && (
-              <Typography variant="body2" sx={{ mt: 1, fontStyle: 'italic', color: '#666' }}>
+              <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
                 Ví dụ: {currentQ.card.example}
               </Typography>
             )}
           </Box>
         )}
       </Paper>
-
-      {/* Action Buttons */}
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-        {!answered ? (
-          <Button
-            variant="contained"
-            onClick={handleSubmitAnswer}
-            disabled={!selectedAnswer}
-            sx={{
-              bgcolor: '#2196F3',
-              '&:hover': {
-                bgcolor: '#1976D2',
-              },
-              '&:disabled': {
-                bgcolor: 'grey.400',
-              },
-            }}
-          >
-            Trả lời
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            onClick={handleNextQuestion}
-            startIcon={currentQuestion < questions.length - 1 ? <PlayArrow /> : <CheckCircle />}
-            sx={{
-              bgcolor: '#4CAF50',
-              '&:hover': {
-                bgcolor: '#45a049',
-              },
-            }}
-          >
-            {currentQuestion < questions.length - 1 ? 'Câu tiếp theo' : 'Kết thúc'}
-          </Button>
-        )}
-      </Box>
     </Box>
   )
 }

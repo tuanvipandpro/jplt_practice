@@ -24,6 +24,7 @@ import {
 } from '@mui/icons-material'
 import HiraganaTest from './HiraganaTest'
 import KatakanaTest from './KatakanaTest'
+import GrammarTest from './GrammarTest'
 
 const TestMode = ({ level, onBack }) => {
   const [currentTest, setCurrentTest] = useState(null)
@@ -52,7 +53,7 @@ const TestMode = ({ level, onBack }) => {
       description: 'Kiểm tra ngữ pháp cơ bản',
       icon: <Edit />,
       color: '#9C27B0',
-      available: false
+      available: true
     },
     {
       id: 'vocabulary',
@@ -101,6 +102,9 @@ const TestMode = ({ level, onBack }) => {
     }
     if (currentTest.id === 'katakana') {
       return <KatakanaTest onBack={handleBackFromTest} onFinish={finishTest} />
+    }
+    if (currentTest.id === 'grammar') {
+      return <GrammarTest onBack={handleBackFromTest} onFinish={finishTest} />
     }
     
     // Fallback for other tests (not implemented yet)
