@@ -12,8 +12,9 @@ import {
   FormControl,
   FormLabel
 } from '@mui/material'
-import { ArrowBack, CheckCircle, PlayArrow } from '@mui/icons-material'
+import { ArrowBack, CheckCircle, PlayArrow, SmartToy } from '@mui/icons-material'
 import hiraganaData from '../data/hiragana.json'
+import AIHelper from './AIHelper'
 
 const HiraganaTest = ({ onBack, onFinish }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -22,6 +23,7 @@ const HiraganaTest = ({ onBack, onFinish }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [questions, setQuestions] = useState([])
   const [answered, setAnswered] = useState(false)
+  const [aiDialogOpen, setAiDialogOpen] = useState(false)
 
   // Tạo câu hỏi từ dữ liệu Hiragana
   useEffect(() => {
@@ -258,9 +260,36 @@ const HiraganaTest = ({ onBack, onFinish }) => {
                 Ví dụ: {currentQ.card.example}
               </Typography>
             )}
+            
+            {/* AI Helper Button */}
+            <Box sx={{ mt: 1, display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setAiDialogOpen(true)}
+                startIcon={<SmartToy />}
+                sx={{
+                  fontSize: { xs: '0.6rem', sm: '0.7rem' },
+                  py: 0.5,
+                  px: 1
+                }}
+              >
+                Hỏi đáp cùng AI
+              </Button>
+            </Box>
           </Box>
         )}
       </Paper>
+
+      {/* AI Helper Dialog */}
+      <AIHelper
+        open={aiDialogOpen}
+        onClose={() => setAiDialogOpen(false)}
+        question={currentQ.question}
+        userAnswer={selectedAnswer}
+        correctAnswer={currentQ.correctAnswer}
+        questionType="hiragana"
+      />
     </Box>
   )
 }

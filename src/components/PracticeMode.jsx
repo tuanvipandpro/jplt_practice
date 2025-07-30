@@ -337,7 +337,15 @@ const PracticeMode = ({ level, onBack }) => {
       <Grid container spacing={3} direction="column">
         {practiceTypes.map((practice, index) => {
           // Get card count from data or cards array
-          const cardCount = practice.data ? practice.data.cards.length : practice.cards.length
+          let cardCount = 0
+          if (practice.id === 'grammar') {
+            // For grammar, count total structures across all lessons
+            cardCount = Object.values(practice.data).reduce((total, lesson) => {
+              return total + lesson.structures.length
+            }, 0)
+          } else {
+            cardCount = practice.data ? practice.data.cards.length : practice.cards.length
+          }
 
           return (
             <Grid item key={practice.id}>

@@ -1,6 +1,6 @@
-# JPLT Practice
+# JP Vui Nhộn
 
-Project React với Vite để thực hành và học tập.
+Ứng dụng học tiếng Nhật với các bài test và practice cho Hiragana, Katakana và Grammar.
 
 ## 🚀 Development
 
@@ -35,10 +35,21 @@ Project được cấu hình để tự động deploy lên GitHub Pages thông 
 
 Xem file [DEPLOYMENT.md](./DEPLOYMENT.md) để biết thêm chi tiết về cấu hình deployment.
 
+## 🚀 Tính năng
+
+- **Grammar Test**: Test ngữ pháp với AI hỗ trợ
+- **Hiragana Test**: Test bảng chữ cái Hiragana
+- **Katakana Test**: Test bảng chữ cái Katakana
+- **Practice Mode**: Chế độ luyện tập
+- **AI Helper**: Hỏi đáp cùng AI Gemini
+- **Responsive Design**: Tương thích mobile/desktop
+
 ## 🛠️ Tech Stack
 
 - **React 19** - UI Framework
 - **Vite** - Build tool
+- **Material-UI** - UI Components
+- **Axios** - HTTP Client
 - **ESLint** - Code linting
 - **GitHub Actions** - CI/CD
 - **GitHub Pages** - Hosting
