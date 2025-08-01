@@ -6,6 +6,7 @@ import LevelSelection from './components/LevelSelection'
 import ModeSelection from './components/ModeSelection'
 import TestMode from './components/TestMode'
 import PracticeMode from './components/PracticeMode'
+import FloatQuestionButton from './components/FloatQuestionButton'
 
 // Tạo theme Material UI
 const theme = createTheme({
@@ -117,14 +118,14 @@ function App() {
           sx={{
             background: 'rgba(255, 255, 255, 0.1)',
             backdropFilter: 'blur(10px)',
-            padding: 2,
+            padding: 1.5,
             textAlign: 'center',
             color: 'white',
             boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
           }}
         >
-          <h1>日本語学習</h1>
-          <p>Japanese Learning App</p>
+          <h1 style={{ margin: '0.5rem 0', fontSize: '1.5rem' }}>日本語学習</h1>
+          <p style={{ margin: '0.25rem 0', fontSize: '0.9rem' }}>Japanese Learning App</p>
         </Box>
         <Container 
           className="app-main"
@@ -137,6 +138,9 @@ function App() {
         >
           {renderCurrentView()}
         </Container>
+        
+        {/* Float Question Button */}
+        <FloatQuestionButton />
       </Box>
     </ThemeProvider>
   )

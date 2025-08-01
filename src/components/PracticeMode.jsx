@@ -30,6 +30,8 @@ import vocabularyData from '../data/vocabulary.json'
 import grammarData from '../data/grammar.json'
 import GrammarPractice from './GrammarPractice'
 import KanjiPractice from './KanjiPractice'
+import VocabularyPractice from './VocabularyPractice'
+import AudioPlayer from './AudioPlayer'
 
 const PracticeMode = ({ level, onBack }) => {
   const [currentPractice, setCurrentPractice] = useState(null)
@@ -80,8 +82,8 @@ const PracticeMode = ({ level, onBack }) => {
   ]
 
   const startPractice = (practiceType) => {
-    // Xử lý đặc biệt cho ngữ pháp và kanji
-    if (practiceType.id === 'grammar' || practiceType.id === 'kanji') {
+    // Xử lý đặc biệt cho ngữ pháp, kanji và vocabulary
+    if (practiceType.id === 'grammar' || practiceType.id === 'kanji' || practiceType.id === 'vocabulary') {
       setCurrentPractice(practiceType)
       return
     }
@@ -118,12 +120,15 @@ const PracticeMode = ({ level, onBack }) => {
     setShowAnswer(!showAnswer)
   }
 
-  // Xử lý đặc biệt cho ngữ pháp và kanji
+  // Xử lý đặc biệt cho ngữ pháp, kanji và vocabulary
   if (currentPractice && currentPractice.id === 'grammar') {
     return <GrammarPractice onBack={() => setCurrentPractice(null)} />
   }
   if (currentPractice && currentPractice.id === 'kanji') {
     return <KanjiPractice onBack={() => setCurrentPractice(null)} />
+  }
+  if (currentPractice && currentPractice.id === 'vocabulary') {
+    return <VocabularyPractice onBack={() => setCurrentPractice(null)} />
   }
 
   if (currentPractice && currentPractice.cards && currentPractice.cards.length > 0) {
@@ -181,9 +186,16 @@ const PracticeMode = ({ level, onBack }) => {
           >
             <CardContent sx={{ p: 4, textAlign: 'center' }}>
               {/* Ký tự chính */}
-              <Typography variant="h1" component="div" gutterBottom sx={{ mb: 3 }}>
-                {card.front}
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 3 }}>
+                <Typography variant="h1" component="div" sx={{ fontSize: { xs: '4rem', sm: '6rem' } }}>
+                  {card.front}
+                </Typography>
+                <AudioPlayer 
+                  text={card.front}
+                  pronunciation={card.pronunciation}
+                  size="large"
+                />
+              </Box>
 
               <Divider sx={{ my: 2 }} />
 
@@ -347,6 +359,9 @@ const PracticeMode = ({ level, onBack }) => {
             cardCount = Object.values(practice.data).reduce((total, lesson) => {
               return total + lesson.structures.length
             }, 0)
+          } else if (practice.id === 'vocabulary') {
+            // For vocabulary, count total cards from all categories
+            cardCount = practice.data ? practice.data.cards.length : practice.cards.length
           } else {
             cardCount = practice.data ? practice.data.cards.length : practice.cards.length
           }

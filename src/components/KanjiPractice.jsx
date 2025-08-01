@@ -31,6 +31,8 @@ import {
 } from '@mui/icons-material'
 import kanjiData from '../data/kanji.json'
 import AIHelper from './AIHelper'
+import ReactMarkdown from 'react-markdown'
+import AudioPlayer from './AudioPlayer'
 
 const KanjiPractice = ({ onBack }) => {
   const [currentCard, setCurrentCard] = useState(0)
@@ -87,7 +89,12 @@ Hãy tạo ra một điều thú vị hoặc bất ngờ về Hán tự này mà
 - Sự thật bất ngờ về ý nghĩa
 - Cách sử dụng trong văn hóa Nhật Bản
 
-Trả lời bằng tiếng Việt, ngắn gọn và thú vị. Sử dụng markdown để format đẹp.`
+Trả lời bằng tiếng Việt, ngắn gọn và thú vị. Sử dụng markdown để format đẹp với các thẻ như:
+- **Bold** cho tiêu đề quan trọng
+- *Italic* cho nhấn mạnh
+- ### Tiêu đề cho các phần
+- - Danh sách cho các điểm chính
+- > Quote cho thông tin đặc biệt`
                 }
               ]
             }
@@ -162,14 +169,20 @@ Trả lời bằng tiếng Việt, ngắn gọn và thú vị. Sử dụng markd
           }}>
             <CardContent sx={{ p: 4 }}>
               {/* Kanji Character */}
-              <Typography variant="h1" sx={{ 
-                fontSize: { xs: '4rem', sm: '6rem' },
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 3
-              }}>
-                {currentKanji.front}
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 3 }}>
+                <Typography variant="h1" sx={{ 
+                  fontSize: { xs: '4rem', sm: '6rem' },
+                  fontWeight: 'bold',
+                  color: 'primary.main'
+                }}>
+                  {currentKanji.front}
+                </Typography>
+                <AudioPlayer 
+                  text={currentKanji.front}
+                  pronunciation={currentKanji.pronunciation}
+                  size="large"
+                />
+              </Box>
 
               {/* Answer Section */}
               {showAnswer ? (
@@ -304,9 +317,32 @@ Trả lời bằng tiếng Việt, ngắn gọn và thú vị. Sử dụng markd
               },
               '& em': {
                 fontStyle: 'italic'
+              },
+              '& ul, & ol': {
+                pl: 2,
+                mb: 1
+              },
+              '& li': {
+                mb: 0.5
+              },
+              '& blockquote': {
+                borderLeft: '4px solid',
+                borderColor: 'secondary.main',
+                pl: 2,
+                ml: 0,
+                fontStyle: 'italic'
+              },
+              '& code': {
+                bgcolor: 'grey.100',
+                px: 1,
+                py: 0.5,
+                borderRadius: 1,
+                fontFamily: 'monospace'
               }
             }}>
-              <div dangerouslySetInnerHTML={{ __html: funFact.replace(/\n/g, '<br/>') }} />
+              <ReactMarkdown>
+                {funFact}
+              </ReactMarkdown>
             </Box>
           )}
         </DialogContent>

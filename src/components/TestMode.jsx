@@ -27,6 +27,7 @@ import HiraganaTest from './HiraganaTest'
 import KatakanaTest from './KatakanaTest'
 import GrammarTest from './GrammarTest'
 import KanjiTest from './KanjiTest'
+import VocabularyTest from './VocabularyTest'
 import ExamManager from './ExamManager'
 import GrammarExam from './GrammarExam'
 
@@ -83,7 +84,7 @@ const TestMode = ({ level, onBack }) => {
       description: 'Kiểm tra từ vựng N5',
       icon: <School />,
       color: '#FF9800',
-      available: false
+      available: true
     },
     {
       id: 'listening',
@@ -133,6 +134,9 @@ const TestMode = ({ level, onBack }) => {
     }
     if (currentTest.id === 'kanji') {
       return <KanjiTest onBack={handleBackFromTest} onFinish={finishTest} />
+    }
+    if (currentTest.id === 'vocabulary') {
+      return <VocabularyTest onBack={handleBackFromTest} onFinish={finishTest} />
     }
     
     // Fallback for other tests (not implemented yet)

@@ -41,11 +41,21 @@ const KanjiTest = ({ onBack, onFinish }) => {
         
         const answers = [...wrongAnswers, correctAnswer].sort(() => Math.random() - 0.5)
         
+        // Tạo thông tin chi tiết cho từng đáp án
+        const answerDetails = answers.map(answer => {
+          const kanjiForAnswer = allKanji.find(k => k.meaning === answer)
+          return {
+            meaning: answer,
+            kanji: kanjiForAnswer
+          }
+        })
+        
         return {
           id: index,
           question: kanji.front,
           correctAnswer: correctAnswer,
           answers: answers,
+          answerDetails: answerDetails,
           kanji: kanji,
           questionType: 'meaning'
         }
@@ -188,22 +198,33 @@ const KanjiTest = ({ onBack, onFinish }) => {
               onChange={(e) => handleAnswerSelect(e.target.value)}
               sx={{ flex: 1 }}
             >
-              {currentQ.answers.map((answer, index) => (
+              {currentQ.answerDetails.map((answerDetail, index) => (
                 <FormControlLabel
                   key={index}
-                  value={answer}
+                  value={answerDetail.meaning}
                   control={<Radio />}
-                  label={answer}
+                  label={
+                    <Box>
+                      <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                        {answerDetail.meaning}
+                      </Typography>
+                      {answerDetail.kanji && (
+                        <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                          {answerDetail.kanji.romanji} ({answerDetail.kanji.hiragana})
+                        </Typography>
+                      )}
+                    </Box>
+                  }
                   sx={{
                     mb: 1,
                     p: 1,
                     borderRadius: 1,
                     border: '1px solid',
-                    borderColor: answered && answer === currentQ.correctAnswer ? 'success.main' : 
-                               answered && answer === selectedAnswer && answer !== currentQ.correctAnswer ? 'error.main' : 
+                    borderColor: answered && answerDetail.meaning === currentQ.correctAnswer ? 'success.main' : 
+                               answered && answerDetail.meaning === selectedAnswer && answerDetail.meaning !== currentQ.correctAnswer ? 'error.main' : 
                                'grey.300',
-                    bgcolor: answered && answer === currentQ.correctAnswer ? 'success.light' : 
-                            answered && answer === selectedAnswer && answer !== currentQ.correctAnswer ? 'error.light' : 
+                    bgcolor: answered && answerDetail.meaning === currentQ.correctAnswer ? 'success.light' : 
+                            answered && answerDetail.meaning === selectedAnswer && answerDetail.meaning !== currentQ.correctAnswer ? 'error.light' : 
                             'transparent'
                   }}
                 />
@@ -220,14 +241,11 @@ const KanjiTest = ({ onBack, onFinish }) => {
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' }, display: 'block', mb: 0.5 }}>
                 Đáp án đúng: <strong>{currentQ.correctAnswer}</strong>
               </Typography>
-              <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
-                Cách đọc: {currentQ.kanji.romanji} ({currentQ.kanji.hiragana})
-              </Typography>
-              {currentQ.kanji.example && (
-                <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
-                  Ví dụ: {currentQ.kanji.example}
-                </Typography>
-              )}
+                              {currentQ.kanji.example && (
+                  <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
+                    Ví dụ: {currentQ.kanji.example}
+                  </Typography>
+                )}
               
               {/* AI Helper Button */}
               <Box sx={{ mt: 1, display: 'flex', justifyContent: 'center' }}>
