@@ -146,6 +146,65 @@ const GrammarPractice = ({ onBack }) => {
                     </Typography>
                   </Box>
                 )}
+
+                {structure.explanation && (
+                  <Box sx={{ mt: 2 }}>
+                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                      Giải thích:
+                    </Typography>
+                    <Typography 
+                      variant="body1" 
+                      sx={{ 
+                        bgcolor: 'rgba(255, 152, 0, 0.1)',
+                        p: 2,
+                        borderRadius: 1,
+                        border: '1px solid rgba(255, 152, 0, 0.3)',
+                        lineHeight: 1.8,
+                        '& strong': {
+                          color: '#D32F2F',
+                          fontWeight: 'bold',
+                          backgroundColor: 'rgba(211, 47, 47, 0.1)',
+                          padding: '2px 4px',
+                          borderRadius: '3px',
+                          margin: '0 2px'
+                        },
+                        '& .highlight': {
+                          backgroundColor: 'rgba(255, 193, 7, 0.3)',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                          fontWeight: 'bold',
+                          color: '#E65100'
+                        },
+                        '& .grammar-point': {
+                          backgroundColor: 'rgba(156, 39, 176, 0.2)',
+                          padding: '3px 8px',
+                          borderRadius: '4px',
+                          fontWeight: 'bold',
+                          color: '#7B1FA2',
+                          border: '1px solid rgba(156, 39, 176, 0.3)',
+                          display: 'inline-block',
+                          margin: '2px 4px'
+                        },
+                        '& .usage-note': {
+                          backgroundColor: 'rgba(76, 175, 80, 0.15)',
+                          padding: '4px 8px',
+                          borderRadius: '4px',
+                          borderLeft: '4px solid #4CAF50',
+                          margin: '8px 0',
+                          fontStyle: 'italic'
+                        }
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: structure.explanation
+                          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                          .replace(/`(.*?)`/g, '<span class="highlight">$1</span>')
+                          .replace(/\[(.*?)\]/g, '<span class="grammar-point">$1</span>')
+                          .replace(/^(.+?):/gm, '<div class="usage-note"><strong>$1:</strong>')
+                          .replace(/\n/g, '<br>')
+                      }}
+                    />
+                  </Box>
+                )}
               </Paper>
             </Grid>
           ))}

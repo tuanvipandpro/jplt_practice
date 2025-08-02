@@ -354,33 +354,6 @@
       "hiragana": "ぶらじる"
     },
     {
-      "front": "IMC／パワーでんき／ブラジルエアー",
-      "back": "Tên công ty giả định",
-      "example": "IMCのしゃいんです。 (IMC no shain desu - Tôi là nhân viên công ty IMC.)",
-      "pronunciation": "IMC / pawā denki / burajiru ea",
-      "meaning": "Tên công ty giả định",
-      "romanji": "IMC / pawā denki / burajiru ea",
-      "hiragana": "IMC／ぱわーでんき／ぶらじるえあー"
-    },
-    {
-      "front": "ABCこうこう",
-      "back": "Trường cấp 3 giả định",
-      "example": "ABCこうこうの学生です。 (ABC koukou no gakusei desu - Tôi là học sinh trường ABC.)",
-      "pronunciation": "ABC koukou",
-      "meaning": "Trường cấp 3 giả định",
-      "romanji": "ABC koukou",
-      "hiragana": "ABCこうこう"
-    },
-    {
-      "front": "さくらだいがく／ふじだいがく",
-      "back": "Đại học Sakura, đại học Fuji (giả định)",
-      "example": "さくら大学の学生です。 (Sakura daigaku no gakusei desu - Tôi là sinh viên đại học Sakura.)",
-      "pronunciation": "sakura daigaku / fuji daigaku",
-      "meaning": "Đại học giả định",
-      "romanji": "sakura daigaku / fuji daigaku",
-      "hiragana": "さくらだいがく／ふじだいがく"
-    },
-    {
       "front": "これ",
       "back": "Cái này, đây (vật ở gần người nói)",
       "example": "これは本です。 (Kore wa hon desu - Đây là quyển sách.)",
@@ -4629,15 +4602,6 @@
       "hiragana": "とうきょうでぃずにーらんど"
     },
     {
-      "front": "アジアストア",
-      "back": "tên siêu thị giả định",
-      "example": "アジアストアで買い物します。 (Ajia sutoa de kaimono shimasu - Mua sắm ở siêu thị Asia.)",
-      "pronunciation": "ajia sutoa",
-      "meaning": "Tên siêu thị giả định",
-      "romanji": "ajia sutoa",
-      "hiragana": "あじあすとあ"
-    },
-    {
       "front": "おにいさん",
       "back": "anh trai (dùng cho người khác)",
       "example": "お兄さんは学生ですか。 (Oniisan wa gakusei desu ka - Anh trai bạn là sinh viên à?)",
@@ -5050,15 +5014,6 @@
       "meaning": "Singapore",
       "romanji": "shingapooru",
       "hiragana": "しんがぽーる"
-    },
-    {
-      "front": "アジアストア",
-      "back": "Siêu thị giả định (Asia Store)",
-      "example": "アジアストアで買い物します。 (Ajia Sutoa de kaimono shimasu - Mua sắm ở siêu thị Asia Store.)",
-      "pronunciation": "ajia sutoa",
-      "meaning": "Siêu thị giả định",
-      "romanji": "ajia sutoa",
-      "hiragana": "あじあすとあ"
     },
     {
       "front": "ジャパン",
@@ -5826,24 +5781,6 @@
       "hiragana": "べつべつに"
     },
     {
-      "front": "アサックス",
-      "back": "tên công ty giả định",
-      "example": "",
-      "pronunciation": "Asakkusu",
-      "meaning": "tên công ty giả định",
-      "romanji": "Asakkusu",
-      "hiragana": "あさっくす"
-    },
-    {
-      "front": "おはようテレビ",
-      "back": "tên chương trình truyền hình giả định",
-      "example": "",
-      "pronunciation": "ohayou terebi",
-      "meaning": "tên chương trình truyền hình giả định",
-      "romanji": "ohayou terebi",
-      "hiragana": "おはようてれび"
-    },
-    {
       "front": "つけます",
       "back": "bật",
       "example": "電気をつけます。 (Denki o tsukemasu - Bật đèn)",
@@ -6184,15 +6121,6 @@
       "meaning": "tiền thừa, tiền trả lại",
       "romanji": "otsuri",
       "hiragana": "おつり"
-    },
-    {
-      "front": "みどり",
-      "back": "tên thành phố giả định",
-      "example": "",
-      "pronunciation": "midori",
-      "meaning": "tên thành phố giả định",
-      "romanji": "midori",
-      "hiragana": "みどり"
     },
     {
       "front": "のります（～に）",

@@ -2,130 +2,306 @@
   "1": {
     "title": "Câu Danh Từ",
     "structures": [
-      {"pattern": "N1 は N2 です", "example": "これは本です。"},
-      {"pattern": "N1 は N2 じゃありません / ではありません", "example": "ミラーさんは医者じゃありません。"},
-      {"pattern": "N1 は N2 ですか", "example": "あそこは銀行ですか。"},
-      {"pattern": "N1 は Nghi vấn từ ですか", "example": "あの人はだれですか。"}
+      {
+        "pattern": "N1 は N2 です",
+        "example": "これは本です。",
+        "explanation": "**Cấu trúc cơ bản nhất** trong tiếng Nhật.\n\n`は` là trợ từ đánh dấu chủ ngữ\n`です` là động từ 'to be'\n\n**Dùng để:** giới thiệu hoặc khẳng định thông tin về danh từ.\n\n**Ví dụ thực tế:**\n- 私は学生です。(Tôi là học sinh)\n- これは本です。(Đây là sách)"
+      },
+      {
+        "pattern": "N1 は N2 じゃありません / ではありません",
+        "example": "ミラーさんは医者じゃありません。",
+        "explanation": "**Cách phủ định** của câu danh từ.\n\n`じゃありません` (thân mật) hoặc `ではありません` (lịch sự) có nghĩa là 'không phải'.\n\n**Dùng để:** phủ định thông tin về danh từ.\n\n**Lưu ý:**\n- じゃありません: dùng trong văn nói thân mật\n- ではありません: dùng trong văn viết hoặc lịch sự"
+      },
+      {
+        "pattern": "N1 は N2 ですか",
+        "example": "あそこは銀行ですか。",
+        "explanation": "**Cách tạo câu hỏi** với danh từ.\n\nThêm `か` vào cuối câu để tạo thành câu hỏi.\n\n**Dùng để:** hỏi thông tin về danh từ.\n\n**Cấu trúc:**\n- Câu khẳng định + か = Câu hỏi\n\n**Ví dụ:**\n- これは本ですか？(Đây có phải là sách không?)"
+      },
+      {
+        "pattern": "N1 は Nghi vấn từ ですか",
+        "example": "あの人はだれですか。",
+        "explanation": "**Cấu trúc câu hỏi** với từ nghi vấn.\n\nTừ nghi vấn (`だれ`, `なに`, `どこ`, etc.) được đặt ở vị trí danh từ để tạo thành câu hỏi.\n\n**Các từ nghi vấn cơ bản:**\n- `だれ`: ai\n- `なに/なん`: cái gì\n- `どこ`: ở đâu\n- `いつ`: khi nào"
+      }
     ]
   },
   "2": {
     "title": "Câu Tính Từ",
     "structures": [
-      {"pattern": "N は Aい・Aな です", "example": "ミラーさんはいいです。"},
-      {"pattern": "N は Aいくないです / Aなじゃありません", "example": "ミラーさんはよくないです。ミラーさんはしんせつじゃありません。"},
-      {"pattern": "N は Aい・Aなですか", "example": "ミラーさんはハンサムですか。"},
-      {"pattern": "N は どうですか", "example": "ミラーさんはどうですか。"},
-      {"pattern": "Aい＋N / Aな＋N / どんな＋N", "example": "ミラーさんはいい人です。ミラーさんはしんせつな人です。ミラーさんはどんな人ですか。"},
-      {"pattern": "N1 が すき・きらい・じょうず・へた です", "example": "日本語がじょうずです。"}
+      {
+        "pattern": "N は Aい・Aな です",
+        "example": "ミラーさんはいいです。",
+        "explanation": "**Cấu trúc câu với tính từ.**\n\nTính từ `い` (い-adjective) và tính từ `な` (な-adjective) đều kết thúc bằng `です`.\n\n**Dùng để:** mô tả đặc điểm của danh từ.\n\n**Phân biệt:**\n- `い-adjective`: kết thúc bằng い (いい, たかい, おおきい)\n- `な-adjective`: không kết thúc bằng い (きれい, しんせつ, べんり)"
+      },
+      {
+        "pattern": "N は Aいくないです / Aなじゃありません",
+        "example": "ミラーさんはよくないです。ミラーさんはしんせつじゃありません。",
+        "explanation": "**Cách phủ định** của câu tính từ.\n\n**Tính từ い:** thêm `くないです`\n**Tính từ な:** thêm `じゃありません`\n\n**Dùng để:** phủ định đặc điểm của danh từ.\n\n**Ví dụ:**\n- いい → よくない (không tốt)\n- しんせつ → しんせつじゃありません (không thân thiện)"
+      },
+      {
+        "pattern": "N は Aい・Aなですか",
+        "example": "ミラーさんはハンサムですか。",
+        "explanation": "**Cách tạo câu hỏi** với tính từ.\n\nThêm `か` vào cuối câu để tạo thành câu hỏi.\n\n**Dùng để:** hỏi về đặc điểm của danh từ.\n\n**Cấu trúc:**\n- Tính từ + です + か = Câu hỏi"
+      },
+      {
+        "pattern": "N は どうですか",
+        "example": "ミラーさんはどうですか。",
+        "explanation": "**Cách hỏi chung** về tình trạng hoặc đặc điểm.\n\n`どうですか` có nghĩa là 'như thế nào'.\n\n**Dùng để:** hỏi ý kiến hoặc đánh giá chung.\n\n**Ứng dụng:**\n- Hỏi về sức khỏe: お元気ですか？\n- Hỏi về tình trạng: どうですか？"
+      },
+      {
+        "pattern": "Aい＋N / Aな＋N / どんな＋N",
+        "example": "ミラーさんはいい人です。ミラーさんはしんせつな人です。ミラーさんはどんな人ですか。",
+        "explanation": "**Cách sử dụng tính từ bổ nghĩa** cho danh từ.\n\n**Tính từ い:** thêm trực tiếp\n**Tính từ な:** thêm `な`\n**どんな:** từ nghi vấn hỏi về loại/kiểu\n\n**Ví dụ:**\n- `いい人` (người tốt)\n- `しんせつな人` (người thân thiện)\n- `どんな人` (người như thế nào)"
+      },
+      {
+        "pattern": "N1 が すき・きらい・じょうず・へた です",
+        "example": "日本語がじょうずです。",
+        "explanation": "**Cấu trúc diễn tả sở thích và khả năng.**\n\n`が` đánh dấu đối tượng.\n\n**Các từ cơ bản:**\n- `すき/きらい`: thích/ghét\n- `じょうず/へた`: giỏi/dở\n\n**Dùng để:** nói về sở thích hoặc khả năng.\n\n**Lưu ý:** Đối tượng luôn đi với trợ từ `が`"
+      }
     ]
   },
   "3": {
     "title": "Câu So Sánh",
     "structures": [
-      {"pattern": "N1 と N2 と どちらが A ですか", "example": "電車とバスとどちらがべんりですか。"},
-      {"pattern": "N1 のほうが A です", "example": "電車のほうがべんりです。"},
-      {"pattern": "N1 は N2 より A です", "example": "でんしゃはバスよりべんりです。"},
-      {"pattern": "N1（の中）で Nghi vấn từ が一番A ですか", "example": "くだもので何が一番すきですか。⇒りんごがいちばんすきです。"}
+      {
+        "pattern": "N1 と N2 と どちらが A ですか",
+        "example": "電車とバスとどちらがべんりですか。",
+        "explanation": "**Cấu trúc so sánh** giữa hai đối tượng.\n\n`と` liệt kê các đối tượng\n`どちらが` từ nghi vấn hỏi cái nào\n\n**Dùng để:** hỏi về sự so sánh giữa hai thứ.\n\n**Cấu trúc:**\n- Đối tượng 1 + と + Đối tượng 2 + と + どちらが + Tính từ + ですか"
+      },
+      {
+        "pattern": "N1 のほうが A です",
+        "example": "電車のほうがべんりです。",
+        "explanation": "**Cách trả lời câu so sánh.**\n\n`のほうが` có nghĩa là 'hơn'.\n\n**Dùng để:** chỉ ra đối tượng nào hơn trong so sánh.\n\n**Cấu trúc:**\n- Đối tượng + のほうが + Tính từ + です"
+      },
+      {
+        "pattern": "N1 は N2 より A です",
+        "example": "でんしゃはバスよりべんりです。",
+        "explanation": "**Cấu trúc so sánh trực tiếp.**\n\n`より` có nghĩa là 'hơn'.\n\n**Dùng để:** so sánh trực tiếp đặc điểm của hai đối tượng.\n\n**Cấu trúc:**\n- Đối tượng 1 + は + Đối tượng 2 + より + Tính từ + です"
+      },
+      {
+        "pattern": "N1（の中）で Nghi vấn từ が一番A ですか",
+        "example": "くだもので何が一番すきですか。⇒りんごがいちばんすきです。",
+        "explanation": "**Cấu trúc so sánh bậc nhất.**\n\n`で` chỉ phạm vi so sánh\n`一番/いちばん` nhất\n\n**Dùng để:** hỏi và trả lời về cái nhất trong một nhóm.\n\n**Cấu trúc:**\n- Phạm vi + で + Từ nghi vấn + が + 一番 + Tính từ + ですか"
+      }
     ]
   },
   "4": {
     "title": "Thể Hiện Mong Muốn",
     "structures": [
-      {"pattern": "N がほしいです", "example": "お金がほしいです。"},
-      {"pattern": "N をVます＋たいです", "example": "ごはんを食べたいです。"}
+      {
+        "pattern": "N がほしいです",
+        "example": "お金がほしいです。",
+        "explanation": "**Cấu trúc diễn tả mong muốn** có vật gì đó.\n\n`が` đánh dấu đối tượng mong muốn\n`ほしい` muốn có\n\n**Dùng để:** nói về mong muốn sở hữu vật gì.\n\n**Cấu trúc:**\n- Đối tượng mong muốn + が + ほしいです\n\n**Lưu ý:** Chỉ dùng cho vật, không dùng cho người"
+      },
+      {
+        "pattern": "N をVます＋たいです",
+        "example": "ごはんを食べたいです。",
+        "explanation": "**Cấu trúc diễn tả mong muốn** làm gì đó.\n\n`を` đánh dấu đối tượng của hành động\n`Vます+たい` muốn làm hành động\n\n**Dùng để:** nói về mong muốn thực hiện hành động.\n\n**Cách chia:**\n- Vます → Vたい (食べます → 食べたい)"
+      }
     ]
   },
   "5": {
     "title": "Câu Động Từ",
     "structures": [
-      {"pattern": "N1 はN2 (へ・を・が・で・に) V", "example": null},
-      {"pattern": "Nphương tiện で Nngười đồng hành と Nnơi chốn へ V", "example": "飛行機でミラーさんと国へ帰ります。"},
-      {"pattern": "Nnơi chốn で Nvật を V", "example": "食堂でごはんを食べました。"},
-      {"pattern": "Nnơi chốn に Nvật, người, động vật が あります・います", "example": "かばんの中に本やノートやえんぴつがあります。"},
-      {"pattern": "N が わかります・あります", "example": "日本語がよくわかります。"},
-      {"pattern": "Nngười cho は Nngười nhận に Nvật を V", "example": "わたしはミラーさんにお金をかしました。"},
-      {"pattern": "Nngười nhận は Nngười cho に Nvật を V", "example": "ミラーさんはわたしにお金をかりました。"},
-      {"pattern": "Nnơi chốn へ N を Vますに Vdi chuyển", "example": null},
-      {"pattern": "A いく なります／Ａな・Ｎに なります", "example": "さむくなります。きれいになります。"}
+      {
+        "pattern": "N1 はN2 (へ・を・が・で・に) V",
+        "example": null,
+        "explanation": "**Cấu trúc cơ bản** của câu động từ.\n\n`は` đánh dấu chủ ngữ\nCác trợ từ `へ・を・が・で・に` chỉ định vai trò của danh từ trong câu.\n\n**Dùng để:** diễn tả hành động.\n\n**Các trợ từ cơ bản:**\n- `を`: đối tượng của hành động\n- `に`: địa điểm, thời gian\n- `で`: nơi diễn ra hành động\n- `へ`: hướng đến\n- `が`: chủ ngữ"
+      },
+      {
+        "pattern": "Nphương tiện で Nngười đồng hành と Nnơi chốn へ V",
+        "example": "飛行機でミラーさんと国へ帰ります。",
+        "explanation": "**Cấu trúc diễn tả hành trình di chuyển.**\n\n`で` phương tiện\n`と` cùng với\n`へ` hướng đến\n\n**Dùng để:** mô tả việc di chuyển với ai, bằng gì, đến đâu.\n\n**Cấu trúc:**\n- Phương tiện + で + Người + と + Nơi + へ + Động từ"
+      },
+      {
+        "pattern": "Nnơi chốn で Nvật を V",
+        "example": "食堂でごはんを食べました。",
+        "explanation": "**Cấu trúc diễn tả hành động tại địa điểm.**\n\n`で` tại nơi\n`を` đối tượng của hành động\n\n**Dùng để:** nói về hành động được thực hiện ở đâu.\n\n**Cấu trúc:**\n- Nơi + で + Đối tượng + を + Động từ"
+      },
+      {
+        "pattern": "Nnơi chốn に Nvật, người, động vật が あります・います",
+        "example": "かばんの中に本やノートやえんぴつがあります。",
+        "explanation": "**Cấu trúc diễn tả sự tồn tại.**\n\n`に` tại nơi\n`が` đánh dấu chủ ngữ\n`あります` có (vật vô tri)\n`います` có (người, động vật)\n\n**Dùng để:** nói về sự tồn tại của vật/người ở đâu.\n\n**Phân biệt:**\n- `あります`: dùng cho vật\n- `います`: dùng cho người và động vật"
+      },
+      {
+        "pattern": "N が わかります・あります",
+        "example": "日本語がよくわかります。",
+        "explanation": "**Cấu trúc diễn tả khả năng và sở hữu.**\n\n`が` đánh dấu đối tượng\n`わかります` hiểu/biết\n`あります` có/sở hữu\n\n**Dùng để:** nói về khả năng hoặc sở hữu.\n\n**Ví dụ:**\n- 日本語がわかります (Tôi hiểu tiếng Nhật)\n- お金があります (Tôi có tiền)"
+      },
+      {
+        "pattern": "Nngười cho は Nngười nhận に Nvật を V",
+        "example": "わたしはミラーさんにお金をかしました。",
+        "explanation": "**Cấu trúc diễn tả hành động cho/tặng.**\n\n`は` người thực hiện hành động\n`に` người nhận\n`を` vật được cho\n\n**Dùng để:** nói về hành động cho/tặng ai cái gì.\n\n**Cấu trúc:**\n- Người cho + は + Người nhận + に + Vật + を + Động từ"
+      },
+      {
+        "pattern": "Nngười nhận は Nngười cho に Nvật を V",
+        "example": "ミラーさんはわたしにお金をかりました。",
+        "explanation": "**Cấu trúc diễn tả hành động nhận/mượn.**\n\n`は` người nhận\n`に` người cho\n`を` vật được nhận\n\n**Dùng để:** nói về hành động nhận/mượn từ ai cái gì.\n\n**Cấu trúc:**\n- Người nhận + は + Người cho + に + Vật + を + Động từ"
+      },
+      {
+        "pattern": "Nnơi chốn へ N を Vますに Vdi chuyển",
+        "example": null,
+        "explanation": "**Cấu trúc diễn tả mục đích di chuyển.**\n\n`へ` hướng đến\n`を` đối tượng của hành động\n`Vますに` để làm gì\n`Vdi chuyển` động từ di chuyển\n\n**Dùng để:** nói về việc đi đâu để làm gì.\n\n**Cấu trúc:**\n- Nơi + へ + Đối tượng + を + Vます + に + Động từ di chuyển"
+      },
+      {
+        "pattern": "A いく なります／Ａな・Ｎに なります",
+        "example": "さむくなります。きれいになります。",
+        "explanation": "**Cấu trúc diễn tả sự thay đổi trạng thái.**\n\n**Tính từ い:** thêm `く`\n**Tính từ な/N:** thêm `に`\n`なります` trở thành\n\n**Dùng để:** nói về sự thay đổi trạng thái.\n\n**Cách chia:**\n- さむい → さむくなります\n- きれい → きれいになります"
+      }
     ]
   },
   "6": {
     "title": "Nghi Vấn Từ",
     "structures": [
-      {"pattern": "だれ・どなた", "example": "Ai"},
-      {"pattern": "どう・どんな", "example": "Như thế nào"},
-      {"pattern": "なんさい・おいくつ", "example": "Bao nhiêu tuổi"},
-      {"pattern": "どうして", "example": "Tại sao"},
-      {"pattern": "なに・なん", "example": "Cái gì"},
-      {"pattern": "どうやって", "example": "Làm như thế nào"},
-      {"pattern": "どこ・どちら", "example": "Ở đâu/Phía nào"},
-      {"pattern": "どれ・どの", "example": "Cái nào"},
-      {"pattern": "いくら", "example": "Bao nhiêu tiền"},
-      {"pattern": "いつ・何時・何曜日・何日・何月・何年", "example": "Khi nào/Mấy giờ/Thứ mấy/Ngày mấy/Tháng mấy/Năm nào"},
-      {"pattern": "いくつ・何台・何枚・何人・何回・どのくらい・何週間・何か月・何年間", "example": "Bao nhiêu cái/bao nhiêu chiếc/bao nhiêu người/bao nhiêu lần/khoảng bao lâu/bao nhiêu tuần/bao nhiêu tháng/bao nhiêu năm"}
+      {
+        "pattern": "だれ・どなた",
+        "example": "Ai",
+        "explanation": "**Từ nghi vấn hỏi về người.**\n\n`だれ` thân mật\n`どなた` lịch sự\n\n**Dùng để:** hỏi về danh tính của người.\n\n**Ví dụ:**\n- だれですか？(Ai vậy?)\n- どなたですか？(Ngài là ai?)"
+      },
+      {
+        "pattern": "どう・どんな",
+        "example": "Như thế nào",
+        "explanation": "**Từ nghi vấn hỏi về cách thức hoặc tính chất.**\n\n`どう` hỏi về cách thức\n`どんな` hỏi về tính chất/loại\n\n**Dùng để:** hỏi về đặc điểm hoặc phương pháp.\n\n**Ví dụ:**\n- どうですか？(Như thế nào?)\n- どんな人ですか？(Người như thế nào?)"
+      },
+      {
+        "pattern": "なんさい・おいくつ",
+        "example": "Bao nhiêu tuổi",
+        "explanation": "**Từ nghi vấn hỏi về tuổi.**\n\n`なんさい` thân mật\n`おいくつ` lịch sự\n\n**Dùng để:** hỏi về tuổi của người.\n\n**Ví dụ:**\n- なんさいですか？(Bao nhiêu tuổi?)\n- おいくつですか？(Ngài bao nhiêu tuổi?)"
+      },
+      {
+        "pattern": "どうして",
+        "example": "Tại sao",
+        "explanation": "**Từ nghi vấn hỏi về lý do.**\n\n**Dùng để:** hỏi về nguyên nhân hoặc lý do của sự việc.\n\n**Ví dụ:**\n- どうして来ませんでしたか？(Tại sao không đến?)"
+      },
+      {
+        "pattern": "なに・なん",
+        "example": "Cái gì",
+        "explanation": "**Từ nghi vấn hỏi về sự vật/sự việc.**\n\n`なに` dùng độc lập\n`なん` dùng trước danh từ\n\n**Dùng để:** hỏi về đối tượng cụ thể.\n\n**Ví dụ:**\n- なにですか？(Cái gì vậy?)\n- なんの本ですか？(Sách gì?)"
+      },
+      {
+        "pattern": "どうやって",
+        "example": "Làm như thế nào",
+        "explanation": "**Từ nghi vấn hỏi về phương pháp.**\n\n**Dùng để:** hỏi về cách thức thực hiện một hành động.\n\n**Ví dụ:**\n- どうやって行きますか？(Làm thế nào để đi?)"
+      },
+      {
+        "pattern": "どこ・どちら",
+        "example": "Ở đâu/Phía nào",
+        "explanation": "**Từ nghi vấn hỏi về địa điểm.**\n\n`どこ` thân mật\n`どちら` lịch sự\n\n**Dùng để:** hỏi về vị trí hoặc hướng.\n\n**Ví dụ:**\n- どこですか？(Ở đâu?)\n- どちらですか？(Phía nào?)"
+      },
+      {
+        "pattern": "どれ・どの",
+        "example": "Cái nào",
+        "explanation": "**Từ nghi vấn hỏi về sự lựa chọn.**\n\n`どれ` dùng độc lập\n`どの` dùng trước danh từ\n\n**Dùng để:** hỏi về sự lựa chọn trong số các đối tượng.\n\n**Ví dụ:**\n- どれですか？(Cái nào?)\n- どの本ですか？(Quyển sách nào?)"
+      },
+      {
+        "pattern": "いくら",
+        "example": "Bao nhiêu tiền",
+        "explanation": "**Từ nghi vấn hỏi về giá tiền.**\n\n**Dùng để:** hỏi về giá cả của sản phẩm hoặc dịch vụ.\n\n**Ví dụ:**\n- いくらですか？(Bao nhiêu tiền?)"
+      },
+      {
+        "pattern": "いつ・何時・何曜日・何日・何月・何年",
+        "example": "Khi nào/Mấy giờ/Thứ mấy/Ngày mấy/Tháng mấy/Năm nào",
+        "explanation": "**Từ nghi vấn hỏi về thời gian.**\n\n`いつ` khi nào\n`何時` mấy giờ\n`何曜日` thứ mấy\n`何日` ngày mấy\n`何月` tháng mấy\n`何年` năm nào\n\n**Dùng để:** hỏi về thời gian cụ thể.\n\n**Ví dụ:**\n- いつ来ますか？(Khi nào đến?)\n- 何時ですか？(Mấy giờ rồi?)"
+      },
+      {
+        "pattern": "いくつ・何台・何枚・何人・何回・どのくらい・何週間・何か月・何年間",
+        "example": "Bao nhiêu cái/bao nhiêu chiếc/bao nhiêu người/bao nhiêu lần/khoảng bao lâu/bao nhiêu tuần/bao nhiêu tháng/bao nhiêu năm",
+        "explanation": "**Từ nghi vấn hỏi về số lượng.**\n\n`いくつ` bao nhiêu cái\n`何台` bao nhiêu chiếc\n`何枚` bao nhiêu tờ/tấm\n`何人` bao nhiêu người\n`何回` bao nhiêu lần\n`どのくらい` khoảng bao lâu\n`何週間` bao nhiêu tuần\n`何か月` bao nhiêu tháng\n`何年間` bao nhiêu năm\n\n**Dùng để:** hỏi về số lượng cụ thể.\n\n**Ví dụ:**\n- いくつありますか？(Có bao nhiêu cái?)\n- 何回行きましたか？(Đã đi bao nhiêu lần?)"
+      }
     ]
   },
   "7": {
     "title": "Thể て",
     "structures": [
-      {"pattern": "Ｖてください", "example": "薬を飲んでください。"},
-      {"pattern": "Ｖています", "example": "ミラーさんはごはんを食べています。"},
-      {"pattern": "Ｖてもいいですか", "example": "このケーキを食べてもいいですか。"},
-      {"pattern": "Ｖてはいけません", "example": "ここでたばこをすってはいけません。"},
-      {"pattern": "Ｖ１てから、Ｖ2", "example": "ごはんを食べてから、歯を磨きます。"},
-      {"pattern": "Ｖ1て、Ｖ2て、......Ｖます", "example": "毎朝、起きて、歯を磨いて、朝ごはんを食べて、会社に行きます。"},
-      {"pattern": "Aい+くて / Aな・Ｎ＋で", "example": "ハン先生は親切で、可愛くて、頭がいい人です。"},
-      {"pattern": "N・A・Vても、～", "example": "お金があっても、車を買いません。"}
+      {
+        "pattern": "Ｖてください",
+        "example": "薬を飲んでください。",
+        "explanation": "**Cấu trúc yêu cầu lịch sự.**\n\n`Vて+ください` xin hãy làm gì\n\n**Dùng để:** đưa ra yêu cầu hoặc mệnh lệnh một cách lịch sự.\n\n**Cách chia:**\n- Vます → Vて (飲みます → 飲んで)\n\n**Ví dụ:**\n- 薬を飲んでください (Xin hãy uống thuốc)"
+      },
+      {
+        "pattern": "Ｖています",
+        "example": "ミラーさんはごはんを食べています。",
+        "explanation": "**Cấu trúc diễn tả hành động đang diễn ra.**\n\n`Vています` đang làm gì\n\n**Dùng để:** nói về hành động đang xảy ra tại thời điểm hiện tại.\n\n**Cách chia:**\n- Vます → Vて + います\n\n**Ví dụ:**\n- ごはんを食べています (Đang ăn cơm)"
+      },
+      {
+        "pattern": "Ｖてもいいですか",
+        "example": "このケーキを食べてもいいですか。",
+        "explanation": "**Cấu trúc xin phép.**\n\n`Vてもいいですか` có được phép làm gì không\n\n**Dùng để:** xin phép thực hiện một hành động.\n\n**Cách chia:**\n- Vます → Vて + もいいですか\n\n**Ví dụ:**\n- このケーキを食べてもいいですか？(Tôi có thể ăn bánh này không?)"
+      },
+      {
+        "pattern": "Ｖてはいけません",
+        "example": "ここでたばこをすってはいけません。",
+        "explanation": "**Cấu trúc cấm đoán.**\n\n`Vてはいけません` không được phép làm gì\n\n**Dùng để:** cấm hoặc ngăn cấm một hành động.\n\n**Cách chia:**\n- Vます → Vて + はいけません\n\n**Ví dụ:**\n- ここでたばこをすってはいけません (Không được hút thuốc ở đây)"
+      },
+      {
+        "pattern": "Ｖ１てから、Ｖ2",
+        "example": "ごはんを食べてから、歯を磨きます。",
+        "explanation": "**Cấu trúc diễn tả thứ tự hành động.**\n\n`V1てから、V2` sau khi làm V1 thì làm V2\n\n**Dùng để:** nói về thứ tự thực hiện các hành động.\n\n**Cấu trúc:**\n- Hành động 1 + てから + Hành động 2\n\n**Ví dụ:**\n- ごはんを食べてから、歯を磨きます (Sau khi ăn cơm thì đánh răng)"
+      },
+      {
+        "pattern": "Ｖ1て、Ｖ2て、......Ｖます",
+        "example": "毎朝、起きて、歯を磨いて、朝ごはんを食べて、会社に行きます。",
+        "explanation": "**Cấu trúc liệt kê hành động.**\n\n`V1て、V2て、...Vます` làm V1, làm V2, và cuối cùng làm V\n\n**Dùng để:** liệt kê chuỗi hành động theo thứ tự.\n\n**Cấu trúc:**\n- Hành động 1 + て + Hành động 2 + て + ... + Hành động cuối + ます"
+      },
+      {
+        "pattern": "Aい+くて / Aな・Ｎ＋で",
+        "example": "ハン先生は親切で、可愛くて、頭がいい人です。",
+        "explanation": "**Cấu trúc kết nối tính từ.**\n\n**Tính từ い:** thêm `くて`\n**Tính từ な/N:** thêm `で`\n\n**Dùng để:** kết nối nhiều tính từ trong một câu.\n\n**Cách chia:**\n- いい → よくて\n- しんせつ → しんせつで"
+      },
+      {
+        "pattern": "N・A・Vても、～",
+        "example": "お金があっても、車を買いません。",
+        "explanation": "**Cấu trúc điều kiện nhượng bộ.**\n\n`N・A・Vても` dù có... thì vẫn\n\n**Dùng để:** diễn tả điều kiện nhượng bộ (dù có điều kiện này nhưng vẫn không làm gì đó).\n\n**Cấu trúc:**\n- Điều kiện + ても + Kết quả ngược lại"
+      }
     ]
   },
   "8": {
     "title": "Mẫu Câu Ơn Huệ",
     "structures": [
-      {"pattern": "あげます／もらいます／くれます", "example": "山田さんはミラーさんにお金を貸してあげました。"}
+      {
+        "pattern": "あげます／もらいます／くれます",
+        "example": "山田さんはミラーさんにお金を貸してあげました。",
+        "explanation": "**Cấu trúc diễn tả hành động cho/nhận.**\n\n`あげます` cho ai\n`もらいます` nhận từ ai\n`くれます` ai cho tôi\n\n**Dùng để:** diễn tả hành động cho/tặng/nhận giữa các người.\n\n**Cách sử dụng:**\n- あげます: Tôi cho ai đó\n- もらいます: Tôi nhận từ ai đó\n- くれます: Ai đó cho tôi"
+      }
     ]
   },
   "9": {
     "title": "Thể る và Thể た",
     "structures": [
-      {"pattern": "しゅみは Vることです", "example": "わたしのしゅみは切手をあつめることです。"},
-      {"pattern": "Vることができます", "example": "私は100メートルぐらい泳ぐことができます。"},
-      {"pattern": "Vる／Nの まえに、～", "example": "毎日、寝るまえに、本を読みます。"},
-      {"pattern": "Vたことがあります", "example": "山にのぼったことがあります。"},
-      {"pattern": "V1たり、V2たり、....Vたりします", "example": "去年の夏休みに山に登ったり、泳いだりしました."}
+      {
+        "pattern": "しゅみは Vることです",
+        "example": "わたしのしゅみは切手をあつめることです。",
+        "explanation": "**Cấu trúc diễn tả sở thích.**\n\n`Vること` việc làm gì\n\n**Dùng để:** nói về sở thích hoặc thú vui của ai đó.\n\n**Cách chia:**\n- Vます → Vる (あつめます → あつめる)\n\n**Cấu trúc:**\n- Sở thích + は + Vること + です"
+      },
+      {
+        "pattern": "Vることができます",
+        "example": "私は100メートルぐらい泳ぐことができます。",
+        "explanation": "**Cấu trúc diễn tả khả năng.**\n\n`Vることができます` có thể làm gì\n\n**Dùng để:** nói về khả năng thực hiện một hành động.\n\n**Cách chia:**\n- Vます → Vる + ことができます\n\n**Ví dụ:**\n- 泳ぐことができます (Có thể bơi)"
+      },
+      {
+        "pattern": "Vる／Nの まえに、～",
+        "example": "毎日、寝るまえに、本を読みます。",
+        "explanation": "**Cấu trúc diễn tả thời gian trước khi.**\n\n`Vる/Nのまえに` trước khi làm gì\n\n**Dùng để:** nói về hành động xảy ra trước một hành động khác.\n\n**Cấu trúc:**\n- Hành động/Vật + まえに + Hành động chính"
+      },
+      {
+        "pattern": "Vたことがあります",
+        "example": "山にのぼったことがあります。",
+        "explanation": "**Cấu trúc diễn tả kinh nghiệm.**\n\n`Vたことがあります` đã từng làm gì\n\n**Dùng để:** nói về kinh nghiệm đã có trong quá khứ.\n\n**Cách chia:**\n- Vます → Vた + ことがあります\n\n**Ví dụ:**\n- 山にのぼったことがあります (Đã từng leo núi)"
+      },
+      {
+        "pattern": "V1たり、V2たり、....Vたりします",
+        "example": "去年の夏休みに山に登ったり、泳いだりしました.",
+        "explanation": "**Cấu trúc liệt kê hành động không theo thứ tự.**\n\n`V1たり、V2たり、...Vたりします` làm V1, làm V2, và các hành động khác\n\n**Dùng để:** liệt kê các hành động đã thực hiện không theo thứ tự cụ thể.\n\n**Cách chia:**\n- Vます → Vた + り\n\n**Ví dụ:**\n- 山に登ったり、泳いだりしました (Đã leo núi, bơi lội, v.v.)"
+      }
     ]
   },
   "10": {
     "title": "Câu Điều Kiện",
     "structures": [
-      {"pattern": "A・N・Vたら、～", "example": "お金があったら、車を買います。"},
-      {"pattern": "V1たら、～", "example": "うちへ帰ったら、すぐシャワーをあびます。"}
-    ]
-  },
-  "11": {
-    "title": "Thể ない",
-    "structures": [
-      {"pattern": "Vないでください", "example": "むりをしないでください。"},
-      {"pattern": "Vないければなりません", "example": "しゅくだいをしなければなりません。"},
-      {"pattern": "Vないくてもいいです", "example": "休みですから、はやく起きなくてもいいです。"}
-    ]
-  },
-  "12": {
-    "title": "Thể Thông Thường",
-    "structures": [
-      {"pattern": "V普通形＋と思います", "example": "べんりだと思います。"},
-      {"pattern": "V普通形＋と言います", "example": "先生はあしたテストがあると言いました。"}
-    ]
-  },
-  "13": {
-    "title": "Mẫu Câu Khi ...",
-    "structures": [
-      {"pattern": "Vる・Vない・Vた／Nの／Aい／Aな とき、～", "example": "子どものとき、アニメが好きです。"}
-    ]
-  },
-  "14": {
-    "title": "Mẫu Câu Khi/Hễ mà ... thì ...",
-    "structures": [
-      {"pattern": "Vると、～", "example": "このボタンを押すと、お湯が出ます。"}
+      {
+        "pattern": "A・N・Vたら、～",
+        "example": "お金があったら、車を買います。",
+        "explanation": "**Cấu trúc điều kiện giả định.**\n\n`A・N・Vたら` nếu... thì\n\n**Dùng để:** diễn tả điều kiện giả định và kết quả có thể xảy ra.\n\n**Cách chia:**\n- Tính từ い: い → かったら\n- Tính từ な: な → だったら\n- Danh từ: N + だったら\n- Động từ: Vた + ら\n\n**Cấu trúc:**\n- Điều kiện + たら + Kết quả"
+      }
     ]
   }
 }
