@@ -31,12 +31,14 @@ import VocabularyTest from './VocabularyTest'
 import ListeningTest from './ListeningTest'
 import ExamSelection from './ExamSelection'
 import GrammarExam from './GrammarExam'
+import ExamGenerator from './ExamGenerator'
 
 const TestMode = ({ level, onBack }) => {
   const [currentTest, setCurrentTest] = useState(null)
   const [testResults, setTestResults] = useState(null)
   const [showExamSelection, setShowExamSelection] = useState(false)
   const [currentExam, setCurrentExam] = useState(null)
+  const [showExamGenerator, setShowExamGenerator] = useState(false)
 
   const testTypes = [
     {
@@ -120,6 +122,11 @@ const TestMode = ({ level, onBack }) => {
   const handleStartExam = (exam) => {
     setCurrentExam(exam)
     setShowExamSelection(false)
+  }
+
+  const handleExamGenerated = (generatedExam) => {
+    setCurrentExam(generatedExam)
+    setShowExamGenerator(false)
   }
 
   // Render specific test components
@@ -372,6 +379,13 @@ const TestMode = ({ level, onBack }) => {
         open={showExamSelection}
         onClose={() => setShowExamSelection(false)}
         onStartExam={handleStartExam}
+      />
+
+      {/* Exam Generator Dialog */}
+      <ExamGenerator
+        open={showExamGenerator}
+        onClose={() => setShowExamGenerator(false)}
+        onExamGenerated={handleExamGenerated}
       />
     </>
   )

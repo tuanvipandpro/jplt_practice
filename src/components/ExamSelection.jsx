@@ -24,11 +24,14 @@ import {
 } from '@mui/icons-material'
 import ExamManager from './ExamManager'
 import QuestionGenerator from './QuestionGenerator'
+import ExamGenerator from './ExamGenerator'
 import sampleExamData from '../data/test-demo.json'
+
 
 const ExamSelection = ({ open, onClose, onStartExam }) => {
   const [showExamManager, setShowExamManager] = useState(false)
   const [showGenerator, setShowGenerator] = useState(false)
+  const [showExamGenerator, setShowExamGenerator] = useState(false)
   const [currentExam, setCurrentExam] = useState(null)
 
   const examOptions = [
@@ -41,6 +44,7 @@ const ExamSelection = ({ open, onClose, onStartExam }) => {
       features: ['Từ vựng', 'Ngữ pháp', 'Đọc hiểu', 'Câu đồng nghĩa'],
       questionCount: 50
     },
+
     {
       id: 'ai-generated',
       name: 'Tạo đề mới bằng AI',
@@ -71,7 +75,7 @@ const ExamSelection = ({ open, onClose, onStartExam }) => {
       onStartExam(sampleExam)
       onClose()
     } else if (option.id === 'ai-generated') {
-      setShowExamManager(true)
+      setShowExamGenerator(true)
     }
   }
 
@@ -79,6 +83,12 @@ const ExamSelection = ({ open, onClose, onStartExam }) => {
     setCurrentExam(exam)
     setShowExamManager(false)
     onStartExam(exam)
+    onClose()
+  }
+
+  const handleExamGenerated = (generatedExam) => {
+    onStartExam(generatedExam)
+    setShowExamGenerator(false)
     onClose()
   }
 
@@ -211,6 +221,13 @@ const ExamSelection = ({ open, onClose, onStartExam }) => {
         open={showExamManager}
         onClose={() => setShowExamManager(false)}
         onStartExam={handleStartExam}
+      />
+
+      {/* Exam Generator Dialog */}
+      <ExamGenerator
+        open={showExamGenerator}
+        onClose={() => setShowExamGenerator(false)}
+        onExamGenerated={handleExamGenerated}
       />
     </>
   )

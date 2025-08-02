@@ -29,7 +29,12 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   const [showResults, setShowResults] = useState(false)
   const [timeLeft, setTimeLeft] = useState(30 * 60) // 30 minutes
 
-  const currentQuestion = exam.questions[currentQuestionIndex]
+  // Handle both old format (exam.questions) and new format (exam.sections)
+  const allQuestions = exam.sections 
+    ? exam.sections.flatMap(section => section.questions)
+    : exam.questions || []
+
+  const currentQuestion = allQuestions[currentQuestionIndex]
 
   // Helper function to get correct answer based on question format
   const getCorrectAnswer = (question) => {
@@ -89,7 +94,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   }
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < exam.questions.length - 1) {
+    if (currentQuestionIndex < allQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
       setSelectedAnswer('')
       setAnswered(false)
@@ -112,7 +117,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   }
 
   if (showResults) {
-    const percentage = (score / exam.questions.length) * 100
+    const percentage = (score / allQuestions.length) * 100
     const grade = percentage >= 80 ? 'A' : percentage >= 60 ? 'B' : percentage >= 40 ? 'C' : 'D'
     
     return (
@@ -151,7 +156,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           {/* Results */}
           <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Typography variant="h4" gutterBottom sx={{ color: 'primary.main' }}>
-              {exam.name}
+              {exam.title || exam.name}
             </Typography>
             
             <Box sx={{ textAlign: 'center', mb: 4 }}>
@@ -163,7 +168,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                 {grade}
               </Typography>
               <Typography variant="h4" gutterBottom>
-                {score}/{exam.questions.length} điểm
+                {score}/{allQuestions.length} điểm
               </Typography>
               <Typography variant="h6" color="text.secondary">
                 ({percentage.toFixed(1)}%)
@@ -177,7 +182,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                 variant="outlined"
               />
               <Chip 
-                label={`Sai: ${exam.questions.length - score}`} 
+                label={`Sai: ${allQuestions.length - score}`} 
                 color="error" 
                 variant="outlined"
               />
@@ -235,14 +240,14 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             Quay lại
           </Button>
           <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
-            {exam.name}
+            {exam.title || exam.name}
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
               {formatTime(timeLeft)}
             </Typography>
             <Chip 
-              label={`${currentQuestionIndex + 1}/${exam.questions.length}`} 
+                              label={`${currentQuestionIndex + 1}/${allQuestions.length}`} 
               size="small"
               color="primary"
               sx={{ fontSize: '0.8rem' }}
@@ -253,7 +258,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         {/* Progress */}
         <LinearProgress 
           variant="determinate" 
-          value={((currentQuestionIndex + 1) / exam.questions.length) * 100}
+                          value={((currentQuestionIndex + 1) / allQuestions.length) * 100}
           sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0 }}
         />
 
@@ -357,11 +362,11 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             variant="contained"
             onClick={handleNextQuestion}
             disabled={!answered}
-            startIcon={currentQuestionIndex === exam.questions.length - 1 ? <CheckCircle /> : <PlayArrow />}
+                            startIcon={currentQuestionIndex === allQuestions.length - 1 ? <CheckCircle /> : <PlayArrow />}
             sx={{ minWidth: 140, fontSize: '0.9rem' }}
             size="small"
           >
-            {currentQuestionIndex === exam.questions.length - 1 ? 'Kết thúc' : 'Câu tiếp theo'}
+                            {currentQuestionIndex === allQuestions.length - 1 ? 'Kết thúc' : 'Câu tiếp theo'}
           </Button>
         </Box>
       </Paper>
