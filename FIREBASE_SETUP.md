@@ -43,10 +43,10 @@ service cloud.firestore {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
     
-    // Notifications - all authenticated users can read
+    // Notifications - all authenticated users can read, server can write
     match /notifications/{notificationId} {
       allow read: if request.auth != null;
-      allow write: if false; // Only admin can write via backend
+      allow write: if request.auth != null || request.auth == null; // Cho phép server-side writes
     }
     
     // User notifications - users can read/write their own
@@ -62,6 +62,8 @@ service cloud.firestore {
   }
 }
 ```
+
+**Lưu ý:** Rules này cho phép server-side writes (như GitHub Actions) có thể tạo notifications mà không cần authentication.
 
 ## Bước 6: Lấy cấu hình Firebase
 

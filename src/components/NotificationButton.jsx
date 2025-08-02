@@ -12,7 +12,8 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
-  CircularProgress
+  CircularProgress,
+  Alert
 } from '@mui/material'
 import { 
   Notifications as NotificationsIcon,
@@ -20,13 +21,16 @@ import {
   CheckCircle as SuccessIcon,
   Warning as WarningIcon,
   Error as ErrorIcon,
-  Schedule as ScheduleIcon
+  Schedule as ScheduleIcon,
+  Refresh as RefreshIcon
 } from '@mui/icons-material'
 import { useAuth } from '../hooks/useAuth'
 import { 
   subscribeToNotifications, 
   subscribeToUnreadCount,
-  markNotificationAsRead 
+  markNotificationAsRead,
+  getNotifications,
+  createDemoNotification
 } from '../services/notificationService'
 
 const NotificationButton = () => {
@@ -35,25 +39,68 @@ const NotificationButton = () => {
   const [notifications, setNotifications] = useState([])
   const [unreadCount, setUnreadCount] = useState('0')
   const [loading, setLoading] = useState(false)
+  const [initialLoading, setInitialLoading] = useState(true)
+  const [error, setError] = useState(null)
 
+  // Load initial data
   useEffect(() => {
-    if (!user) return
+    const loadInitialData = async () => {
+      if (!user) return
+      
+      try {
+        setInitialLoading(true)
+        setError(null)
+        
+        // Load initial notifications
+        const initialNotifications = await getNotifications()
+        setNotifications(initialNotifications)
+        
+        console.log('📱 Loaded initial notifications:', initialNotifications.length)
+        
+        // If no notifications, create a demo one
+        if (initialNotifications.length === 0) {
+          console.log('📝 Creating demo notification...')
+          try {
+            await createDemoNotification()
+          } catch (error) {
+            console.log('⚠️ Could not create demo notification:', error.message)
+          }
+        }
+      } catch (error) {
+        console.error('❌ Error loading initial notifications:', error)
+        setError('Không thể tải thông báo')
+      } finally {
+        setInitialLoading(false)
+      }
+    }
+
+    loadInitialData()
+  }, [user])
+
+  // Setup realtime subscriptions
+  useEffect(() => {
+    if (!user || initialLoading) return
+
+    console.log('🔄 Setting up realtime subscriptions...')
 
     // Subscribe to unread count
     const unsubscribeCount = subscribeToUnreadCount(user.uid, (count) => {
+      console.log('📊 Unread count updated:', count)
       setUnreadCount(count)
     })
 
     // Subscribe to notifications
     const unsubscribeNotifications = subscribeToNotifications((notifs) => {
+      console.log('📱 Notifications updated:', notifs.length)
       setNotifications(notifs)
     })
 
     return () => {
+      console.log('🔄 Cleaning up subscriptions...')
       unsubscribeCount()
       unsubscribeNotifications()
     }
-  }, [user])
+  }, [user, initialLoading])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -69,8 +116,26 @@ const NotificationButton = () => {
     try {
       setLoading(true)
       await markNotificationAsRead(user.uid, notificationId)
+      console.log('✅ Marked notification as read:', notificationId)
     } catch (error) {
-      console.error('Error marking notification as read:', error)
+      console.error('❌ Error marking notification as read:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleRefresh = async () => {
+    if (!user) return
+    
+    try {
+      setLoading(true)
+      setError(null)
+      const freshNotifications = await getNotifications()
+      setNotifications(freshNotifications)
+      console.log('🔄 Refreshed notifications:', freshNotifications.length)
+    } catch (error) {
+      console.error('❌ Error refreshing notifications:', error)
+      setError('Không thể tải lại thông báo')
     } finally {
       setLoading(false)
     }
@@ -124,6 +189,7 @@ const NotificationButton = () => {
       <IconButton
         color="inherit"
         onClick={handleClick}
+        disabled={initialLoading}
         sx={{
           '&:hover': {
             transform: 'scale(1.05)',
@@ -162,27 +228,43 @@ const NotificationButton = () => {
         }}
       >
         <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
-          <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <NotificationsIcon />
-            Thông báo
-            {unreadCount !== '0' && (
-              <Chip 
-                label={unreadCount} 
-                color="error" 
-                size="small"
-                sx={{ ml: 'auto' }}
-              />
-            )}
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <NotificationsIcon />
+              Thông báo
+              {unreadCount !== '0' && (
+                <Chip 
+                  label={unreadCount} 
+                  color="error" 
+                  size="small"
+                />
+              )}
+            </Typography>
+            <IconButton 
+              size="small" 
+              onClick={handleRefresh}
+              disabled={loading}
+            >
+              <RefreshIcon fontSize="small" />
+            </IconButton>
+          </Box>
         </Box>
 
-        {loading && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+        {initialLoading && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
             <CircularProgress size={24} />
           </Box>
         )}
 
-        {notifications.length === 0 ? (
+        {error && (
+          <Box sx={{ p: 2 }}>
+            <Alert severity="error" sx={{ mb: 1 }}>
+              {error}
+            </Alert>
+          </Box>
+        )}
+
+        {!initialLoading && notifications.length === 0 && (
           <MenuItem disabled>
             <Box sx={{ textAlign: 'center', width: '100%', py: 2 }}>
               <Typography variant="body2" color="text.secondary">
@@ -190,13 +272,16 @@ const NotificationButton = () => {
               </Typography>
             </Box>
           </MenuItem>
-        ) : (
+        )}
+
+        {!initialLoading && notifications.length > 0 && (
           <List sx={{ p: 0 }}>
             {notifications.map((notification, index) => (
               <Box key={notification.id}>
                 <ListItem 
                   button 
                   onClick={() => handleNotificationClick(notification.id)}
+                  disabled={loading}
                   sx={{
                     '&:hover': {
                       backgroundColor: 'action.hover'
