@@ -13,18 +13,18 @@ import { ArrowBack, Edit, Book } from '@mui/icons-material'
 const ModeSelection = ({ level, onModeSelect, onBack }) => {
   const modes = [
     {
-      id: 'test',
-      name: 'Làm Test',
-      description: 'Kiểm tra kiến thức với các bài test',
-      icon: <Edit />,
-      color: '#FF5722'
-    },
-    {
       id: 'practice',
       name: 'Luyện tập',
       description: 'Học và ôn tập với flashcards',
       icon: <Book />,
       color: '#2196F3'
+    },
+    {
+      id: 'test',
+      name: 'Làm Test',
+      description: 'Kiểm tra kiến thức với các bài test',
+      icon: <Edit />,
+      color: '#FF5722'
     }
   ]
 

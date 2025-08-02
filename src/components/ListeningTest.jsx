@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   Box,
   Paper,
@@ -11,52 +11,46 @@ import {
   FormLabel,
   LinearProgress,
   Chip,
-  Alert,
+  IconButton,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Alert
 } from '@mui/material'
-import { ArrowBack, CheckCircle, PlayArrow, SmartToy } from '@mui/icons-material'
+import { 
+  ArrowBack, 
+  CheckCircle, 
+  PlayArrow, 
+  SmartToy,
+  VolumeUp,
+  VolumeOff
+} from '@mui/icons-material'
 import AIHelper from './AIHelper'
 
-const GrammarExam = ({ exam, onBack, onFinish }) => {
+const ListeningTest = ({ onBack, onFinish }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [score, setScore] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [aiDialogOpen, setAiDialogOpen] = useState(false)
   const [showResults, setShowResults] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(30 * 60) // 30 minutes
+  const [timeLeft, setTimeLeft] = useState(20 * 60) // 20 minutes for listening
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [showTranscript, setShowTranscript] = useState(false)
+  const [audioError, setAudioError] = useState(false)
 
-  const currentQuestion = exam.questions[currentQuestionIndex]
+  // Audio ref
+  const audioRef = useRef(null)
 
-  // Helper function to get correct answer based on question format
-  const getCorrectAnswer = (question) => {
-    if (question.correctAnswer) {
-      return question.correctAnswer
-    } else if (question.answer) {
-      return question.answer
-    }
-    return null
-  }
+  // Import listening exam data
+  const [listeningData, setListeningData] = useState(null)
 
-  // Helper function to get options based on question format
-  const getOptions = (question) => {
-    if (question.options && typeof question.options === 'object') {
-      // For AI-generated questions: { A: "option1", B: "option2", ... }
-      return question.options
-    } else if (Array.isArray(question.options)) {
-      // For sample questions: ["A. option1", "B. option2", ...]
-      const options = {}
-      question.options.forEach((option, index) => {
-        const key = String.fromCharCode(65 + index) // A, B, C, D...
-        options[key] = option
-      })
-      return options
-    }
-    return {}
-  }
+  useEffect(() => {
+    import('../data/listening-demo.json').then((module) => {
+      setListeningData(module.default)
+    })
+  }, [])
 
   useEffect(() => {
     if (timeLeft > 0 && !showResults) {
@@ -81,18 +75,26 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
       setAnswered(true)
       
       // Check if answer is correct
-      const correctAnswer = getCorrectAnswer(currentQuestion)
-      if (value === correctAnswer) {
+      const currentQuestion = listeningData.sections[0].questions[currentQuestionIndex]
+      if (value === currentQuestion.answer) {
         setScore(prev => prev + 1)
       }
     }
   }
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < exam.questions.length - 1) {
+    if (currentQuestionIndex < listeningData.sections[0].questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
       setSelectedAnswer('')
       setAnswered(false)
+      setIsPlaying(false)
+      setShowTranscript(false)
+      setAudioError(false)
+      // Stop current audio
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      }
     } else {
       handleFinishExam()
     }
@@ -108,18 +110,74 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     setScore(0)
     setAnswered(false)
     setShowResults(false)
-    setTimeLeft(30 * 60)
+    setTimeLeft(20 * 60)
+    setIsPlaying(false)
+    setShowTranscript(false)
+    setAudioError(false)
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
   }
 
+  const handlePlayAudio = () => {
+    if (!listeningData) return
+
+    const currentQuestion = listeningData.sections[0].questions[currentQuestionIndex]
+    const audioPath = `/audio/${currentQuestion.audio}`
+
+    if (isPlaying) {
+      // Stop audio
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      }
+      setIsPlaying(false)
+    } else {
+      // Play audio
+      if (!audioRef.current) {
+        audioRef.current = new Audio()
+      }
+
+      audioRef.current.src = audioPath
+      audioRef.current.onloadstart = () => {
+        setIsPlaying(true)
+        setAudioError(false)
+      }
+      audioRef.current.onerror = () => {
+        setIsPlaying(false)
+        setAudioError(true)
+      }
+      audioRef.current.onended = () => {
+        setIsPlaying(false)
+      }
+      audioRef.current.play().catch(() => {
+        setIsPlaying(false)
+        setAudioError(true)
+      })
+    }
+  }
+
+  if (!listeningData) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Typography>Loading...</Typography>
+      </Box>
+    )
+  }
+
+  const currentQuestion = listeningData.sections[0].questions[currentQuestionIndex]
+  const totalQuestions = listeningData.sections[0].questions.length
+
   if (showResults) {
-    const percentage = (score / exam.questions.length) * 100
+    const percentage = (score / totalQuestions) * 100
     const grade = percentage >= 80 ? 'A' : percentage >= 60 ? 'B' : percentage >= 40 ? 'C' : 'D'
     
     return (
       <Box sx={{ 
         display: 'flex', 
         flexDirection: 'column', 
-        height: '100vh',
+        height: '75vh',
         p: { xs: 1, sm: 2 },
         maxWidth: '800px',
         mx: 'auto'
@@ -129,21 +187,21 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           display: 'flex', 
           flexDirection: 'column',
           p: { xs: 2, sm: 3 },
-          maxHeight: '90vh'
+          maxHeight: '70vh'
         }}>
           {/* Header */}
           <Box sx={{ 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-between',
-            mb: { xs: 2, sm: 3 },
+            mb: { xs: 1, sm: 2 },
             flexShrink: 0
           }}>
-            <Button onClick={onBack} startIcon={<ArrowBack />}>
+            <Button onClick={onBack} startIcon={<ArrowBack />} size="small">
               Quay lại
             </Button>
-            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-              Kết quả bài thi
+            <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+              Kết quả bài thi nghe hiểu
             </Typography>
             <Box />
           </Box>
@@ -151,7 +209,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           {/* Results */}
           <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Typography variant="h4" gutterBottom sx={{ color: 'primary.main' }}>
-              {exam.name}
+              {listeningData.title}
             </Typography>
             
             <Box sx={{ textAlign: 'center', mb: 4 }}>
@@ -163,7 +221,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                 {grade}
               </Typography>
               <Typography variant="h4" gutterBottom>
-                {score}/{exam.questions.length} điểm
+                {score}/{totalQuestions} điểm
               </Typography>
               <Typography variant="h6" color="text.secondary">
                 ({percentage.toFixed(1)}%)
@@ -177,7 +235,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                 variant="outlined"
               />
               <Chip 
-                label={`Sai: ${exam.questions.length - score}`} 
+                label={`Sai: ${totalQuestions - score}`} 
                 color="error" 
                 variant="outlined"
               />
@@ -203,9 +261,6 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
       </Box>
     )
   }
-
-  const options = getOptions(currentQuestion)
-  const correctAnswer = getCorrectAnswer(currentQuestion)
 
   return (
     <Box sx={{ 
@@ -235,14 +290,14 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             Quay lại
           </Button>
           <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
-            {exam.name}
+            {listeningData.title}
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
               {formatTime(timeLeft)}
             </Typography>
             <Chip 
-              label={`${currentQuestionIndex + 1}/${exam.questions.length}`} 
+              label={`${currentQuestionIndex + 1}/${totalQuestions}`} 
               size="small"
               color="primary"
               sx={{ fontSize: '0.8rem' }}
@@ -253,7 +308,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         {/* Progress */}
         <LinearProgress 
           variant="determinate" 
-          value={((currentQuestionIndex + 1) / exam.questions.length) * 100}
+          value={((currentQuestionIndex + 1) / totalQuestions) * 100}
           sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0 }}
         />
 
@@ -266,6 +321,50 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           }}>
             <strong>Câu {currentQuestionIndex + 1}:</strong> {currentQuestion.question}
           </Typography>
+
+          {/* Audio Controls */}
+          <Box sx={{ display: 'flex', gap: 2, mb: 2, flexShrink: 0 }}>
+            <Button
+              variant="outlined"
+              startIcon={isPlaying ? <VolumeOff /> : <VolumeUp />}
+              onClick={handlePlayAudio}
+              size="small"
+              disabled={audioError}
+            >
+              {isPlaying ? 'Dừng' : 'Nghe'}
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => setShowTranscript(!showTranscript)}
+              size="small"
+            >
+              {showTranscript ? 'Ẩn' : 'Xem'} Script
+            </Button>
+          </Box>
+
+          {/* Audio Error Alert */}
+          {audioError && (
+            <Alert severity="warning" sx={{ mb: 2, flexShrink: 0 }}>
+              Không thể phát file âm thanh. Vui lòng xem script để làm bài.
+            </Alert>
+          )}
+
+          {/* Transcript */}
+          {showTranscript && (
+            <Box sx={{ 
+              p: 2, 
+              mb: 2, 
+              bgcolor: 'grey.50', 
+              borderRadius: 2, 
+              flexShrink: 0,
+              border: '1px solid',
+              borderColor: 'grey.300'
+            }}>
+              <Typography variant="body2" sx={{ whiteSpace: 'pre-line', fontSize: '0.9rem' }}>
+                {currentQuestion.transcript}
+              </Typography>
+            </Box>
+          )}
 
           {/* Answer Options */}
           <FormControl component="fieldset" sx={{ 
@@ -285,22 +384,22 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
               onChange={(e) => handleAnswerSelect(e.target.value)}
               sx={{ flex: 1, overflow: 'auto' }}
             >
-              {Object.entries(options).map(([key, value]) => (
+              {currentQuestion.options.map((option, index) => (
                 <FormControlLabel
-                  key={key}
-                  value={key}
+                  key={index}
+                  value={String.fromCharCode(65 + index)} // A, B, C, D...
                   control={<Radio size="small" />}
-                  label={`${key}. ${value}`}
+                  label={`${String.fromCharCode(65 + index)}. ${option}`}
                   sx={{
                     mb: 0.5,
                     p: 0.5,
                     borderRadius: 1,
                     border: '1px solid',
-                    borderColor: answered && key === correctAnswer ? 'success.main' : 
-                               answered && key === selectedAnswer && key !== correctAnswer ? 'error.main' : 
+                    borderColor: answered && String.fromCharCode(65 + index) === currentQuestion.answer ? 'success.main' : 
+                               answered && String.fromCharCode(65 + index) === selectedAnswer && String.fromCharCode(65 + index) !== currentQuestion.answer ? 'error.main' : 
                                'grey.300',
-                    bgcolor: answered && key === correctAnswer ? 'success.light' : 
-                            answered && key === selectedAnswer && key !== correctAnswer ? 'error.light' : 
+                    bgcolor: answered && String.fromCharCode(65 + index) === currentQuestion.answer ? 'success.light' : 
+                            answered && String.fromCharCode(65 + index) === selectedAnswer && String.fromCharCode(65 + index) !== currentQuestion.answer ? 'error.light' : 
                             'transparent',
                     fontSize: '0.9rem'
                   }}
@@ -313,35 +412,28 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           {answered && (
             <Box sx={{ mt: { xs: 1, sm: 1.5 }, p: { xs: 1, sm: 1.5 }, bgcolor: 'grey.50', borderRadius: 2, flexShrink: 0 }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: 'block', mb: 0.5 }}>
-                {selectedAnswer === correctAnswer ? '✅ Đúng!' : '❌ Sai!'}
+                {selectedAnswer === currentQuestion.answer ? '✅ Đúng!' : '❌ Sai!'}
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: 'block', mb: 0.5 }}>
-                Đáp án đúng: <strong>{correctAnswer}</strong>
+                Đáp án đúng: <strong>{currentQuestion.answer}</strong>
               </Typography>
-              {currentQuestion.explanation && (
-                <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
-                  {currentQuestion.explanation}
-                </Typography>
-              )}
               
-              {/* AI Helper Button - only show for AI-generated questions */}
-              {!exam.isSample && (
-                <Box sx={{ mt: 1, display: 'flex', justifyContent: 'center' }}>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    onClick={() => setAiDialogOpen(true)}
-                    startIcon={<SmartToy />}
-                    sx={{
-                      fontSize: { xs: '0.6rem', sm: '0.7rem' },
-                      py: 0.5,
-                      px: 1
-                    }}
-                  >
-                    Hỏi đáp cùng AI
-                  </Button>
-                </Box>
-              )}
+              {/* AI Helper Button */}
+              <Box sx={{ mt: 1, display: 'flex', justifyContent: 'center' }}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => setAiDialogOpen(true)}
+                  startIcon={<SmartToy />}
+                  sx={{
+                    fontSize: { xs: '0.6rem', sm: '0.7rem' },
+                    py: 0.5,
+                    px: 1
+                  }}
+                >
+                  Hỏi đáp cùng AI
+                </Button>
+              </Box>
             </Box>
           )}
         </Box>
@@ -357,28 +449,26 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             variant="contained"
             onClick={handleNextQuestion}
             disabled={!answered}
-            startIcon={currentQuestionIndex === exam.questions.length - 1 ? <CheckCircle /> : <PlayArrow />}
+            startIcon={currentQuestionIndex === totalQuestions - 1 ? <CheckCircle /> : <PlayArrow />}
             sx={{ minWidth: 140, fontSize: '0.9rem' }}
             size="small"
           >
-            {currentQuestionIndex === exam.questions.length - 1 ? 'Kết thúc' : 'Câu tiếp theo'}
+            {currentQuestionIndex === totalQuestions - 1 ? 'Kết thúc' : 'Câu tiếp theo'}
           </Button>
         </Box>
       </Paper>
 
-      {/* AI Helper Dialog - only show for AI-generated questions */}
-      {!exam.isSample && (
-        <AIHelper
-          open={aiDialogOpen}
-          onClose={() => setAiDialogOpen(false)}
-          question={currentQuestion.question}
-          userAnswer={selectedAnswer}
-          correctAnswer={correctAnswer}
-          questionType="grammar"
-        />
-      )}
+      {/* AI Helper Dialog */}
+      <AIHelper
+        open={aiDialogOpen}
+        onClose={() => setAiDialogOpen(false)}
+        question={currentQuestion.question}
+        userAnswer={selectedAnswer}
+        correctAnswer={currentQuestion.answer}
+        questionType="listening"
+      />
     </Box>
   )
 }
 
-export default GrammarExam 
+export default ListeningTest 

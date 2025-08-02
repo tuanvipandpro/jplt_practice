@@ -28,13 +28,14 @@ import KatakanaTest from './KatakanaTest'
 import GrammarTest from './GrammarTest'
 import KanjiTest from './KanjiTest'
 import VocabularyTest from './VocabularyTest'
-import ExamManager from './ExamManager'
+import ListeningTest from './ListeningTest'
+import ExamSelection from './ExamSelection'
 import GrammarExam from './GrammarExam'
 
 const TestMode = ({ level, onBack }) => {
   const [currentTest, setCurrentTest] = useState(null)
   const [testResults, setTestResults] = useState(null)
-  const [showExamManager, setShowExamManager] = useState(false)
+  const [showExamSelection, setShowExamSelection] = useState(false)
   const [currentExam, setCurrentExam] = useState(null)
 
   const testTypes = [
@@ -71,19 +72,19 @@ const TestMode = ({ level, onBack }) => {
       available: true
     },
     {
-      id: 'grammar-exam',
-      name: 'Bộ đề thi AI',
-      description: 'Làm bài thi với câu hỏi được tạo bởi AI',
-      icon: <SmartToy />,
-      color: '#FF5722',
-      available: true
-    },
-    {
       id: 'vocabulary',
       name: 'Từ vựng',
       description: 'Kiểm tra từ vựng N5',
       icon: <School />,
       color: '#FF9800',
+      available: true
+    },
+    {
+      id: 'grammar-exam',
+      name: 'Bộ đề thi',
+      description: 'Làm bài thi với đề mẫu hoặc tạo đề mới bằng AI',
+      icon: <SmartToy />,
+      color: '#FF5722',
       available: true
     },
     {
@@ -100,7 +101,7 @@ const TestMode = ({ level, onBack }) => {
     if (!testType.available) return
     
     if (testType.id === 'grammar-exam') {
-      setShowExamManager(true)
+      setShowExamSelection(true)
     } else {
       setCurrentTest(testType)
     }
@@ -118,7 +119,7 @@ const TestMode = ({ level, onBack }) => {
 
   const handleStartExam = (exam) => {
     setCurrentExam(exam)
-    setShowExamManager(false)
+    setShowExamSelection(false)
   }
 
   // Render specific test components
@@ -137,6 +138,9 @@ const TestMode = ({ level, onBack }) => {
     }
     if (currentTest.id === 'vocabulary') {
       return <VocabularyTest onBack={handleBackFromTest} onFinish={finishTest} />
+    }
+    if (currentTest.id === 'listening') {
+      return <ListeningTest onBack={handleBackFromTest} onFinish={finishTest} />
     }
     
     // Fallback for other tests (not implemented yet)
@@ -363,10 +367,10 @@ const TestMode = ({ level, onBack }) => {
         </Grid>
       </Box>
 
-      {/* Exam Manager Dialog */}
-      <ExamManager
-        open={showExamManager}
-        onClose={() => setShowExamManager(false)}
+      {/* Exam Selection Dialog */}
+      <ExamSelection
+        open={showExamSelection}
+        onClose={() => setShowExamSelection(false)}
         onStartExam={handleStartExam}
       />
     </>

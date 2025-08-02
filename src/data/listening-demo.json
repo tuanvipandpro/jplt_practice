@@ -1,0 +1,80 @@
+{
+  "title": "Đề Thi Nghe Hiểu Tiếng Nhật N5",
+  "sections": [
+    {
+      "section_title": "PHẦN NGHE HIỂU",
+      "questions": [
+        {
+          "question": "1. 女の人は何を買いましたか。",
+          "options": ["A. りんご", "B. みかん", "C. バナナ", "D. ぶどう"],
+          "answer": "A",
+          "audio": "listening_1.mp3",
+          "transcript": "女：すみません、りんごをください。\n店員：はい、りんごですね。\n女：はい、お願いします。"
+        },
+        {
+          "question": "2. 男の人は何時に起きますか。",
+          "options": ["A. 6時", "B. 7時", "C. 8時", "D. 9時"],
+          "answer": "B",
+          "audio": "listening_2.mp3",
+          "transcript": "女：毎日何時に起きますか。\n男：7時に起きます。\n女：早いですね。"
+        },
+        {
+          "question": "3. 田中さんはどこに住んでいますか。",
+          "options": ["A. 東京", "B. 大阪", "C. 京都", "D. 横浜"],
+          "answer": "A",
+          "audio": "listening_3.mp3",
+          "transcript": "女：田中さんはどこに住んでいますか。\n男：東京に住んでいます。\n女：そうですか。"
+        },
+        {
+          "question": "4. 山田さんは何をしていますか。",
+          "options": ["A. 本を読んでいます", "B. テレビを見ています", "C. 音楽を聞いています", "D. 料理を作っています"],
+          "answer": "C",
+          "audio": "listening_4.mp3",
+          "transcript": "女：山田さんは今何をしていますか。\n男：音楽を聞いています。\n女：どんな音楽ですか。"
+        },
+        {
+          "question": "5. 明日は何曜日ですか。",
+          "options": ["A. 月曜日", "B. 火曜日", "C. 水曜日", "D. 木曜日"],
+          "answer": "C",
+          "audio": "listening_5.mp3",
+          "transcript": "女：明日は何曜日ですか。\n男：水曜日です。\n女：ありがとうございます。"
+        },
+        {
+          "question": "6. 佐藤さんは何歳ですか。",
+          "options": ["A. 20歳", "B. 25歳", "C. 30歳", "D. 35歳"],
+          "answer": "B",
+          "audio": "listening_6.mp3",
+          "transcript": "女：佐藤さんは何歳ですか。\n男：25歳です。\n女：若いですね。"
+        },
+        {
+          "question": "7. 鈴木さんは何を食べましたか。",
+          "options": ["A. ラーメン", "B. カレー", "C. うどん", "D. そば"],
+          "answer": "D",
+          "audio": "listening_7.mp3",
+          "transcript": "女：鈴木さんは何を食べましたか。\n男：そばを食べました。\n女：おいしかったですか。"
+        },
+        {
+          "question": "8. 高橋さんはどこで働いていますか。",
+          "options": ["A. 学校", "B. 病院", "C. 会社", "D. 銀行"],
+          "answer": "C",
+          "audio": "listening_8.mp3",
+          "transcript": "女：高橋さんはどこで働いていますか。\n男：会社で働いています。\n女：どんな会社ですか。"
+        },
+        {
+          "question": "9. 渡辺さんは何が好きですか。",
+          "options": ["A. スポーツ", "B. 音楽", "C. 映画", "D. 読書"],
+          "answer": "A",
+          "audio": "listening_9.mp3",
+          "transcript": "女：渡辺さんは何が好きですか。\n男：スポーツが好きです。\n女：どんなスポーツですか。"
+        },
+        {
+          "question": "10. 伊藤さんは何時に寝ますか。",
+          "options": ["A. 10時", "B. 11時", "C. 12時", "D. 1時"],
+          "answer": "B",
+          "audio": "listening_10.mp3",
+          "transcript": "女：伊藤さんは何時に寝ますか。\n男：11時に寝ます。\n女：早く寝ますね。"
+        }
+      ]
+    }
+  ]
+} 
