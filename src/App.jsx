@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { CssBaseline, Container, Box } from '@mui/material'
 import './App.css'
+import Header from './components/Header'
 import LevelSelection from './components/LevelSelection'
 import ModeSelection from './components/ModeSelection'
 import TestMode from './components/TestMode'
@@ -113,20 +114,7 @@ function App() {
           flexDirection: 'column',
         }}
       >
-        <Box 
-          className="app-header"
-          sx={{
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(10px)',
-            padding: 1.5,
-            textAlign: 'center',
-            color: 'white',
-            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-          }}
-        >
-          <h1 style={{ margin: '0.5rem 0', fontSize: '1.5rem' }}>日本語学習</h1>
-          <p style={{ margin: '0.25rem 0', fontSize: '0.9rem' }}>Japanese Learning App</p>
-        </Box>
+        <Header />
         <Container 
           className="app-main"
           maxWidth="lg"
