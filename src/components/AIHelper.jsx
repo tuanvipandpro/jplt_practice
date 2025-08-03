@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import { SmartToy, Close } from '@mui/icons-material'
 
-const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, questionType }) => {
+const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, questionType, options, isSample }) => {
   const [loading, setLoading] = useState(false)
   const [aiResponse, setAiResponse] = useState('')
   const [error, setError] = useState('')
@@ -25,14 +25,21 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
     
     if (questionType === 'grammar') {
       prompt += `**Câu hỏi:** ${question}\n`
-      prompt += `**Đáp án của tôi:** ${userAnswer}\n`
-      prompt += `**Đáp án đúng:** ${correctAnswer}\n\n`
+      prompt += `**Các lựa chọn:**\n`
+      if (options) {
+        Object.entries(options).forEach(([key, value]) => {
+          prompt += `- ${key}: ${value}\n`
+        })
+      }
+      prompt += `**Đáp án của tôi:** ${userAnswer}${options && options[userAnswer] ? ` (${options[userAnswer]})` : ''}\n`
+      prompt += `**Đáp án đúng:** ${correctAnswer}${options && options[correctAnswer] ? ` (${options[correctAnswer]})` : ''}\n\n`
       prompt += `Hãy giải thích chi tiết bằng tiếng Việt, sử dụng markdown format:\n\n`
       prompt += `## 📝 Phân tích\n`
       prompt += `### 1. Tại sao đáp án đúng là "${correctAnswer}"?\n`
-      prompt += `### 2. Cấu trúc ngữ pháp\n`
-      prompt += `### 3. Ví dụ khác\n`
-      prompt += `### 4. Lời khuyên học tập\n\n`
+      prompt += `### 2. Tại sao các đáp án khác sai?\n`
+      prompt += `### 3. Cấu trúc ngữ pháp liên quan\n`
+      prompt += `### 4. Ví dụ tương tự\n`
+      prompt += `### 5. Lời khuyên học tập\n\n`
       prompt += `**Lưu ý:** Sử dụng markdown để format đẹp, bao gồm:\n`
       prompt += `- **Bold** cho từ khóa quan trọng\n`
       prompt += `- *Italic* cho nhấn mạnh\n`
@@ -159,17 +166,17 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
         color: 'white'
       }}>
         <SmartToy />
-        Hỏi đáp cùng AI
+        Giải thích chi tiết với AI
       </DialogTitle>
       
       <DialogContent sx={{ p: 3 }}>
         {!loading && !aiResponse && !error && (
           <Box sx={{ textAlign: 'center', py: 4 }}>
             <Typography variant="h6" gutterBottom>
-              Bạn muốn AI giải thích gì về câu hỏi này?
+              Bạn muốn AI giải thích chi tiết về câu hỏi này?
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              AI sẽ phân tích câu hỏi và đưa ra lời giải thích chi tiết
+              AI sẽ phân tích tại sao đáp án đúng và tại sao các đáp án khác sai, cùng với cấu trúc ngữ pháp liên quan
             </Typography>
             <Button
               variant="contained"
@@ -177,7 +184,7 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
               startIcon={<SmartToy />}
               sx={{ bgcolor: '#2196F3' }}
             >
-              Hỏi AI
+              Giải thích với AI
             </Button>
           </Box>
         )}

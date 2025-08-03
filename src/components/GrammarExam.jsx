@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
 import {
   Box,
   Paper,
@@ -15,10 +15,189 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Grid,
+  Card,
+  CardContent
 } from '@mui/material'
-import { ArrowBack, CheckCircle, PlayArrow, SmartToy } from '@mui/icons-material'
+import { ArrowBack, CheckCircle, PlayArrow, SmartToy, NavigateNext, NavigateBefore, Flag, FlagOutlined, Visibility, Send } from '@mui/icons-material'
 import AIHelper from './AIHelper'
+
+// Review Component - moved outside to prevent recreation
+const ReviewComponent = ({ 
+  allQuestions, 
+  userAnswers, 
+  flaggedQuestions, 
+  reviewScrollRef,
+  setCurrentQuestionIndex,
+  setShowReview,
+  handleSubmitExam
+}) => {
+  const answeredCount = Object.keys(userAnswers).length
+  const flaggedCount = flaggedQuestions.size
+
+  return (
+    <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      height: '100vh',
+      p: { xs: 1, sm: 2 },
+      maxWidth: '900px',
+      mx: 'auto'
+    }}>
+      <Paper elevation={8} sx={{ 
+        display: 'flex', 
+        flexDirection: 'column',
+        height: '90vh',
+        p: { xs: 2, sm: 3 }
+      }}>
+        {/* Header */}
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          mb: { xs: 1, sm: 2 },
+          flexShrink: 0
+        }}>
+          <Button onClick={() => setShowReview(false)} startIcon={<ArrowBack />} size="small">
+            Quay lại
+          </Button>
+          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+            Review bài thi
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Chip 
+              label={`Đã trả lời: ${answeredCount}/${allQuestions.length}`} 
+              size="small"
+              color="primary"
+              sx={{ fontSize: '0.8rem' }}
+            />
+            {flaggedCount > 0 && (
+              <Chip 
+                label={`Flag: ${flaggedCount}`} 
+                size="small"
+                color="warning"
+                sx={{ fontSize: '0.8rem' }}
+              />
+            )}
+          </Box>
+        </Box>
+
+        {/* Review Content */}
+        <Box 
+          ref={reviewScrollRef}
+          sx={{ 
+            overflow: 'auto', 
+            p: 1,
+            height: 'calc(90vh - 120px)', // Fixed height minus header and buttons
+            '&::-webkit-scrollbar': {
+              width: '8px'
+            },
+            '&::-webkit-scrollbar-track': {
+              background: '#f1f1f1'
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#888',
+              borderRadius: '4px'
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+              background: '#555'
+            }
+          }}
+        >
+          <Grid container spacing={2}>
+            {allQuestions.map((question, index) => {
+              const userAnswer = userAnswers[index]
+              const isFlagged = flaggedQuestions.has(index)
+              const isAnswered = !!userAnswer
+              
+              return (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Card 
+                    sx={{ 
+                      cursor: 'pointer',
+                      border: '2px solid',
+                      borderColor: isFlagged ? 'warning.main' : 
+                                 isAnswered ? 'success.main' : 'grey.300',
+                      '&:hover': {
+                        borderColor: 'primary.main',
+                        transform: 'translateY(-2px)'
+                      }
+                    }}
+                    onClick={() => {
+                      setCurrentQuestionIndex(index)
+                      setShowReview(false)
+                    }}
+                  >
+                    <CardContent sx={{ p: 2 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+                        <Typography variant="h6" sx={{ fontSize: '1rem', fontWeight: 'bold' }}>
+                          Câu {index + 1}
+                        </Typography>
+                        <Box sx={{ display: 'flex', gap: 0.5 }}>
+                          {isFlagged && <Flag sx={{ color: 'warning.main', fontSize: '1rem' }} />}
+                          {isAnswered && <CheckCircle sx={{ color: 'success.main', fontSize: '1rem' }} />}
+                        </Box>
+                      </Box>
+                      
+                      <Typography variant="body2" sx={{ 
+                        fontSize: '0.8rem',
+                        color: 'text.secondary',
+                        mb: 1,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical'
+                      }}>
+                        {question.question}
+                      </Typography>
+
+                      {isAnswered && (
+                        <Typography variant="caption" sx={{ 
+                          color: 'text.secondary',
+                          fontSize: '0.7rem'
+                        }}>
+                          Đáp án: {userAnswer}
+                        </Typography>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              )
+            })}
+          </Grid>
+        </Box>
+
+        {/* Action Buttons */}
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          mt: { xs: 1, sm: 2 },
+          flexShrink: 0
+        }}>
+          <Button
+            variant="outlined"
+            onClick={() => setShowReview(false)}
+            startIcon={<ArrowBack />}
+            size="small"
+          >
+            Tiếp tục làm bài
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleSubmitExam}
+            startIcon={<Send />}
+            size="small"
+            color="success"
+          >
+            Nộp bài
+          </Button>
+        </Box>
+      </Paper>
+    </Box>
+  )
+}
 
 const GrammarExam = ({ exam, onBack, onFinish }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -28,11 +207,25 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   const [aiDialogOpen, setAiDialogOpen] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const [timeLeft, setTimeLeft] = useState(30 * 60) // 30 minutes
+  const [userAnswers, setUserAnswers] = useState({}) // Store all user answers
+  const [flaggedQuestions, setFlaggedQuestions] = useState(new Set()) // Store flagged questions
+  const [showReview, setShowReview] = useState(false) // Show review mode
+  const [reviewScrollTop, setReviewScrollTop] = useState(0) // Store scroll position in state
+  const reviewScrollRef = useRef(null)
 
   // Handle both old format (exam.questions) and new format (exam.sections)
-  const allQuestions = exam.sections 
-    ? exam.sections.flatMap(section => section.questions)
-    : exam.questions || []
+  const allQuestions = useMemo(() => {
+    let questions = exam.sections 
+      ? exam.sections.flatMap(section => section.questions)
+      : exam.questions || []
+
+    // For sample exam, ensure we have exactly 50 questions
+    if (exam.isSample && questions.length > 50) {
+      questions = questions.slice(0, 50)
+    }
+    
+    return questions
+  }, [exam.sections, exam.questions, exam.isSample])
 
   const currentQuestion = allQuestions[currentQuestionIndex]
 
@@ -48,7 +241,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
 
   // Helper function to get options based on question format
   const getOptions = (question) => {
-    if (question.options && typeof question.options === 'object') {
+    if (question.options && typeof question.options === 'object' && !Array.isArray(question.options)) {
       // For AI-generated questions: { A: "option1", B: "option2", ... }
       return question.options
     } else if (Array.isArray(question.options)) {
@@ -63,6 +256,13 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     return {}
   }
 
+  // Helper function to get image path
+  const getImagePath = (imageName) => {
+    if (!imageName) return null
+    // Use relative path from public directory with base path
+    return `/jplt_practice/data/images/demo/${imageName}`
+  }
+
   useEffect(() => {
     if (timeLeft > 0 && !showResults) {
       const timer = setInterval(() => {
@@ -74,6 +274,37 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     }
   }, [timeLeft, showResults])
 
+  // Initialize selectedAnswer when question changes
+  useEffect(() => {
+    setSelectedAnswer(userAnswers[currentQuestionIndex] || '')
+    setAnswered(!!userAnswers[currentQuestionIndex])
+  }, [currentQuestionIndex, userAnswers])
+
+  // Restore scroll position when entering review mode
+  useLayoutEffect(() => {
+    if (showReview && reviewScrollRef.current && reviewScrollTop > 0) {
+      reviewScrollRef.current.scrollTop = reviewScrollTop
+    }
+  }, [showReview])
+
+  // Add scroll event listener for review mode
+  useEffect(() => {
+    if (!showReview || !reviewScrollRef.current) return
+
+    const handleScroll = () => {
+      if (reviewScrollRef.current) {
+        setReviewScrollTop(reviewScrollRef.current.scrollTop)
+      }
+    }
+    
+    const scrollElement = reviewScrollRef.current
+    scrollElement.addEventListener('scroll', handleScroll, { passive: true })
+    
+    return () => {
+      scrollElement.removeEventListener('scroll', handleScroll)
+    }
+  }, [showReview])
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
@@ -81,26 +312,82 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   }
 
   const handleAnswerSelect = (value) => {
-    if (!answered) {
-      setSelectedAnswer(value)
-      setAnswered(true)
+    const previousAnswer = userAnswers[currentQuestionIndex]
+    const wasCorrect = previousAnswer === correctAnswer
+    const isCorrect = value === correctAnswer
+    
+
+    
+    setSelectedAnswer(value)
+    setAnswered(true)
+    
+    // Store user answer
+    setUserAnswers(prev => ({
+      ...prev,
+      [currentQuestionIndex]: value
+    }))
+    
+    // Update score: only change score if this is a new answer or changed answer
+    setScore(prev => {
+      let newScore = prev
       
-      // Check if answer is correct
-      const correctAnswer = getCorrectAnswer(currentQuestion)
-      if (value === correctAnswer) {
-        setScore(prev => prev + 1)
+      // If this is the first time answering this question
+      if (previousAnswer === undefined) {
+        if (isCorrect) {
+          newScore = prev + 1
+        }
+      } else {
+        // If changing answer
+        if (wasCorrect && !isCorrect) {
+          // Was correct, now wrong - decrease score
+          newScore = Math.max(0, prev - 1)
+        } else if (!wasCorrect && isCorrect) {
+          // Was wrong, now correct - increase score
+          newScore = prev + 1
+        }
+        // If was wrong and still wrong, no change
       }
-    }
+      
+      return newScore
+    })
   }
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < allQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
-      setSelectedAnswer('')
-      setAnswered(false)
+      setSelectedAnswer(userAnswers[currentQuestionIndex + 1] || '')
+      setAnswered(!!userAnswers[currentQuestionIndex + 1])
     } else {
       handleFinishExam()
     }
+  }
+
+  const handlePrevQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(prev => prev - 1)
+      setSelectedAnswer(userAnswers[currentQuestionIndex - 1] || '')
+      setAnswered(!!userAnswers[currentQuestionIndex - 1])
+    }
+  }
+
+  const handleFlagQuestion = () => {
+    setFlaggedQuestions(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(currentQuestionIndex)) {
+        newSet.delete(currentQuestionIndex)
+      } else {
+        newSet.add(currentQuestionIndex)
+      }
+      return newSet
+    })
+  }
+
+  const handleSubmitExam = () => {
+    handleFinishExam()
+  }
+
+  const handleReviewExam = () => {
+    setShowReview(true)
   }
 
   const handleFinishExam = () => {
@@ -113,7 +400,10 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     setScore(0)
     setAnswered(false)
     setShowResults(false)
+    setShowReview(false)
     setTimeLeft(30 * 60)
+    setUserAnswers({})
+    setFlaggedQuestions(new Set())
   }
 
   if (showResults) {
@@ -209,16 +499,33 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     )
   }
 
+
+
+  if (showReview) {
+    return (
+      <ReviewComponent 
+        allQuestions={allQuestions}
+        userAnswers={userAnswers}
+        flaggedQuestions={flaggedQuestions}
+        reviewScrollRef={reviewScrollRef}
+        setCurrentQuestionIndex={setCurrentQuestionIndex}
+        setShowReview={setShowReview}
+        handleSubmitExam={handleSubmitExam}
+      />
+    )
+  }
+
   const options = getOptions(currentQuestion)
   const correctAnswer = getCorrectAnswer(currentQuestion)
+  const imagePath = getImagePath(currentQuestion.image)
 
   return (
     <Box sx={{ 
       display: 'flex', 
       flexDirection: 'column', 
-      height: '75vh',
+      height: '90vh',
       p: { xs: 1, sm: 2 },
-      maxWidth: '800px',
+      maxWidth: '900px',
       mx: 'auto'
     }}>
       <Paper elevation={8} sx={{ 
@@ -226,7 +533,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         display: 'flex', 
         flexDirection: 'column',
         p: { xs: 2, sm: 3 },
-        maxHeight: '70vh'
+        maxHeight: '85vh'
       }}>
         {/* Header */}
         <Box sx={{ 
@@ -247,7 +554,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
               {formatTime(timeLeft)}
             </Typography>
             <Chip 
-                              label={`${currentQuestionIndex + 1}/${allQuestions.length}`} 
+              label={`${currentQuestionIndex + 1}/${allQuestions.length}`} 
               size="small"
               color="primary"
               sx={{ fontSize: '0.8rem' }}
@@ -255,15 +562,57 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           </Box>
         </Box>
 
+        {/* Action Buttons - Moved to top */}
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: { xs: 1, sm: 2 },
+          flexShrink: 0
+        }}>
+          {/* Left side - Flag and Review */}
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Button
+              variant="outlined"
+              onClick={handleFlagQuestion}
+              startIcon={flaggedQuestions.has(currentQuestionIndex) ? <Flag /> : <FlagOutlined />}
+              size="small"
+              color={flaggedQuestions.has(currentQuestionIndex) ? 'warning' : 'primary'}
+            >
+              {flaggedQuestions.has(currentQuestionIndex) ? 'Bỏ flag' : 'Flag'}
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={handleReviewExam}
+              startIcon={<Visibility />}
+              size="small"
+            >
+              Review
+            </Button>
+          </Box>
+
+          {/* Right side - Submit */}
+          <Button
+            variant="contained"
+            onClick={handleSubmitExam}
+            startIcon={<Send />}
+            size="small"
+            color="success"
+          >
+            Nộp bài
+          </Button>
+        </Box>
+
         {/* Progress */}
         <LinearProgress 
           variant="determinate" 
-                          value={((currentQuestionIndex + 1) / allQuestions.length) * 100}
+          value={((currentQuestionIndex + 1) / allQuestions.length) * 100}
           sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0 }}
         />
 
-        {/* Question */}
+        {/* Question Content */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+          {/* Question Text */}
           <Typography variant="h6" gutterBottom sx={{ 
             fontSize: { xs: '1rem', sm: '1.1rem' },
             mb: { xs: 1, sm: 2 },
@@ -271,6 +620,42 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           }}>
             <strong>Câu {currentQuestionIndex + 1}:</strong> {currentQuestion.question}
           </Typography>
+
+          {/* Image Display - Reduced size */}
+          {imagePath && (
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              mb: { xs: 1, sm: 1.5 },
+              flexShrink: 0
+            }}>
+              <Box sx={{
+                maxWidth: '60%', // Reduced from 80%
+                maxHeight: '120px', // Reduced from 200px
+                borderRadius: 2,
+                overflow: 'hidden',
+                border: '2px solid',
+                borderColor: 'grey.300',
+                bgcolor: 'grey.50'
+              }}>
+                <img
+                  src={imagePath}
+                  alt="Question Image"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '120px', // Reduced from 200px
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  onError={(e) => {
+                    console.error('Failed to load image:', imagePath)
+                    e.target.style.display = 'none'
+                  }}
+                />
+              </Box>
+            </Box>
+          )}
 
           {/* Answer Options */}
           <FormControl component="fieldset" sx={{ 
@@ -313,75 +698,105 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
               ))}
             </RadioGroup>
           </FormControl>
+        </Box>
 
-          {/* Feedback */}
-          {answered && (
-            <Box sx={{ mt: { xs: 1, sm: 1.5 }, p: { xs: 1, sm: 1.5 }, bgcolor: 'grey.50', borderRadius: 2, flexShrink: 0 }}>
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: 'block', mb: 0.5 }}>
+        {/* Feedback - Moved to bottom */}
+        {answered && (
+          <Box sx={{ 
+            mt: { xs: 1, sm: 1.5 }, 
+            p: { xs: 1.5, sm: 2 }, 
+            bgcolor: 'grey.50', 
+            borderRadius: 2, 
+            flexShrink: 0,
+            border: '1px solid',
+            borderColor: selectedAnswer === correctAnswer ? 'success.main' : 'error.main'
+          }}>
+            {/* Result Status */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+              <Typography variant="body2" sx={{ 
+                fontWeight: 'bold',
+                color: selectedAnswer === correctAnswer ? 'success.main' : 'error.main',
+                fontSize: { xs: '0.8rem', sm: '0.9rem' }
+              }}>
                 {selectedAnswer === correctAnswer ? '✅ Đúng!' : '❌ Sai!'}
               </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: 'block', mb: 0.5 }}>
-                Đáp án đúng: <strong>{correctAnswer}</strong>
+              <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' } }}>
+                Đáp án đúng: <strong>{correctAnswer}. {options[correctAnswer] || 'Không có thông tin'}</strong>
               </Typography>
-              {currentQuestion.explanation && (
-                <Typography variant="caption" sx={{ mt: 0.5, fontStyle: 'italic', color: '#666', fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block' }}>
-                  {currentQuestion.explanation}
-                </Typography>
-              )}
-              
-              {/* AI Helper Button - only show for AI-generated questions */}
-              {!exam.isSample && (
-                <Box sx={{ mt: 1, display: 'flex', justifyContent: 'center' }}>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    onClick={() => setAiDialogOpen(true)}
-                    startIcon={<SmartToy />}
-                    sx={{
-                      fontSize: { xs: '0.6rem', sm: '0.7rem' },
-                      py: 0.5,
-                      px: 1
-                    }}
-                  >
-                    Hỏi đáp cùng AI
-                  </Button>
-                </Box>
-              )}
             </Box>
-          )}
-        </Box>
 
-        {/* Next Button */}
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'center',
-          mt: { xs: 1, sm: 2 },
-          flexShrink: 0
-        }}>
-          <Button
-            variant="contained"
-            onClick={handleNextQuestion}
-            disabled={!answered}
-                            startIcon={currentQuestionIndex === allQuestions.length - 1 ? <CheckCircle /> : <PlayArrow />}
-            sx={{ minWidth: 140, fontSize: '0.9rem' }}
-            size="small"
-          >
-                            {currentQuestionIndex === allQuestions.length - 1 ? 'Kết thúc' : 'Câu tiếp theo'}
-          </Button>
-        </Box>
+            {/* AI Explanation */}
+            <Box sx={{ mb: 1.5, display: 'flex', justifyContent: 'flex-start' }}>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setAiDialogOpen(true)}
+                startIcon={<SmartToy />}
+                sx={{
+                  fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                  py: 1,
+                  px: 2,
+                  borderColor: 'primary.main',
+                  color: 'primary.main',
+                  '&:hover': {
+                    borderColor: 'primary.dark',
+                    backgroundColor: 'primary.light',
+                    color: 'primary.dark'
+                  }
+                }}
+              >
+                Giải thích chi tiết với AI
+              </Button>
+            </Box>
+
+                       </Box>
+         )}
+
+         {/* Navigation Buttons */}
+         <Box sx={{ 
+           display: 'flex', 
+           justifyContent: 'space-between',
+           alignItems: 'center',
+           mt: { xs: 1, sm: 2 },
+           flexShrink: 0
+         }}>
+           {/* Left side - Navigation */}
+           <Box sx={{ display: 'flex', gap: 1 }}>
+             <Button
+               variant="outlined"
+               onClick={handlePrevQuestion}
+               disabled={currentQuestionIndex === 0}
+               startIcon={<NavigateBefore />}
+               size="small"
+             >
+               Trước
+             </Button>
+             <Button
+               variant="outlined"
+               onClick={handleNextQuestion}
+               disabled={currentQuestionIndex === allQuestions.length - 1}
+               endIcon={<NavigateNext />}
+               size="small"
+             >
+               Tiếp
+             </Button>
+           </Box>
+
+
+         </Box>
       </Paper>
 
-      {/* AI Helper Dialog - only show for AI-generated questions */}
-      {!exam.isSample && (
-        <AIHelper
-          open={aiDialogOpen}
-          onClose={() => setAiDialogOpen(false)}
-          question={currentQuestion.question}
-          userAnswer={selectedAnswer}
-          correctAnswer={correctAnswer}
-          questionType="grammar"
-        />
-      )}
+      {/* AI Helper Dialog - show for all questions */}
+      <AIHelper
+        open={aiDialogOpen}
+        onClose={() => setAiDialogOpen(false)}
+        question={currentQuestion.question}
+        userAnswer={selectedAnswer}
+        correctAnswer={correctAnswer}
+        questionType="grammar"
+        options={options}
+        isSample={exam.isSample}
+      />
     </Box>
   )
 }

@@ -59,19 +59,16 @@ const ExamSelection = ({ open, onClose, onStartExam }) => {
   const handleOptionSelect = (option) => {
     if (option.id === 'sample') {
       // Create sample exam from the imported data
-      const sampleExam = {
-        id: 'sample-exam',
-        name: 'Đề thi mẫu - Tổng hợp',
-        questions: sampleExamData.sections.flatMap(section => 
-          section.questions.map(q => ({
-            ...q,
-            section: section.section_title
-          }))
-        ),
+             const sampleExam = {
+         id: 'sample-exam',
+         name: 'Đề thi mẫu N5',
+         title: sampleExamData.title,
+        sections: sampleExamData.sections, // Keep the original sections format
         totalQuestions: sampleExamData.sections.reduce((total, section) => total + section.questions.length, 0),
         createdAt: new Date().toISOString(),
         isSample: true
       }
+
       onStartExam(sampleExam)
       onClose()
     } else if (option.id === 'ai-generated') {
