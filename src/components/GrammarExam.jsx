@@ -16,12 +16,15 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  DialogContentText,
   Grid,
   Card,
   CardContent
 } from '@mui/material'
-import { ArrowBack, CheckCircle, PlayArrow, SmartToy, NavigateNext, NavigateBefore, Flag, FlagOutlined, Visibility, Send } from '@mui/icons-material'
+import { ArrowBack, CheckCircle, PlayArrow, SmartToy, NavigateNext, NavigateBefore, Flag, FlagOutlined, Visibility, Send, Save, CloudUpload, Info, Error, Warning } from '@mui/icons-material'
 import AIHelper from './AIHelper'
+import { useAuth } from '../hooks/useAuth'
+import { saveExamResult } from '../services/examService'
 
 // Review Component - moved outside to prevent recreation
 const ReviewComponent = ({ 
@@ -211,7 +214,31 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
   const [flaggedQuestions, setFlaggedQuestions] = useState(new Set()) // Store flagged questions
   const [showReview, setShowReview] = useState(false) // Show review mode
   const [reviewScrollTop, setReviewScrollTop] = useState(0) // Store scroll position in state
+  const [saving, setSaving] = useState(false) // Save result state
+  const [saved, setSaved] = useState(false) // Saved successfully state
+  const [startTime] = useState(Date.now()) // Track start time for calculating duration
+  const [notification, setNotification] = useState({ // Notification dialog state
+    open: false,
+    type: 'info', // 'success', 'error', 'warning', 'info'
+    title: '',
+    message: ''
+  })
   const reviewScrollRef = useRef(null)
+  const { user } = useAuth()
+
+  // Helper function to show notification
+  const showNotification = (type, title, message) => {
+    setNotification({
+      open: true,
+      type,
+      title,
+      message
+    })
+  }
+
+  const hideNotification = () => {
+    setNotification(prev => ({ ...prev, open: false }))
+  }
 
   // Handle both old format (exam.questions) and new format (exam.sections)
   const allQuestions = useMemo(() => {
@@ -404,6 +431,53 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     setTimeLeft(30 * 60)
     setUserAnswers({})
     setFlaggedQuestions(new Set())
+    setSaved(false)
+    hideNotification() // Reset notification state
+  }
+
+  const handleSaveResult = async () => {
+    if (!user) {
+      showNotification('warning', 'Yêu cầu đăng nhập', 'Bạn cần đăng nhập để lưu kết quả thi!')
+      return
+    }
+
+    if (saved) {
+      showNotification('info', 'Đã lưu', 'Kết quả đã được lưu rồi!')
+      return
+    }
+
+    setSaving(true)
+    
+    try {
+      const timeSpent = Math.floor((Date.now() - startTime) / 1000) // seconds
+      const percentage = (score / allQuestions.length) * 100
+      const grade = percentage >= 80 ? 'A' : percentage >= 60 ? 'B' : percentage >= 40 ? 'C' : 'D'
+
+      const examData = {
+        userId: user.uid,
+        userEmail: user.email,
+        userName: user.name,
+        examId: exam.id || `exam_${Date.now()}`,
+        examTitle: exam.title || exam.name || 'Bài thi ngữ pháp',
+        examType: 'grammar',
+        score: score,
+        totalQuestions: allQuestions.length,
+        percentage: Math.round(percentage * 10) / 10,
+        grade: grade,
+        timeSpent: timeSpent,
+        answers: userAnswers,
+        flaggedQuestions: Array.from(flaggedQuestions)
+      }
+
+      await saveExamResult(examData)
+      setSaved(true)
+      showNotification('success', 'Lưu thành công!', 'Kết quả thi đã được lưu thành công vào hệ thống.')
+    } catch (error) {
+      console.error('Lỗi khi lưu kết quả:', error)
+      showNotification('error', 'Lỗi lưu kết quả', 'Có lỗi xảy ra khi lưu kết quả. Vui lòng thử lại!')
+    } finally {
+      setSaving(false)
+    }
   }
 
   if (showResults) {
@@ -478,7 +552,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
               />
             </Box>
 
-            <Box sx={{ display: 'flex', gap: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
               <Button
                 variant="contained"
                 onClick={handleRetake}
@@ -486,6 +560,29 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
               >
                 Làm lại
               </Button>
+              
+              {user && (
+                <Button
+                  variant="contained"
+                  onClick={handleSaveResult}
+                  startIcon={saved ? <CheckCircle /> : <CloudUpload />}
+                  disabled={saving || saved}
+                  color={saved ? "success" : "primary"}
+                  sx={{
+                    bgcolor: saved ? 'success.main' : 'primary.main',
+                    '&:hover': {
+                      bgcolor: saved ? 'success.dark' : 'primary.dark',
+                    },
+                    '&.Mui-disabled': {
+                      bgcolor: saved ? 'success.main' : 'grey.400',
+                      color: 'white',
+                    }
+                  }}
+                >
+                  {saving ? 'Đang lưu...' : saved ? 'Đã lưu' : 'Lưu kết quả'}
+                </Button>
+              )}
+              
               <Button
                 variant="outlined"
                 onClick={onBack}
@@ -495,6 +592,54 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             </Box>
           </Box>
         </Paper>
+
+        {/* Notification Dialog */}
+        <Dialog
+          open={notification.open}
+          onClose={hideNotification}
+          aria-labelledby="notification-dialog-title"
+          aria-describedby="notification-dialog-description"
+          maxWidth="sm"
+          fullWidth
+        >
+          <DialogTitle 
+            id="notification-dialog-title"
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 1,
+              color: notification.type === 'success' ? 'success.main' :
+                     notification.type === 'error' ? 'error.main' :
+                     notification.type === 'warning' ? 'warning.main' : 'info.main'
+            }}
+          >
+            {notification.type === 'success' && <CheckCircle />}
+            {notification.type === 'error' && <Error />}
+            {notification.type === 'warning' && <Warning />}
+            {notification.type === 'info' && <Info />}
+            {notification.title}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText 
+              id="notification-dialog-description"
+              sx={{ fontSize: '1rem', lineHeight: 1.6 }}
+            >
+              {notification.message}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions sx={{ p: 2, pt: 1 }}>
+            <Button 
+              onClick={hideNotification}
+              variant="contained"
+              color={notification.type === 'success' ? 'success' :
+                     notification.type === 'error' ? 'error' :
+                     notification.type === 'warning' ? 'warning' : 'primary'}
+              autoFocus
+            >
+              Đóng
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     )
   }
@@ -503,15 +648,65 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
 
   if (showReview) {
     return (
-      <ReviewComponent 
-        allQuestions={allQuestions}
-        userAnswers={userAnswers}
-        flaggedQuestions={flaggedQuestions}
-        reviewScrollRef={reviewScrollRef}
-        setCurrentQuestionIndex={setCurrentQuestionIndex}
-        setShowReview={setShowReview}
-        handleSubmitExam={handleSubmitExam}
-      />
+      <>
+        <ReviewComponent 
+          allQuestions={allQuestions}
+          userAnswers={userAnswers}
+          flaggedQuestions={flaggedQuestions}
+          reviewScrollRef={reviewScrollRef}
+          setCurrentQuestionIndex={setCurrentQuestionIndex}
+          setShowReview={setShowReview}
+          handleSubmitExam={handleSubmitExam}
+        />
+
+        {/* Notification Dialog */}
+        <Dialog
+          open={notification.open}
+          onClose={hideNotification}
+          aria-labelledby="notification-dialog-title"
+          aria-describedby="notification-dialog-description"
+          maxWidth="sm"
+          fullWidth
+        >
+          <DialogTitle 
+            id="notification-dialog-title"
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 1,
+              color: notification.type === 'success' ? 'success.main' :
+                     notification.type === 'error' ? 'error.main' :
+                     notification.type === 'warning' ? 'warning.main' : 'info.main'
+            }}
+          >
+            {notification.type === 'success' && <CheckCircle />}
+            {notification.type === 'error' && <Error />}
+            {notification.type === 'warning' && <Warning />}
+            {notification.type === 'info' && <Info />}
+            {notification.title}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText 
+              id="notification-dialog-description"
+              sx={{ fontSize: '1rem', lineHeight: 1.6 }}
+            >
+              {notification.message}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions sx={{ p: 2, pt: 1 }}>
+            <Button 
+              onClick={hideNotification}
+              variant="contained"
+              color={notification.type === 'success' ? 'success' :
+                     notification.type === 'error' ? 'error' :
+                     notification.type === 'warning' ? 'warning' : 'primary'}
+              autoFocus
+            >
+              Đóng
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </>
     )
   }
 
@@ -797,6 +992,54 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         options={options}
         isSample={exam.isSample}
       />
+
+      {/* Notification Dialog */}
+      <Dialog
+        open={notification.open}
+        onClose={hideNotification}
+        aria-labelledby="notification-dialog-title"
+        aria-describedby="notification-dialog-description"
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle 
+          id="notification-dialog-title"
+          sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 1,
+            color: notification.type === 'success' ? 'success.main' :
+                   notification.type === 'error' ? 'error.main' :
+                   notification.type === 'warning' ? 'warning.main' : 'info.main'
+          }}
+        >
+          {notification.type === 'success' && <CheckCircle />}
+          {notification.type === 'error' && <Error />}
+          {notification.type === 'warning' && <Warning />}
+          {notification.type === 'info' && <Info />}
+          {notification.title}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText 
+            id="notification-dialog-description"
+            sx={{ fontSize: '1rem', lineHeight: 1.6 }}
+          >
+            {notification.message}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ p: 2, pt: 1 }}>
+          <Button 
+            onClick={hideNotification}
+            variant="contained"
+            color={notification.type === 'success' ? 'success' :
+                   notification.type === 'error' ? 'error' :
+                   notification.type === 'warning' ? 'warning' : 'primary'}
+            autoFocus
+          >
+            Đóng
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }

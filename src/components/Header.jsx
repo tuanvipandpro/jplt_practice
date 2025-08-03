@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Box, Typography, Avatar, Button, Menu, MenuItem, IconButton, CircularProgress, Divider, Chip } from '@mui/material'
-import { Google as GoogleIcon, Edit as EditIcon, Settings as SettingsIcon, School as SchoolIcon } from '@mui/icons-material'
+import { Google as GoogleIcon, Edit as EditIcon, Settings as SettingsIcon, School as SchoolIcon, Assessment as AssessmentIcon } from '@mui/icons-material'
 import { useAuth } from '../hooks/useAuth'
 import UserProfile from './UserProfile'
+import ExamHistory from './ExamHistory'
 import NotificationButton from './NotificationButton'
 
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [isLoggingIn, setIsLoggingIn] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
+  const [examHistoryOpen, setExamHistoryOpen] = useState(false)
 
   const handleLogin = async () => {
     setIsLoggingIn(true)
@@ -41,6 +43,11 @@ const Header = () => {
 
   const handleProfileOpen = () => {
     setProfileOpen(true)
+    handleMenuClose()
+  }
+
+  const handleExamHistoryOpen = () => {
+    setExamHistoryOpen(true)
     handleMenuClose()
   }
 
@@ -169,10 +176,15 @@ const Header = () => {
                 
                 <Divider />
                 
-                {/* Action Buttons */}
+                                {/* Action Buttons */}
                 <MenuItem onClick={handleProfileOpen} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <EditIcon sx={{ fontSize: 18 }} />
                   Chỉnh sửa thông tin
+                </MenuItem>
+                
+                <MenuItem onClick={handleExamHistoryOpen} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <AssessmentIcon sx={{ fontSize: 18 }} />
+                  Xem kết quả thi
                 </MenuItem>
                 
                 <MenuItem onClick={handleMenuClose} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -221,6 +233,13 @@ const Header = () => {
         user={user}
         userData={userData}
         onUpdate={handleProfileUpdate}
+      />
+
+      {/* Exam History Dialog */}
+      <ExamHistory
+        open={examHistoryOpen}
+        onClose={() => setExamHistoryOpen(false)}
+        user={user}
       />
     </>
   )

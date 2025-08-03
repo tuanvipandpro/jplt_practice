@@ -54,6 +54,21 @@ service cloud.firestore {
       }
     }
     
+    // Exam Results - users can only access their own exam results
+    match /examResults/{examResultId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId &&
+        request.resource.data.userId is string &&
+        request.resource.data.userEmail is string &&
+        request.resource.data.userName is string &&
+        request.resource.data.examTitle is string &&
+        request.resource.data.score is number &&
+        request.resource.data.totalQuestions is number &&
+        request.resource.data.percentage is number;
+    }
+    
     // Notifications - all authenticated users can read, server can write
     match /notifications/{notificationId} {
       allow read: if request.auth != null;
@@ -165,9 +180,12 @@ VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
 - **Learning Stats**: Theo dõi tiến độ học tập
 - **Profile Editor**: Chỉnh sửa thông tin cá nhân
 - **Notifications**: Hệ thống thông báo real-time
+- **Exam Results**: Lưu kết quả thi lên Firestore
+- **Exam History**: Lịch sử làm bài thi của user
+- **Performance Tracking**: Theo dõi điểm số và thành tích
 - **Secure logout**: Đăng xuất an toàn
 - **Loading states**: Hiển thị trạng thái loading
-- **Error handling**: Xử lý lỗi đăng nhập
+- **Error handling**: Xử lý lỗi đăng nhập và lưu dữ liệu
 
 ### 📊 **Cấu trúc dữ liệu Firestore:**
 
@@ -244,6 +262,33 @@ VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
 }
 ```
 
+#### Collection: `examResults`
+```javascript
+{
+  id: "auto-generated-id",
+  userId: "user-id",
+  userEmail: "user@example.com",
+  userName: "Tên người dùng",
+  examId: "exam_1234567890",
+  examTitle: "Bài thi ngữ pháp N5",
+  examType: "grammar", // grammar, vocabulary, kanji, hiragana, katakana, listening
+  score: 42,
+  totalQuestions: 50,
+  percentage: 84.0,
+  grade: "A", // A, B, C, D
+  timeSpent: 1800, // in seconds (30 minutes)
+  answers: {
+    0: "A",
+    1: "B", 
+    2: "C",
+    // ... user answers for each question
+  },
+  flaggedQuestions: [5, 12, 23], // array of flagged question indices
+  completedAt: timestamp,
+  createdAt: timestamp
+}
+```
+
 ### 🔧 Có thể mở rộng:
 - **Email/Password**: Đăng nhập bằng email
 - **Phone**: Đăng nhập bằng số điện thoại
@@ -253,6 +298,13 @@ VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
 - **Learning Progress**: Lưu tiến độ học tập
 - **Achievements**: Hệ thống thành tích
 - **Study Sessions**: Lưu lịch sử học tập
+- **Exam Analytics**: Phân tích chi tiết kết quả thi
+- **Progress Charts**: Biểu đồ tiến bộ theo thời gian
+- **Exam Recommendations**: Gợi ý bài thi phù hợp
+- **Leaderboards**: Bảng xếp hạng thành tích
+- **Study Streaks**: Theo dõi chuỗi ngày học liên tiếp
+- **Wrong Answer Review**: Ôn tập câu trả lời sai
+- **Exam Sharing**: Chia sẻ kết quả với bạn bè
 - **Push Notifications**: Thông báo push
 - **Notification Preferences**: Tùy chỉnh thông báo
 
@@ -286,4 +338,53 @@ VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
 ### Lỗi "notifications not showing"
 - Kiểm tra Firestore Rules cho notifications
 - Đảm bảo user đã đăng nhập
-- Kiểm tra console logs 
+- Kiểm tra console logs
+
+### Lỗi "exam results not saving"
+- Đảm bảo user đã đăng nhập
+- Kiểm tra Firestore Rules cho examResults
+- Kiểm tra network connectivity
+- Đảm bảo dữ liệu exam hợp lệ
+
+## Tính năng Lưu Kết Quả Thi
+
+### 📊 **Cách hoạt động:**
+
+1. **Hoàn thành bài thi**: User làm xong bài thi
+2. **Hiển thị kết quả**: Xem điểm số và grade
+3. **Đăng nhập (nếu chưa)**: Cần đăng nhập để lưu
+4. **Bấm "Lưu kết quả"**: Lưu lên Firestore
+5. **Xác nhận**: Thông báo lưu thành công
+
+### 🔐 **Bảo mật:**
+
+- User chỉ có thể lưu kết quả của chính mình
+- Dữ liệu được validate trước khi lưu
+- Chống trùng lặp kết quả
+- Timestamp tự động từ server
+
+### 📈 **Dữ liệu được lưu:**
+
+- **Thông tin user**: ID, email, tên
+- **Chi tiết bài thi**: Tiêu đề, loại thi, ID
+- **Kết quả**: Điểm số, tổng câu, phần trăm, grade
+- **Thời gian**: Thời lượng làm bài
+- **Chi tiết**: Đáp án của user, câu đã flag
+- **Metadata**: Thời gian hoàn thành, tạo
+
+### 🎯 **Sử dụng sau này:**
+
+```javascript
+// Lấy lịch sử thi của user
+const history = await getUserExamHistory(userId, 10)
+
+// Lấy thống kê thi của user  
+const stats = await getUserExamStats(userId)
+```
+
+### ⚠️ **Lưu ý:**
+
+- **Offline**: Không thể lưu khi offline
+- **Guest mode**: Phải đăng nhập mới lưu được
+- **Production**: Đảm bảo Firestore Rules đã cập nhật
+- **Performance**: Chỉ lưu khi user click button 
