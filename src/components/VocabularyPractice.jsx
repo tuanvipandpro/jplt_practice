@@ -23,392 +23,155 @@ import { ArrowBack, ExpandMore, School, CheckCircle, Close, Lightbulb, NavigateN
 import vocabularyData from '../data/vocabulary.json'
 import ReactMarkdown from 'react-markdown'
 import AudioPlayer from './AudioPlayer'
+import { db } from '../config/firebase'
+import { doc, setDoc, getDoc, onSnapshot } from 'firebase/firestore'
+import { useAuth } from '../hooks/useAuth'
 
 const VocabularyPractice = ({ onBack }) => {
+  const { user } = useAuth()
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [completedCategories, setCompletedCategories] = useState([])
   const [markdownDialogOpen, setMarkdownDialogOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState(null)
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+  // Lưu tiến độ vào Firestore
+  const saveProgress = async (categoryId) => {
+    if (!user) return
+    
+    try {
+      const userDocRef = doc(db, 'users', user.uid)
+      const progressRef = doc(userDocRef, 'vocabulary_progress', 'completed_categories')
+      
+      await setDoc(progressRef, {
+        completedCategories: [...completedCategories, categoryId],
+        updatedAt: new Date()
+      }, { merge: true })
+    } catch (error) {
+      console.error('Lỗi khi lưu tiến độ:', error)
+    }
+  }
+
+  // Load tiến độ từ Firestore
+  const loadProgress = () => {
+    if (!user) return null
+
+    try {
+      const userDocRef = doc(db, 'users', user.uid)
+      const progressRef = doc(userDocRef, 'vocabulary_progress', 'completed_categories')
+      
+      return onSnapshot(progressRef, (doc) => {
+        if (doc.exists()) {
+          const data = doc.data()
+          setCompletedCategories(data.completedCategories || [])
+        } else {
+          setCompletedCategories([])
+        }
+        setLoading(false)
+      }, (error) => {
+        console.error('Error loading progress:', error)
+        setCompletedCategories([])
+        setLoading(false)
+      })
+    } catch (error) {
+      console.error('Error setting up progress listener:', error)
+      setCompletedCategories([])
+      setLoading(false)
+      return null
+    }
+  }
+
+  // Load tiến độ khi component mount hoặc user thay đổi
+  useEffect(() => {
+    if (!user) {
+      setLoading(false)
+      return
+    }
+
+    const unsubscribe = loadProgress()
+    return () => {
+      if (unsubscribe && typeof unsubscribe === 'function') {
+        unsubscribe()
+      }
+    }
+  }, [user])
 
   // Phân loại từ vựng theo chủ đề
   const categories = [
     {
-      id: 'basic',
-      title: 'Từ vựng cơ bản (1-150)',
-      description: 'Những từ vựng cơ bản nhất trong tiếng Nhật',
-      cards: vocabularyData.cards.slice(0, 150)
+      id: 'part1',
+      title: 'Phần 1: Từ vựng cơ bản (1-80)',
+      description: 'Từ vựng cơ bản nhất trong tiếng Nhật',
+      cards: vocabularyData.cards.slice(0, 80)
     },
     {
-      id: 'family',
-      title: 'Gia đình & Quan hệ',
-      description: 'Từ vựng về các thành viên trong gia đình và quan hệ',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('bố') || 
-        card.meaning.includes('mẹ') || 
-        card.meaning.includes('anh') || 
-        card.meaning.includes('chị') ||
-        card.meaning.includes('em') ||
-        card.meaning.includes('ông') ||
-        card.meaning.includes('bà') ||
-        card.meaning.includes('chồng') ||
-        card.meaning.includes('vợ') ||
-        card.meaning.includes('con') ||
-        card.meaning.includes('gia đình') ||
-        card.meaning.includes('cha') ||
-        card.meaning.includes('mẹ') ||
-        card.meaning.includes('anh trai') ||
-        card.meaning.includes('chị gái') ||
-        card.meaning.includes('em trai') ||
-        card.meaning.includes('em gái')
-      )
+      id: 'part2',
+      title: 'Phần 2: Từ vựng cơ bản (81-160)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(80, 160)
     },
     {
-      id: 'school',
-      title: 'Trường học & Học tập',
-      description: 'Từ vựng liên quan đến trường học và học tập',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('học') || 
-        card.meaning.includes('trường') || 
-        card.meaning.includes('sách') || 
-        card.meaning.includes('bút') ||
-        card.meaning.includes('giáo viên') ||
-        card.meaning.includes('học sinh') ||
-        card.meaning.includes('sinh viên') ||
-        card.meaning.includes('thầy') ||
-        card.meaning.includes('cô') ||
-        card.meaning.includes('bài') ||
-        card.meaning.includes('từ điển') ||
-        card.meaning.includes('chữ') ||
-        card.meaning.includes('lớp') ||
-        card.meaning.includes('môn học') ||
-        card.meaning.includes('kiểm tra') ||
-        card.meaning.includes('thi') ||
-        card.meaning.includes('điểm')
-      )
+      id: 'part3',
+      title: 'Phần 3: Từ vựng cơ bản (161-240)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(160, 240)
     },
     {
-      id: 'daily',
-      title: 'Cuộc sống hàng ngày',
-      description: 'Từ vựng về các hoạt động và đồ vật hàng ngày',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('ăn') || 
-        card.meaning.includes('uống') || 
-        card.meaning.includes('ngủ') || 
-        card.meaning.includes('nhà') ||
-        card.meaning.includes('xe') ||
-        card.meaning.includes('đi') ||
-        card.meaning.includes('làm') ||
-        card.meaning.includes('mua') ||
-        card.meaning.includes('cửa hàng') ||
-        card.meaning.includes('nhà hàng') ||
-        card.meaning.includes('công việc') ||
-        card.meaning.includes('tắm') ||
-        card.meaning.includes('rửa') ||
-        card.meaning.includes('mặc') ||
-        card.meaning.includes('điện thoại') ||
-        card.meaning.includes('ti vi') ||
-        card.meaning.includes('máy tính')
-      )
+      id: 'part4',
+      title: 'Phần 4: Từ vựng cơ bản (241-320)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(240, 320)
     },
     {
-      id: 'food',
-      title: 'Đồ ăn & Thức uống',
-      description: 'Từ vựng về đồ ăn, thức uống và ẩm thực',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('cơm') || 
-        card.meaning.includes('bánh') || 
-        card.meaning.includes('sữa') || 
-        card.meaning.includes('nước') ||
-        card.meaning.includes('cà phê') ||
-        card.meaning.includes('trà') ||
-        card.meaning.includes('bánh mì') ||
-        card.meaning.includes('thịt') ||
-        card.meaning.includes('cá') ||
-        card.meaning.includes('rau') ||
-        card.meaning.includes('hoa quả') ||
-        card.meaning.includes('ngon') ||
-        card.meaning.includes('đồ ăn') ||
-        card.meaning.includes('thức uống') ||
-        card.meaning.includes('gạo') ||
-        card.meaning.includes('mì') ||
-        card.meaning.includes('súp') ||
-        card.meaning.includes('salad') ||
-        card.meaning.includes('kem') ||
-        card.meaning.includes('kẹo')
-      )
+      id: 'part5',
+      title: 'Phần 5: Từ vựng cơ bản (321-400)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(320, 400)
     },
     {
-      id: 'colors',
-      title: 'Màu sắc & Tính từ',
-      description: 'Từ vựng về màu sắc và tính từ miêu tả',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('đỏ') || 
-        card.meaning.includes('xanh') || 
-        card.meaning.includes('trắng') || 
-        card.meaning.includes('đen') ||
-        card.meaning.includes('vàng') ||
-        card.meaning.includes('to') ||
-        card.meaning.includes('nhỏ') ||
-        card.meaning.includes('mới') ||
-        card.meaning.includes('cũ') ||
-        card.meaning.includes('tốt') ||
-        card.meaning.includes('xấu') ||
-        card.meaning.includes('nóng') ||
-        card.meaning.includes('lạnh') ||
-        card.meaning.includes('đẹp') ||
-        card.meaning.includes('khó') ||
-        card.meaning.includes('dễ') ||
-        card.meaning.includes('xanh lá') ||
-        card.meaning.includes('xanh dương') ||
-        card.meaning.includes('nâu') ||
-        card.meaning.includes('tím') ||
-        card.meaning.includes('cam') ||
-        card.meaning.includes('hồng')
-      )
+      id: 'part6',
+      title: 'Phần 6: Từ vựng cơ bản (401-480)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(400, 480)
     },
     {
-      id: 'time',
-      title: 'Thời gian & Số đếm',
-      description: 'Từ vựng về thời gian, số đếm và thời tiết',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('thời gian') || 
-        card.meaning.includes('ngày') || 
-        card.meaning.includes('tuần') || 
-        card.meaning.includes('tháng') ||
-        card.meaning.includes('năm') ||
-        card.meaning.includes('giờ') ||
-        card.meaning.includes('phút') ||
-        card.meaning.includes('số') ||
-        card.meaning.includes('một') ||
-        card.meaning.includes('hai') ||
-        card.meaning.includes('ba') ||
-        card.meaning.includes('bốn') ||
-        card.meaning.includes('năm') ||
-        card.meaning.includes('sáu') ||
-        card.meaning.includes('bảy') ||
-        card.meaning.includes('tám') ||
-        card.meaning.includes('chín') ||
-        card.meaning.includes('mười') ||
-        card.meaning.includes('trăm') ||
-        card.meaning.includes('nghìn') ||
-        card.meaning.includes('triệu') ||
-        card.meaning.includes('sáng') ||
-        card.meaning.includes('trưa') ||
-        card.meaning.includes('chiều') ||
-        card.meaning.includes('tối') ||
-        card.meaning.includes('đêm')
-      )
+      id: 'part7',
+      title: 'Phần 7: Từ vựng cơ bản (481-560)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(480, 560)
     },
     {
-      id: 'places',
-      title: 'Địa điểm & Du lịch',
-      description: 'Từ vựng về địa điểm, du lịch và phương tiện',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('nhà') || 
-        card.meaning.includes('trường') || 
-        card.meaning.includes('công ty') || 
-        card.meaning.includes('bệnh viện') ||
-        card.meaning.includes('ngân hàng') ||
-        card.meaning.includes('bưu điện') ||
-        card.meaning.includes('cửa hàng') ||
-        card.meaning.includes('nhà hàng') ||
-        card.meaning.includes('khách sạn') ||
-        card.meaning.includes('sân bay') ||
-        card.meaning.includes('ga') ||
-        card.meaning.includes('xe') ||
-        card.meaning.includes('máy bay') ||
-        card.meaning.includes('tàu') ||
-        card.meaning.includes('du lịch') ||
-        card.meaning.includes('thành phố') ||
-        card.meaning.includes('nước') ||
-        card.meaning.includes('quốc gia') ||
-        card.meaning.includes('tỉnh') ||
-        card.meaning.includes('quận') ||
-        card.meaning.includes('phố') ||
-        card.meaning.includes('đường') ||
-        card.meaning.includes('cầu') ||
-        card.meaning.includes('công viên')
-      )
+      id: 'part8',
+      title: 'Phần 8: Từ vựng cơ bản (561-640)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(560, 640)
     },
     {
-      id: 'hobbies',
-      title: 'Sở thích & Giải trí',
-      description: 'Từ vựng về sở thích, thể thao và giải trí',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('thích') || 
-        card.meaning.includes('ghét') || 
-        card.meaning.includes('thể thao') || 
-        card.meaning.includes('bóng') ||
-        card.meaning.includes('nhạc') ||
-        card.meaning.includes('phim') ||
-        card.meaning.includes('sách') ||
-        card.meaning.includes('hát') ||
-        card.meaning.includes('nhảy') ||
-        card.meaning.includes('vẽ') ||
-        card.meaning.includes('đọc') ||
-        card.meaning.includes('xem') ||
-        card.meaning.includes('nghe') ||
-        card.meaning.includes('chơi') ||
-        card.meaning.includes('karaoke') ||
-        card.meaning.includes('concert') ||
-        card.meaning.includes('game') ||
-        card.meaning.includes('thể dục') ||
-        card.meaning.includes('bơi') ||
-        card.meaning.includes('chạy') ||
-        card.meaning.includes('đi bộ')
-      )
+      id: 'part9',
+      title: 'Phần 9: Từ vựng cơ bản (641-720)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(640, 720)
     },
     {
-      id: 'work',
-      title: 'Công việc & Nghề nghiệp',
-      description: 'Từ vựng về công việc và các nghề nghiệp',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('công việc') || 
-        card.meaning.includes('nghề') || 
-        card.meaning.includes('giáo viên') || 
-        card.meaning.includes('bác sĩ') ||
-        card.meaning.includes('kỹ sư') ||
-        card.meaning.includes('nhân viên') ||
-        card.meaning.includes('quản lý') ||
-        card.meaning.includes('chủ tịch') ||
-        card.meaning.includes('thư ký') ||
-        card.meaning.includes('công ty') ||
-        card.meaning.includes('văn phòng') ||
-        card.meaning.includes('làm thêm') ||
-        card.meaning.includes('lương') ||
-        card.meaning.includes('nghỉ') ||
-        card.meaning.includes('luật sư') ||
-        card.meaning.includes('y tá') ||
-        card.meaning.includes('thợ') ||
-        card.meaning.includes('tài xế') ||
-        card.meaning.includes('cảnh sát') ||
-        card.meaning.includes('lính cứu hỏa')
-      )
+      id: 'part10',
+      title: 'Phần 10: Từ vựng cơ bản (721-800)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(720, 800)
     },
     {
-      id: 'communication',
-      title: 'Giao tiếp & Cảm xúc',
-      description: 'Từ vựng về giao tiếp, cảm xúc và tình huống',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('xin chào') || 
-        card.meaning.includes('cảm ơn') || 
-        card.meaning.includes('xin lỗi') || 
-        card.meaning.includes('tạm biệt') ||
-        card.meaning.includes('vâng') ||
-        card.meaning.includes('không') ||
-        card.meaning.includes('xin phép') ||
-        card.meaning.includes('hẹn gặp') ||
-        card.meaning.includes('vui') ||
-        card.meaning.includes('buồn') ||
-        card.meaning.includes('giận') ||
-        card.meaning.includes('sợ') ||
-        card.meaning.includes('ngạc nhiên') ||
-        card.meaning.includes('thích') ||
-        card.meaning.includes('ghét') ||
-        card.meaning.includes('yêu') ||
-        card.meaning.includes('hạnh phúc') ||
-        card.meaning.includes('tức giận') ||
-        card.meaning.includes('lo lắng') ||
-        card.meaning.includes('bình tĩnh') ||
-        card.meaning.includes('hồi hộp') ||
-        card.meaning.includes('thất vọng')
-      )
+      id: 'part11',
+      title: 'Phần 11: Từ vựng cơ bản (801-880)',
+      description: 'Từ vựng cơ bản tiếp theo',
+      cards: vocabularyData.cards.slice(800, 880)
     },
     {
-      id: 'body',
-      title: 'Cơ thể & Sức khỏe',
-      description: 'Từ vựng về cơ thể, sức khỏe và y tế',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('đầu') || 
-        card.meaning.includes('mắt') || 
-        card.meaning.includes('mũi') || 
-        card.meaning.includes('miệng') ||
-        card.meaning.includes('tay') ||
-        card.meaning.includes('chân') ||
-        card.meaning.includes('tay') ||
-        card.meaning.includes('chân') ||
-        card.meaning.includes('bụng') ||
-        card.meaning.includes('lưng') ||
-        card.meaning.includes('cổ') ||
-        card.meaning.includes('vai') ||
-        card.meaning.includes('đau') ||
-        card.meaning.includes('bệnh') ||
-        card.meaning.includes('sốt') ||
-        card.meaning.includes('ho') ||
-        card.meaning.includes('cảm') ||
-        card.meaning.includes('mệt') ||
-        card.meaning.includes('khỏe') ||
-        card.meaning.includes('bác sĩ') ||
-        card.meaning.includes('thuốc')
-      )
-    },
-    {
-      id: 'clothing',
-      title: 'Quần áo & Thời trang',
-      description: 'Từ vựng về quần áo, thời trang và phụ kiện',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('áo') || 
-        card.meaning.includes('quần') || 
-        card.meaning.includes('giày') || 
-        card.meaning.includes('mũ') ||
-        card.meaning.includes('túi') ||
-        card.meaning.includes('váy') ||
-        card.meaning.includes('áo sơ mi') ||
-        card.meaning.includes('áo khoác') ||
-        card.meaning.includes('giày dép') ||
-        card.meaning.includes('tất') ||
-        card.meaning.includes('cà vạt') ||
-        card.meaning.includes('đồng hồ') ||
-        card.meaning.includes('kính') ||
-        card.meaning.includes('nhẫn') ||
-        card.meaning.includes('vòng tay') ||
-        card.meaning.includes('thắt lưng') ||
-        card.meaning.includes('khăn') ||
-        card.meaning.includes('găng tay')
-      )
-    },
-    {
-      id: 'weather',
-      title: 'Thời tiết & Môi trường',
-      description: 'Từ vựng về thời tiết, môi trường và thiên nhiên',
-      cards: vocabularyData.cards.filter(card => 
-        card.meaning.includes('nắng') || 
-        card.meaning.includes('mưa') || 
-        card.meaning.includes('tuyết') || 
-        card.meaning.includes('gió') ||
-        card.meaning.includes('nóng') ||
-        card.meaning.includes('lạnh') ||
-        card.meaning.includes('ấm') ||
-        card.meaning.includes('mát') ||
-        card.meaning.includes('ẩm') ||
-        card.meaning.includes('khô') ||
-        card.meaning.includes('mây') ||
-        card.meaning.includes('sấm') ||
-        card.meaning.includes('sét') ||
-        card.meaning.includes('bão') ||
-        card.meaning.includes('sương mù') ||
-        card.meaning.includes('cầu vồng') ||
-        card.meaning.includes('mùa xuân') ||
-        card.meaning.includes('mùa hè') ||
-        card.meaning.includes('mùa thu') ||
-        card.meaning.includes('mùa đông')
-      )
-    },
-    {
-      id: 'advanced',
-      title: 'Từ vựng nâng cao (151-600)',
-      description: 'Từ vựng nâng cao và phức tạp hơn',
-      cards: vocabularyData.cards.slice(150, 600)
-    },
-    {
-      id: 'expert',
-      title: 'Từ vựng chuyên sâu (601+)',
-      description: 'Từ vựng chuyên sâu và khó nhất',
-      cards: vocabularyData.cards.slice(600)
-    },
-
+      id: 'part12',
+      title: 'Phần 12: Từ vựng cơ bản (881-958)',
+      description: 'Từ vựng cơ bản cuối cùng',
+      cards: vocabularyData.cards.slice(880, 958)
+    }
   ]
 
 
@@ -417,9 +180,13 @@ const VocabularyPractice = ({ onBack }) => {
     setSelectedCategory(null)
   }
 
-  const handleCompleteCategory = (categoryId) => {
+  const handleCompleteCategory = async (categoryId) => {
     if (!completedCategories.includes(categoryId)) {
-      setCompletedCategories([...completedCategories, categoryId])
+      const newCompletedCategories = [...completedCategories, categoryId]
+      setCompletedCategories(newCompletedCategories)
+      
+      // Lưu vào Firestore
+      await saveProgress(categoryId)
     }
   }
 
@@ -719,7 +486,7 @@ ${card.example || 'Chưa có ví dụ'}
   }
 
   return (
-    <Box sx={{ maxWidth: 1000, mx: 'auto', p: 3 }}>
+    <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
       {/* Header */}
       <Box sx={{
         display: 'flex',
@@ -759,17 +526,36 @@ ${card.example || 'Chưa có ví dụ'}
         />
       </Box>
 
+      {/* Thông báo đăng nhập */}
+      {!user && (
+        <Paper elevation={4} sx={{ p: 3, mb: 3, bgcolor: 'warning.light', color: 'warning.contrastText' }}>
+          <Typography variant="body1">
+            ⚠️ Đăng nhập để lưu tiến độ học tập của bạn
+          </Typography>
+        </Paper>
+      )}
+
+      {/* Loading state */}
+      {loading && (
+        <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+          <Typography variant="body1" color="text.secondary">
+            Đang tải tiến độ học tập...
+          </Typography>
+        </Box>
+      )}
+
       {/* Categories */}
-      <Grid container spacing={3}>
-        {categories.map((category) => (
-          <Grid item xs={12} md={6} key={category.id}>
+      {!loading && (
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {categories.map((category) => (
             <Card 
+              key={category.id}
               elevation={4} 
               sx={{ 
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  transform: 'translateY(-4px)',
+                  transform: 'translateY(-2px)',
                   boxShadow: 8,
                 }
               }}
@@ -805,12 +591,12 @@ ${card.example || 'Chưa có ví dụ'}
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
-        ))}
-      </Grid>
+          ))}
+        </Box>
+      )}
 
       {/* Progress Summary */}
-      {completedCategories.length > 0 && (
+      {!loading && completedCategories.length > 0 && (
         <Paper elevation={4} sx={{ p: 3, mt: 4 }}>
           <Typography variant="h6" gutterBottom>
             Tiến độ học tập

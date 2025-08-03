@@ -14,8 +14,18 @@ import {
 } from 'firebase/firestore'
 import { db } from '../config/firebase'
 
+// Kiểm tra Firestore có sẵn không
+const isFirestoreAvailable = () => {
+  return db !== null
+}
+
 // Tạo thông báo mới (chỉ admin)
 export const createNotification = async (notificationData) => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Skipping notification creation.')
+    return null
+  }
+
   try {
     const notification = {
       title: notificationData.title,
@@ -38,6 +48,11 @@ export const createNotification = async (notificationData) => {
 
 // Lấy tất cả thông báo
 export const getNotifications = async () => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Returning empty notifications.')
+    return []
+  }
+
   try {
     const q = query(
       collection(db, 'notifications'),
@@ -64,14 +79,19 @@ export const getNotifications = async () => {
   }
 }
 
-// Lấy thông báo real-time với error handling
+// Subscribe to notifications real-time
 export const subscribeToNotifications = (callback) => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Notifications disabled.')
+    callback([])
+    return () => {}
+  }
+
   try {
     const q = query(
       collection(db, 'notifications'),
       where('isActive', '==', true),
-      orderBy('createdAt', 'desc'),
-      limit(50)
+      orderBy('createdAt', 'desc')
     )
     
     return onSnapshot(q, (querySnapshot) => {
@@ -84,18 +104,29 @@ export const subscribeToNotifications = (callback) => {
       })
       callback(notifications)
     }, (error) => {
-      console.error('Error in notification subscription:', error)
-      callback([]) // Trả về mảng rỗng khi có lỗi
+      console.error('Error in notifications subscription:', error)
+      // Tạm thời disable notification khi chưa có quyền
+      if (error.code === 'permission-denied' || error.code === 'missing-permissions') {
+        console.warn('Firestore permissions not configured. Notifications disabled.')
+        callback([])
+      } else {
+        callback([]) // Trả về array rỗng khi có lỗi
+      }
     })
   } catch (error) {
     console.error('Error subscribing to notifications:', error)
-    callback([]) // Trả về mảng rỗng khi có lỗi
+    callback([]) // Trả về array rỗng khi có lỗi
     return () => {} // Return empty function
   }
 }
 
 // Đánh dấu thông báo đã đọc (simplified)
 export const markNotificationAsRead = async (userId, notificationId) => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Skipping mark as read.')
+    return
+  }
+
   try {
     const userNotificationRef = doc(db, 'userNotifications', `${userId}_${notificationId}`)
     await setDoc(userNotificationRef, {
@@ -113,6 +144,8 @@ export const markNotificationAsRead = async (userId, notificationId) => {
 
 // Lấy số thông báo chưa đọc của user (simplified)
 export const getUnreadNotificationCount = async (userId) => {
+  if (!userId || !isFirestoreAvailable()) return 0
+
   try {
     const q = query(
       collection(db, 'userNotifications'),
@@ -124,12 +157,21 @@ export const getUnreadNotificationCount = async (userId) => {
     return querySnapshot.size
   } catch (error) {
     console.error('Error getting unread count:', error)
+    // Tạm thời disable notification khi chưa có quyền
+    if (error.code === 'permission-denied' || error.code === 'missing-permissions') {
+      console.warn('Firestore permissions not configured. Notifications disabled.')
+    }
     return 0
   }
 }
 
 // Lấy số thông báo chưa đọc real-time với error handling
 export const subscribeToUnreadCount = (userId, callback) => {
+  if (!userId || !isFirestoreAvailable()) {
+    callback('0')
+    return () => {}
+  }
+
   try {
     const q = query(
       collection(db, 'userNotifications'),
@@ -142,7 +184,13 @@ export const subscribeToUnreadCount = (userId, callback) => {
       callback(count > 99 ? '99+' : count.toString())
     }, (error) => {
       console.error('Error in unread count subscription:', error)
-      callback('0') // Trả về 0 khi có lỗi
+      // Tạm thời disable notification khi chưa có quyền
+      if (error.code === 'permission-denied' || error.code === 'missing-permissions') {
+        console.warn('Firestore permissions not configured. Notifications disabled.')
+        callback('0')
+      } else {
+        callback('0') // Trả về 0 khi có lỗi khác
+      }
     })
   } catch (error) {
     console.error('Error subscribing to unread count:', error)
@@ -153,6 +201,11 @@ export const subscribeToUnreadCount = (userId, callback) => {
 
 // Tạo thông báo deployment (tự động)
 export const createDeploymentNotification = async () => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Skipping deployment notification creation.')
+    return null
+  }
+
   try {
     const notification = {
       title: '🚀 Cập nhật mới',
@@ -175,6 +228,11 @@ export const createDeploymentNotification = async () => {
 
 // Tạo thông báo demo để test
 export const createDemoNotification = async () => {
+  if (!isFirestoreAvailable()) {
+    console.warn('Firestore not available. Skipping demo notification creation.')
+    return null
+  }
+
   try {
     const notification = {
       title: '🎉 Chào mừng!',

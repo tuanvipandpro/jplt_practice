@@ -41,6 +41,17 @@ service cloud.firestore {
     // Users can read/write their own data
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Vocabulary progress - users can read/write their own progress
+      match /vocabulary_progress/{document} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // User notifications - users can read/write their own
+      match /userNotifications/{userNotificationId} {
+        allow read, write: if request.auth != null && 
+          userNotificationId.matches(request.auth.uid + '_.*');
+      }
     }
     
     // Notifications - all authenticated users can read, server can write
@@ -49,7 +60,7 @@ service cloud.firestore {
       allow write: if request.auth != null || request.auth == null; // Cho phép server-side writes
     }
     
-    // User notifications - users can read/write their own
+    // User notifications collection - users can read/write their own
     match /userNotifications/{userNotificationId} {
       allow read, write: if request.auth != null && 
         userNotificationId.matches(request.auth.uid + '_.*');
@@ -59,11 +70,29 @@ service cloud.firestore {
     match /public/{document=**} {
       allow read: if true;
     }
+    
+    // Allow all reads for development (remove in production)
+    match /{document=**} {
+      allow read: if true;
+    }
   }
 }
 ```
 
-**Lưu ý:** Rules này cho phép server-side writes (như GitHub Actions) có thể tạo notifications mà không cần authentication.
+**Lưu ý quan trọng:**
+
+1. **Development Mode**: Rules hiện tại cho phép tất cả reads để dễ development
+2. **Production**: Trước khi deploy production, hãy thay đổi rules thành:
+   ```javascript
+   // Production rules - chỉ cho phép authenticated users
+   match /{document=**} {
+     allow read, write: if request.auth != null;
+   }
+   ```
+
+3. **Vocabulary Progress**: Users có thể lưu tiến độ học tập của mình
+4. **Notifications**: Hệ thống notification hoạt động cho tất cả users
+5. **Server-side**: Cho phép GitHub Actions tạo notifications tự động
 
 ## Bước 6: Lấy cấu hình Firebase
 
@@ -100,13 +129,31 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
 VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
 ```
 
-## Bước 8: Test ứng dụng
+## Bước 8: Cấu hình nhanh cho Development
 
-1. Chạy `npm run dev`
-2. Mở browser và truy cập `http://localhost:5173`
-3. Click nút "Đăng nhập" để test
-4. Sau khi đăng nhập, click vào avatar để xem thông tin chi tiết
-5. Kiểm tra button thông báo ở header
+### Nếu bạn muốn test ngay mà không cần cấu hình Firebase:
+
+1. **Tạm thời disable Firebase**: Ứng dụng sẽ hoạt động bình thường với demo data
+2. **Không cần file .env**: Firebase sẽ sử dụng demo config
+3. **Chức năng bị hạn chế**: 
+   - Không lưu tiến độ học tập
+   - Không có notifications
+   - Không có user authentication
+
+### Để bật đầy đủ tính năng:
+
+1. Tạo Firebase project theo hướng dẫn trên
+2. Copy cấu hình vào file `.env`
+3. Deploy Firestore rules
+4. Restart development server
+
+## Bước 9: Kiểm tra cấu hình
+
+1. Mở browser console
+2. Kiểm tra các thông báo:
+   - ✅ "Firebase configured successfully" = Cấu hình đúng
+   - ⚠️ "Firebase chưa được cấu hình" = Cần cấu hình thêm
+   - 🔧 "Connected to Firestore emulator" = Đang dùng emulator
 
 ## Tính năng Firebase Authentication & Firestore
 

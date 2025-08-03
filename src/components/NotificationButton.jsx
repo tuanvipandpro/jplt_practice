@@ -9,7 +9,7 @@ import {
   Chip,
   List,
   ListItem,
-  ListItemText,
+  ListItemButton,
   ListItemIcon,
   Divider,
   CircularProgress,
@@ -267,9 +267,9 @@ const NotificationButton = () => {
         {!initialLoading && notifications.length === 0 && (
           <MenuItem disabled>
             <Box sx={{ textAlign: 'center', width: '100%', py: 2 }}>
-              <Typography variant="body2" color="text.secondary">
+              <Box component="span" sx={{ color: 'text.secondary' }}>
                 Không có thông báo mới
-              </Typography>
+              </Box>
             </Box>
           </MenuItem>
         )}
@@ -278,8 +278,7 @@ const NotificationButton = () => {
           <List sx={{ p: 0 }}>
             {notifications.map((notification, index) => (
               <Box key={notification.id}>
-                <ListItem 
-                  button 
+                <ListItemButton 
                   onClick={() => handleNotificationClick(notification.id)}
                   disabled={loading}
                   sx={{
@@ -291,35 +290,29 @@ const NotificationButton = () => {
                   <ListItemIcon>
                     {getNotificationIcon(notification.type)}
                   </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Typography variant="body2" fontWeight="bold">
-                        {notification.title}
-                      </Typography>
-                    }
-                    secondary={
-                      <Box>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                          {notification.message}
-                        </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <ScheduleIcon sx={{ fontSize: 14 }} />
-                          <Typography variant="caption" color="text.secondary">
-                            {formatDate(notification.createdAt)}
-                          </Typography>
-                          {notification.priority === 'high' && (
-                            <Chip 
-                              label="Quan trọng" 
-                              color="error" 
-                              size="small" 
-                              variant="outlined"
-                            />
-                          )}
-                        </Box>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Box sx={{ fontWeight: 'bold', mb: 0.5 }}>
+                      {notification.title}
+                    </Box>
+                    <Box sx={{ color: 'text.secondary', mb: 1 }}>
+                      {notification.message}
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <ScheduleIcon sx={{ fontSize: 14 }} />
+                      <Box component="span" sx={{ color: 'text.secondary', fontSize: '0.75rem' }}>
+                        {formatDate(notification.createdAt)}
                       </Box>
-                    }
-                  />
-                </ListItem>
+                      {notification.priority === 'high' && (
+                        <Chip 
+                          label="Quan trọng" 
+                          color="error" 
+                          size="small" 
+                          variant="outlined"
+                        />
+                      )}
+                    </Box>
+                  </Box>
+                </ListItemButton>
                 {index < notifications.length - 1 && <Divider />}
               </Box>
             ))}
