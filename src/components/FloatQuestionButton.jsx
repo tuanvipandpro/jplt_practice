@@ -157,7 +157,7 @@ const FloatQuestionButton = () => {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'YOUR_API_KEY_HERE'
       const optimizedQuestion = optimizeQuestion(userQuestion)
       
-      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

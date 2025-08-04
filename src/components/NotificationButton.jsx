@@ -13,7 +13,9 @@ import {
   ListItemIcon,
   Divider,
   CircularProgress,
-  Alert
+  Alert,
+  Card,
+  CardContent
 } from '@mui/material'
 import { 
   Notifications as NotificationsIcon,
@@ -22,7 +24,10 @@ import {
   Warning as WarningIcon,
   Error as ErrorIcon,
   Schedule as ScheduleIcon,
-  Refresh as RefreshIcon
+  Refresh as RefreshIcon,
+  LocalOffer as VersionIcon,
+  Description as ReleaseNotesIcon,
+  Rocket as UpdateIcon
 } from '@mui/icons-material'
 import { useAuth } from '../hooks/useAuth'
 import { 
@@ -182,6 +187,33 @@ const NotificationButton = () => {
     }
   }
 
+  // Parse and format notification message
+  const parseNotificationMessage = (message) => {
+    if (!message) return { mainMessage: '', releaseNotes: '' }
+    
+    // Split message to extract release notes
+    const parts = message.split('\n\n📝 **Có gì mới:**\n')
+    const mainMessage = parts[0]
+    
+    if (parts.length > 1) {
+      const releaseNotesSection = parts[1].split('\n\n✨ Hãy khám phá ngay!')[0]
+      return {
+        mainMessage,
+        releaseNotes: releaseNotesSection.trim()
+      }
+    }
+    
+    return {
+      mainMessage,
+      releaseNotes: ''
+    }
+  }
+
+  // Check if notification is a deployment notification
+  const isDeploymentNotification = (notification) => {
+    return notification.version || notification.metadata?.source === 'github-actions'
+  }
+
   if (!user) return null
 
   return (
@@ -219,8 +251,8 @@ const NotificationButton = () => {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            width: 400,
-            maxHeight: 500,
+            width: 450,
+            maxHeight: 600,
             '& .MuiMenuItem-root': {
               py: 1.5,
             }
@@ -276,46 +308,145 @@ const NotificationButton = () => {
 
         {!initialLoading && notifications.length > 0 && (
           <List sx={{ p: 0 }}>
-            {notifications.map((notification, index) => (
-              <Box key={notification.id}>
-                <ListItemButton 
-                  onClick={() => handleNotificationClick(notification.id)}
-                  disabled={loading}
-                  sx={{
-                    '&:hover': {
-                      backgroundColor: 'action.hover'
-                    }
-                  }}
-                >
-                  <ListItemIcon>
-                    {getNotificationIcon(notification.type)}
-                  </ListItemIcon>
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Box sx={{ fontWeight: 'bold', mb: 0.5 }}>
-                      {notification.title}
-                    </Box>
-                    <Box sx={{ color: 'text.secondary', mb: 1 }}>
-                      {notification.message}
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <ScheduleIcon sx={{ fontSize: 14 }} />
-                      <Box component="span" sx={{ color: 'text.secondary', fontSize: '0.75rem' }}>
-                        {formatDate(notification.createdAt)}
-                      </Box>
-                      {notification.priority === 'high' && (
-                        <Chip 
-                          label="Quan trọng" 
-                          color="error" 
-                          size="small" 
-                          variant="outlined"
-                        />
+            {notifications.map((notification, index) => {
+              const { mainMessage, releaseNotes } = parseNotificationMessage(notification.message)
+              const isDeployment = isDeploymentNotification(notification)
+              
+              return (
+                <Box key={notification.id}>
+                  <ListItemButton 
+                    onClick={() => handleNotificationClick(notification.id)}
+                    disabled={loading}
+                    sx={{
+                      '&:hover': {
+                        backgroundColor: 'action.hover'
+                      },
+                      px: 0
+                    }}
+                  >
+                    <Box sx={{ width: '100%', p: 1.5 }}>
+                      {isDeployment ? (
+                        // Enhanced layout for deployment notifications
+                        <Card 
+                          variant="outlined" 
+                          sx={{ 
+                            bgcolor: 'primary.50',
+                            border: '1px solid',
+                            borderColor: 'primary.200'
+                          }}
+                        >
+                          <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                            {/* Header with version */}
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                              <UpdateIcon color="primary" />
+                              <Typography variant="h6" sx={{ fontWeight: 'bold', flex: 1 }}>
+                                {notification.title}
+                              </Typography>
+                              {notification.version && (
+                                <Chip 
+                                  icon={<VersionIcon />}
+                                  label={notification.version}
+                                  color="primary"
+                                  size="small"
+                                  variant="outlined"
+                                />
+                              )}
+                            </Box>
+                            
+                            {/* Main message */}
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
+                              {mainMessage}
+                            </Typography>
+                            
+                            {/* Release notes section */}
+                            {releaseNotes && (
+                              <Box sx={{ 
+                                bgcolor: 'grey.50', 
+                                borderRadius: 1, 
+                                p: 1.5, 
+                                mb: 1.5,
+                                border: '1px solid',
+                                borderColor: 'grey.200'
+                              }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.5 }}>
+                                  <ReleaseNotesIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
+                                  <Typography variant="caption" sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}>
+                                    Có gì mới
+                                  </Typography>
+                                </Box>
+                                <Typography variant="body2" sx={{ 
+                                  color: 'text.primary',
+                                  fontStyle: 'italic',
+                                  pl: 1
+                                }}>
+                                  "{releaseNotes}"
+                                </Typography>
+                              </Box>
+                            )}
+                            
+                            {/* Footer with metadata */}
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <ScheduleIcon sx={{ fontSize: 14 }} />
+                                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                                  {formatDate(notification.createdAt)}
+                                </Typography>
+                              </Box>
+                              
+                              <Box sx={{ display: 'flex', gap: 0.5 }}>
+                                {notification.priority === 'high' && (
+                                  <Chip 
+                                    label="Quan trọng" 
+                                    color="error" 
+                                    size="small" 
+                                    variant="outlined"
+                                  />
+                                )}
+                                <Chip 
+                                  label="Cập nhật" 
+                                  color="success" 
+                                  size="small"
+                                />
+                              </Box>
+                            </Box>
+                          </CardContent>
+                        </Card>
+                      ) : (
+                        // Standard layout for regular notifications
+                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+                          <ListItemIcon sx={{ minWidth: 36, mt: 0.5 }}>
+                            {getNotificationIcon(notification.type)}
+                          </ListItemIcon>
+                          <Box sx={{ flex: 1, minWidth: 0 }}>
+                            <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+                              {notification.title}
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1, lineHeight: 1.4 }}>
+                              {notification.message}
+                            </Typography>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <ScheduleIcon sx={{ fontSize: 14 }} />
+                              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                                {formatDate(notification.createdAt)}
+                              </Typography>
+                              {notification.priority === 'high' && (
+                                <Chip 
+                                  label="Quan trọng" 
+                                  color="error" 
+                                  size="small" 
+                                  variant="outlined"
+                                />
+                              )}
+                            </Box>
+                          </Box>
+                        </Box>
                       )}
                     </Box>
-                  </Box>
-                </ListItemButton>
-                {index < notifications.length - 1 && <Divider />}
-              </Box>
-            ))}
+                  </ListItemButton>
+                  {index < notifications.length - 1 && <Divider />}
+                </Box>
+              )
+            })}
           </List>
         )}
       </Menu>

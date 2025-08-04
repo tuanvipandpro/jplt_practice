@@ -122,10 +122,11 @@ const GrammarTest = ({ onBack, onFinish }) => {
     <Box sx={{ 
       maxWidth: { xs: '95%', sm: 600 }, 
       mx: 'auto',
-      height: '100vh',
+      minHeight: { xs: 'calc(100vh - 120px)', sm: '100vh' },
+      height: { xs: 'auto', sm: '100vh' },
       display: 'flex',
       flexDirection: 'column',
-      py: { xs: 1, sm: 2 }
+      py: { xs: 0.5, sm: 2 }
     }}>
       {/* Header */}
       <Box sx={{
@@ -196,13 +197,14 @@ const GrammarTest = ({ onBack, onFinish }) => {
 
       {/* Question Card */}
       <Paper elevation={8} sx={{ 
-        p: { xs: 2, sm: 3 }, 
+        p: { xs: 1.5, sm: 3 }, 
         textAlign: 'center', 
-        mb: { xs: 1, sm: 2 },
-        maxHeight: { xs: '70vh', sm: '75vh' },
+        mb: { xs: 0.5, sm: 1 },
+        minHeight: { xs: 'calc(100vh - 200px)', sm: '75vh' },
+        maxHeight: { xs: 'none', sm: '75vh' },
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden'
+        overflow: { xs: 'visible', sm: 'hidden' }
       }}>
         {/* Lesson Info */}
         <Box sx={{ mb: { xs: 1, sm: 2 }, p: { xs: 1, sm: 1.5 }, bgcolor: 'rgba(33, 150, 243, 0.1)', borderRadius: 2, flexShrink: 0 }}>
@@ -223,7 +225,7 @@ const GrammarTest = ({ onBack, onFinish }) => {
         </Typography>
 
         {/* Answer Options */}
-        <FormControl component="fieldset" sx={{ width: '100%', mt: { xs: 1, sm: 2 }, maxHeight: { xs: '40vh', sm: '50vh' }, display: 'flex', flexDirection: 'column' }}>
+        <FormControl component="fieldset" sx={{ width: '100%', mt: { xs: 0.5, sm: 1 }, flex: 1, display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
           <RadioGroup
             value={selectedAnswer}
             onChange={(e) => handleAnswerSelect(e.target.value)}

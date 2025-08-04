@@ -69,7 +69,7 @@ Hãy tạo 5 câu hỏi trắc nghiệm (multiple choice) cho bài học này. M
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'YOUR_API_KEY_HERE'
       
       const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent',
         {
           contents: [
             {

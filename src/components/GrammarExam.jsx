@@ -272,11 +272,13 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
       // For AI-generated questions: { A: "option1", B: "option2", ... }
       return question.options
     } else if (Array.isArray(question.options)) {
-      // For sample questions: ["A. option1", "B. option2", ...]
+      // For sample questions: ["A. option1", "B. option2", ...] or ["option1", "option2", ...]
       const options = {}
       question.options.forEach((option, index) => {
         const key = String.fromCharCode(65 + index) // A, B, C, D...
-        options[key] = option
+        // Remove prefix like "A. " if it exists to avoid duplication
+        const cleanOption = option.replace(/^[A-Z]\.\s*/, '')
+        options[key] = cleanOption
       })
       return options
     }
@@ -718,7 +720,8 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
     <Box sx={{ 
       display: 'flex', 
       flexDirection: 'column', 
-      height: '90vh',
+      minHeight: { xs: 'calc(100vh - 140px)', sm: '90vh' },
+      height: { xs: 'auto', sm: '90vh' },
       p: { xs: 1, sm: 2 },
       maxWidth: '900px',
       mx: 'auto'
@@ -727,15 +730,17 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         flex: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        p: { xs: 2, sm: 3 },
-        maxHeight: '85vh'
+        p: { xs: 1.5, sm: 3 },
+        minHeight: { xs: 'calc(100vh - 160px)', sm: '85vh' },
+        maxHeight: { xs: 'none', sm: '85vh' },
+        overflow: 'hidden'
       }}>
         {/* Header */}
         <Box sx={{ 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          mb: { xs: 1, sm: 2 },
+          mb: { xs: 0.5, sm: 1 },
           flexShrink: 0
         }}>
           <Button onClick={onBack} startIcon={<ArrowBack />} size="small">
@@ -762,7 +767,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           display: 'flex', 
           justifyContent: 'space-between',
           alignItems: 'center',
-          mb: { xs: 1, sm: 2 },
+          mb: { xs: 0.5, sm: 1 },
           flexShrink: 0
         }}>
           {/* Left side - Flag and Review */}
@@ -802,18 +807,21 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         <LinearProgress 
           variant="determinate" 
           value={((currentQuestionIndex + 1) / allQuestions.length) * 100}
-          sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0 }}
+          sx={{ mb: { xs: 0.5, sm: 1 }, flexShrink: 0 }}
         />
 
         {/* Question Content */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
           {/* Question Text */}
           <Typography variant="h6" gutterBottom sx={{ 
-            fontSize: { xs: '1rem', sm: '1.1rem' },
-            mb: { xs: 1, sm: 2 },
-            flexShrink: 0
+            fontSize: { xs: '0.9rem', sm: '1.1rem' },
+            mb: { xs: 0.5, sm: 1 },
+            flexShrink: 0,
+            lineHeight: { xs: 1.3, sm: 1.4 }
           }}>
-            <strong>Câu {currentQuestionIndex + 1}:</strong> {currentQuestion.question}
+            {/* Format: "Câu X. question" and remove duplicate number prefix */}
+            <><strong>Câu {currentQuestionIndex + 1}.</strong> {currentQuestion.question.replace(/^\d+\.\s*/, '')}</>
+            
           </Typography>
 
           {/* Image Display - Reduced size */}
@@ -821,12 +829,12 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
             <Box sx={{ 
               display: 'flex', 
               justifyContent: 'center', 
-              mb: { xs: 1, sm: 1.5 },
+              mb: { xs: 0.5, sm: 1 },
               flexShrink: 0
             }}>
               <Box sx={{
-                maxWidth: '60%', // Reduced from 80%
-                maxHeight: '120px', // Reduced from 200px
+                maxWidth: { xs: '50%', sm: '60%' },
+                maxHeight: { xs: '80px', sm: '120px' },
                 borderRadius: 2,
                 overflow: 'hidden',
                 border: '2px solid',
@@ -839,7 +847,7 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                   style={{
                     width: '100%',
                     height: 'auto',
-                    maxHeight: '120px', // Reduced from 200px
+                    maxHeight: '80px',
                     objectFit: 'contain',
                     display: 'block'
                   }}
@@ -855,14 +863,14 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
           {/* Answer Options */}
           <FormControl component="fieldset" sx={{ 
             width: '100%', 
-            mt: { xs: 1, sm: 2 }, 
+            mt: { xs: 0.5, sm: 1 }, 
             flex: 1, 
             display: 'flex', 
             flexDirection: 'column',
             minHeight: 0,
             overflow: 'auto'
           }}>
-            <FormLabel component="legend" sx={{ mb: 1, flexShrink: 0, fontSize: '0.9rem' }}>
+            <FormLabel component="legend" sx={{ mb: { xs: 0.5, sm: 1 }, flexShrink: 0, fontSize: { xs: '0.8rem', sm: '0.9rem' } }}>
               Chọn đáp án đúng:
             </FormLabel>
             <RadioGroup
@@ -877,8 +885,8 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                   control={<Radio size="small" />}
                   label={`${key}. ${value}`}
                   sx={{
-                    mb: 0.5,
-                    p: 0.5,
+                    mb: { xs: 0.3, sm: 0.5 },
+                    p: { xs: 0.3, sm: 0.5 },
                     borderRadius: 1,
                     border: '1px solid',
                     borderColor: answered && key === correctAnswer ? 'success.main' : 
@@ -887,7 +895,10 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
                     bgcolor: answered && key === correctAnswer ? 'success.light' : 
                             answered && key === selectedAnswer && key !== correctAnswer ? 'error.light' : 
                             'transparent',
-                    fontSize: '0.9rem'
+                    fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                    '& .MuiFormControlLabel-label': {
+                      fontSize: { xs: '0.8rem', sm: '0.9rem' }
+                    }
                   }}
                 />
               ))}
@@ -898,8 +909,8 @@ const GrammarExam = ({ exam, onBack, onFinish }) => {
         {/* Feedback - Moved to bottom */}
         {answered && (
           <Box sx={{ 
-            mt: { xs: 1, sm: 1.5 }, 
-            p: { xs: 1.5, sm: 2 }, 
+            mt: { xs: 0.5, sm: 1 }, 
+            p: { xs: 1, sm: 1.5 }, 
             bgcolor: 'grey.50', 
             borderRadius: 2, 
             flexShrink: 0,

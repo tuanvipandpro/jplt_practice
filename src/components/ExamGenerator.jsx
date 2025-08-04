@@ -134,7 +134,7 @@ Hãy tạo ${questionCount} câu hỏi trắc nghiệm cho phần này. Mỗi c�
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'YOUR_API_KEY_HERE'
       
       const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent',
         {
           contents: [
             {

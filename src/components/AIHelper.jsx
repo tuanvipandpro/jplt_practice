@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -19,6 +19,15 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
   const [loading, setLoading] = useState(false)
   const [aiResponse, setAiResponse] = useState('')
   const [error, setError] = useState('')
+
+  // Reset states when dialog opens or question changes
+  useEffect(() => {
+    if (open) {
+      setAiResponse('')
+      setError('')
+      setLoading(false)
+    }
+  }, [open, question, userAnswer, correctAnswer])
 
   const generatePrompt = () => {
     let prompt = `Tôi đang học tiếng Nhật và gặp câu hỏi sau:\n\n`
@@ -97,7 +106,7 @@ const AIHelper = ({ open, onClose, question, userAnswer, correctAnswer, question
                     'YOUR_API_KEY_HERE'
       
       const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent',
         {
           contents: [
             {

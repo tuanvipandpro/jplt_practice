@@ -8,7 +8,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -19,9 +19,59 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Auto-tagging job (only on master push)
+  create-tag:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    outputs:
+      version: ${{ steps.tag.outputs.version }}
+      release_notes: ${{ steps.tag.outputs.release_notes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+
+      - name: Generate version tag
+        id: tag
+        run: |
+          # Generate version based on date and build number
+          DATE=$(date +'%Y.%m.%d')
+          BUILD_NUMBER=$(date +'%H%M')
+          VERSION="v${DATE}.${BUILD_NUMBER}"
+          
+          # Get commit message as release notes (first line only, clean format)
+          RELEASE_NOTES=$(git log -1 --pretty=format:"%s" | sed 's/"/\\"/g')
+          
+          # Get commit hash for reference
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "release_notes=${RELEASE_NOTES}" >> $GITHUB_OUTPUT
+          echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
+          
+          echo "🏷️ Generated version: ${VERSION}"
+          echo "📝 Release notes: ${RELEASE_NOTES}"
+          echo "🔗 Commit: ${COMMIT_HASH}"
+
+      - name: Create and push tag
+        run: |
+          VERSION="${{ steps.tag.outputs.version }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a "${VERSION}" -m "Release ${{ steps.tag.outputs.version }}: ${{ steps.tag.outputs.release_notes }}"
+          git push origin "${VERSION}"
+          echo "✅ Created and pushed tag: ${VERSION}"
+
   # Build job
   build:
     runs-on: ubuntu-latest
+    needs: [create-tag]
+    if: always() && (needs.create-tag.result == 'success' || needs.create-tag.result == 'skipped')
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -72,8 +122,8 @@ jobs:
   # Create deployment notification
   notify:
     runs-on: ubuntu-latest
-    needs: deploy
-    if: github.ref == 'refs/heads/master'
+    needs: [create-tag, deploy]
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -95,6 +145,8 @@ jobs:
           FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
           FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          VERSION: ${{ needs.create-tag.outputs.version || 'dev' }}
+          RELEASE_NOTES: ${{ needs.create-tag.outputs.release_notes || 'Development build' }}
         run: |
           node -e "
           const { initializeApp } = require('firebase/app');
@@ -112,18 +164,41 @@ jobs:
           const app = initializeApp(firebaseConfig);
           const db = getFirestore(app);
           
+          const version = process.env.VERSION || 'dev';
+          const releaseNotes = process.env.RELEASE_NOTES || 'Development build';
+          
+          // Create notification title and message with version info
+          const title = \`🚀 Cập nhật \${version}\`;
+          let message = 'Ứng dụng đã được cập nhật với các tính năng mới!';
+          
+          // Add release notes if available and not just default message
+          if (releaseNotes && releaseNotes !== 'Development build' && releaseNotes.trim() !== '') {
+            message += \`\n\n📝 **Có gì mới:**\n\${releaseNotes}\`;
+          }
+          
+          message += '\n\n✨ Hãy khám phá ngay!';
+          
           const notification = {
-            title: '🚀 Cập nhật mới',
-            message: 'Ứng dụng đã được cập nhật với các tính năng mới! Hãy khám phá ngay.',
+            title: title,
+            message: message,
             type: 'success',
-            priority: 'normal',
+            priority: 'high',
+            version: version,
+            releaseNotes: releaseNotes,
             createdAt: serverTimestamp(),
             isActive: true,
             targetUsers: 'all',
-            expiresAt: null
+            expiresAt: null,
+            metadata: {
+              deployedAt: new Date().toISOString(),
+              source: 'github-actions'
+            }
           };
           
           addDoc(collection(db, 'notifications'), notification)
-            .then(() => console.log('✅ Deployment notification created'))
+            .then(() => {
+              console.log(\`✅ Deployment notification created for version \${version}\`);
+              console.log(\`📝 Release notes: \${releaseNotes}\`);
+            })
             .catch(error => console.error('❌ Error creating notification:', error));
           " 

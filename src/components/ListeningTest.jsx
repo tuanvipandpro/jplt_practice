@@ -266,7 +266,8 @@ const ListeningTest = ({ onBack, onFinish }) => {
     <Box sx={{ 
       display: 'flex', 
       flexDirection: 'column', 
-      height: '75vh',
+      minHeight: { xs: 'calc(100vh - 140px)', sm: '75vh' },
+      height: { xs: 'auto', sm: '75vh' },
       p: { xs: 1, sm: 2 },
       maxWidth: '800px',
       mx: 'auto'
@@ -275,15 +276,17 @@ const ListeningTest = ({ onBack, onFinish }) => {
         flex: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        p: { xs: 2, sm: 3 },
-        maxHeight: '70vh'
+        p: { xs: 1.5, sm: 3 },
+        minHeight: { xs: 'calc(100vh - 160px)', sm: '70vh' },
+        maxHeight: { xs: 'none', sm: '70vh' },
+        overflow: 'hidden'
       }}>
         {/* Header */}
         <Box sx={{ 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          mb: { xs: 1, sm: 2 },
+          mb: { xs: 0.5, sm: 1 },
           flexShrink: 0
         }}>
           <Button onClick={onBack} startIcon={<ArrowBack />} size="small">
@@ -309,17 +312,20 @@ const ListeningTest = ({ onBack, onFinish }) => {
         <LinearProgress 
           variant="determinate" 
           value={((currentQuestionIndex + 1) / totalQuestions) * 100}
-          sx={{ mb: { xs: 1, sm: 2 }, flexShrink: 0 }}
+          sx={{ mb: { xs: 0.5, sm: 1 }, flexShrink: 0 }}
         />
 
         {/* Question */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
           <Typography variant="h6" gutterBottom sx={{ 
-            fontSize: { xs: '1rem', sm: '1.1rem' },
-            mb: { xs: 1, sm: 2 },
-            flexShrink: 0
+            fontSize: { xs: '0.9rem', sm: '1.1rem' },
+            mb: { xs: 0.5, sm: 1 },
+            flexShrink: 0,
+            lineHeight: { xs: 1.3, sm: 1.4 }
           }}>
-            <strong>Câu {currentQuestionIndex + 1}:</strong> {currentQuestion.question}
+            {/* Format: "Câu X. question" and remove duplicate number prefix */}
+            <><strong>Câu {currentQuestionIndex + 1}.</strong> {currentQuestion.question.replace(/^\d+\.\s*/, '')}</>
+            
           </Typography>
 
           {/* Audio Controls */}
@@ -369,14 +375,14 @@ const ListeningTest = ({ onBack, onFinish }) => {
           {/* Answer Options */}
           <FormControl component="fieldset" sx={{ 
             width: '100%', 
-            mt: { xs: 1, sm: 2 }, 
+            mt: { xs: 0.5, sm: 1 }, 
             flex: 1, 
             display: 'flex', 
             flexDirection: 'column',
             minHeight: 0,
             overflow: 'auto'
           }}>
-            <FormLabel component="legend" sx={{ mb: 1, flexShrink: 0, fontSize: '0.9rem' }}>
+            <FormLabel component="legend" sx={{ mb: { xs: 0.5, sm: 1 }, flexShrink: 0, fontSize: { xs: '0.8rem', sm: '0.9rem' } }}>
               Chọn đáp án đúng:
             </FormLabel>
             <RadioGroup
@@ -384,12 +390,16 @@ const ListeningTest = ({ onBack, onFinish }) => {
               onChange={(e) => handleAnswerSelect(e.target.value)}
               sx={{ flex: 1, overflow: 'auto' }}
             >
-              {currentQuestion.options.map((option, index) => (
+              {currentQuestion.options.map((option, index) => {
+                const letter = String.fromCharCode(65 + index) // A, B, C, D...
+                // Remove prefix like "A. " if it exists to avoid duplication
+                const cleanOption = option.replace(/^[A-Z]\.\s*/, '')
+                return (
                 <FormControlLabel
                   key={index}
-                  value={String.fromCharCode(65 + index)} // A, B, C, D...
+                  value={letter}
                   control={<Radio size="small" />}
-                  label={`${String.fromCharCode(65 + index)}. ${option}`}
+                  label={`${letter}. ${cleanOption}`}
                   sx={{
                     mb: 0.5,
                     p: 0.5,
@@ -404,7 +414,8 @@ const ListeningTest = ({ onBack, onFinish }) => {
                     fontSize: '0.9rem'
                   }}
                 />
-              ))}
+                )
+              })}
             </RadioGroup>
           </FormControl>
 
