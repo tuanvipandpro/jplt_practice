@@ -208,8 +208,8 @@ export const createDeploymentNotification = async () => {
 
   try {
     const notification = {
-      title: '🚀 Cập nhật mới',
-      message: 'Ứng dụng đã được cập nhật với các tính năng mới! Hãy khám phá ngay.',
+      title: '📦 Updated - Minor',
+      message: 'Ứng dụng đã được cập nhật với các tính năng mới!\n\n📊 **Thay đổi:** Vài file - Minor update\n\n✨ Hãy khám phá ngay!',
       type: 'success',
       priority: 'normal',
       createdAt: serverTimestamp(),

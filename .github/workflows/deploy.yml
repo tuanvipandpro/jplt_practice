@@ -167,9 +167,41 @@ jobs:
           const version = process.env.VERSION || 'dev';
           const releaseNotes = process.env.RELEASE_NOTES || 'Development build';
           
-          // Create notification title and message with version info
-          const title = \`🚀 Cập nhật \${version}\`;
+          // Count changed files in the latest commit to determine priority
+          const { execSync } = require('child_process');
+          let changedFilesCount = 0;
+          let priority = 'normal';
+          let priorityEmoji = '📦';
+          let priorityText = 'Minor';
+          
+          try {
+            const output = execSync('git diff --name-only HEAD~1 HEAD', { encoding: 'utf8' });
+            changedFilesCount = output.trim().split('\n').filter(f => f.length > 0).length;
+            
+            // Determine priority based on number of changed files
+            if (changedFilesCount <= 3) {
+              priority = 'normal';
+              priorityEmoji = '📦';
+              priorityText = 'Minor';
+            } else if (changedFilesCount <= 6) {
+              priority = 'high';
+              priorityEmoji = '🚀';
+              priorityText = 'Major';
+            } else {
+              priority = 'high';
+              priorityEmoji = '🔥';
+              priorityText = 'Critical';
+            }
+          } catch (error) {
+            console.log('Could not determine changed files count, using default priority');
+          }
+          
+          // Create notification title and message with priority info
+          const title = \`\${priorityEmoji} Updated - \${priorityText}\`;
           let message = 'Ứng dụng đã được cập nhật với các tính năng mới!';
+          
+          // Add file count info
+          message += \`\n\n📊 **Thay đổi:** \${changedFilesCount} file(s) - \${priorityText} update\`;
           
           // Add release notes if available and not just default message
           if (releaseNotes && releaseNotes !== 'Development build' && releaseNotes.trim() !== '') {
@@ -182,7 +214,7 @@ jobs:
             title: title,
             message: message,
             type: 'success',
-            priority: 'high',
+            priority: priority,
             version: version,
             releaseNotes: releaseNotes,
             createdAt: serverTimestamp(),

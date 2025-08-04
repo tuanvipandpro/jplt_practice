@@ -251,24 +251,25 @@ const NotificationButton = () => {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            width: 450,
-            maxHeight: 600,
+            width: { xs: 300, sm: 360 },
+            maxHeight: { xs: 400, sm: 450 },
             '& .MuiMenuItem-root': {
-              py: 1.5,
+              py: 0.8,
             }
           }
         }}
       >
-        <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ p: 1.2, borderBottom: 1, borderColor: 'divider' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <NotificationsIcon />
+            <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center', gap: 0.6, fontWeight: 600, fontSize: '0.95rem' }}>
+              <NotificationsIcon sx={{ fontSize: 18 }} />
               Thông báo
               {unreadCount !== '0' && (
                 <Chip 
                   label={unreadCount} 
                   color="error" 
                   size="small"
+                  sx={{ height: 18, fontSize: '0.65rem' }}
                 />
               )}
             </Typography>
@@ -276,21 +277,22 @@ const NotificationButton = () => {
               size="small" 
               onClick={handleRefresh}
               disabled={loading}
+              sx={{ p: 0.4 }}
             >
-              <RefreshIcon fontSize="small" />
+              <RefreshIcon sx={{ fontSize: 16 }} />
             </IconButton>
           </Box>
         </Box>
 
         {initialLoading && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
-            <CircularProgress size={24} />
+          <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+            <CircularProgress size={18} />
           </Box>
         )}
 
         {error && (
-          <Box sx={{ p: 2 }}>
-            <Alert severity="error" sx={{ mb: 1 }}>
+          <Box sx={{ p: 1.2 }}>
+            <Alert severity="error" sx={{ mb: 0.4, fontSize: '0.8rem' }}>
               {error}
             </Alert>
           </Box>
@@ -298,8 +300,8 @@ const NotificationButton = () => {
 
         {!initialLoading && notifications.length === 0 && (
           <MenuItem disabled>
-            <Box sx={{ textAlign: 'center', width: '100%', py: 2 }}>
-              <Box component="span" sx={{ color: 'text.secondary' }}>
+            <Box sx={{ textAlign: 'center', width: '100%', py: 1.2 }}>
+              <Box component="span" sx={{ color: 'text.secondary', fontSize: '0.8rem' }}>
                 Không có thông báo mới
               </Box>
             </Box>
@@ -324,7 +326,7 @@ const NotificationButton = () => {
                       px: 0
                     }}
                   >
-                    <Box sx={{ width: '100%', p: 1.5 }}>
+                    <Box sx={{ width: '100%', p: 1 }}>
                       {isDeployment ? (
                         // Enhanced layout for deployment notifications
                         <Card 
@@ -335,26 +337,27 @@ const NotificationButton = () => {
                             borderColor: 'primary.200'
                           }}
                         >
-                          <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                          <CardContent sx={{ p: 1.2, '&:last-child': { pb: 1.2 } }}>
                             {/* Header with version */}
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                              <UpdateIcon color="primary" />
-                              <Typography variant="h6" sx={{ fontWeight: 'bold', flex: 1 }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.6, mb: 0.6 }}>
+                              <UpdateIcon color="primary" sx={{ fontSize: 16 }} />
+                              <Typography variant="subtitle2" sx={{ fontWeight: 600, flex: 1, fontSize: '0.9rem' }}>
                                 {notification.title}
                               </Typography>
                               {notification.version && (
                                 <Chip 
-                                  icon={<VersionIcon />}
+                                  icon={<VersionIcon sx={{ fontSize: 12 }} />}
                                   label={notification.version}
                                   color="primary"
                                   size="small"
                                   variant="outlined"
+                                  sx={{ height: 20, fontSize: '0.65rem' }}
                                 />
                               )}
                             </Box>
                             
                             {/* Main message */}
-                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1, fontSize: '0.8rem', lineHeight: 1.3 }}>
                               {mainMessage}
                             </Typography>
                             
@@ -362,22 +365,24 @@ const NotificationButton = () => {
                             {releaseNotes && (
                               <Box sx={{ 
                                 bgcolor: 'grey.50', 
-                                borderRadius: 1, 
-                                p: 1.5, 
-                                mb: 1.5,
+                                borderRadius: 0.6, 
+                                p: 0.8, 
+                                mb: 1,
                                 border: '1px solid',
                                 borderColor: 'grey.200'
                               }}>
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.5 }}>
-                                  <ReleaseNotesIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-                                  <Typography variant="caption" sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.3, mb: 0.3 }}>
+                                  <ReleaseNotesIcon sx={{ fontSize: 12, color: 'text.secondary' }} />
+                                  <Typography variant="caption" sx={{ fontWeight: 600, textTransform: 'uppercase', fontSize: '0.6rem' }}>
                                     Có gì mới
                                   </Typography>
                                 </Box>
                                 <Typography variant="body2" sx={{ 
                                   color: 'text.primary',
                                   fontStyle: 'italic',
-                                  pl: 1
+                                  pl: 0.6,
+                                  fontSize: '0.75rem',
+                                  lineHeight: 1.2
                                 }}>
                                   "{releaseNotes}"
                                 </Typography>
@@ -385,27 +390,29 @@ const NotificationButton = () => {
                             )}
                             
                             {/* Footer with metadata */}
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                <ScheduleIcon sx={{ fontSize: 14 }} />
-                                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 0.6 }}>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4 }}>
+                                <ScheduleIcon sx={{ fontSize: 10 }} />
+                                <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.65rem' }}>
                                   {formatDate(notification.createdAt)}
                                 </Typography>
                               </Box>
                               
-                              <Box sx={{ display: 'flex', gap: 0.5 }}>
+                              <Box sx={{ display: 'flex', gap: 0.3 }}>
                                 {notification.priority === 'high' && (
                                   <Chip 
                                     label="Quan trọng" 
                                     color="error" 
                                     size="small" 
                                     variant="outlined"
+                                    sx={{ height: 16, fontSize: '0.6rem' }}
                                   />
                                 )}
                                 <Chip 
                                   label="Cập nhật" 
                                   color="success" 
                                   size="small"
+                                  sx={{ height: 16, fontSize: '0.6rem' }}
                                 />
                               </Box>
                             </Box>
@@ -413,20 +420,20 @@ const NotificationButton = () => {
                         </Card>
                       ) : (
                         // Standard layout for regular notifications
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
-                          <ListItemIcon sx={{ minWidth: 36, mt: 0.5 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 0.6 }}>
+                          <ListItemIcon sx={{ minWidth: 24, mt: 0.2 }}>
                             {getNotificationIcon(notification.type)}
                           </ListItemIcon>
                           <Box sx={{ flex: 1, minWidth: 0 }}>
-                            <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+                            <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.3, fontSize: '0.85rem' }}>
                               {notification.title}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1, lineHeight: 1.4 }}>
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.6, lineHeight: 1.2, fontSize: '0.78rem' }}>
                               {notification.message}
                             </Typography>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <ScheduleIcon sx={{ fontSize: 14 }} />
-                              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.6 }}>
+                              <ScheduleIcon sx={{ fontSize: 10 }} />
+                              <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.65rem' }}>
                                 {formatDate(notification.createdAt)}
                               </Typography>
                               {notification.priority === 'high' && (
@@ -435,6 +442,7 @@ const NotificationButton = () => {
                                   color="error" 
                                   size="small" 
                                   variant="outlined"
+                                  sx={{ height: 16, fontSize: '0.6rem' }}
                                 />
                               )}
                             </Box>
